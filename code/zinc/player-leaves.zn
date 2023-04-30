@@ -1,4 +1,3 @@
-//! zinc
 library PlayerLeaves requires CothUtilities {
     public constant string PlayerColorPrefix[11];
 
@@ -35,4 +34,3 @@ library PlayerLeaves requires CothUtilities {
         TriggerAddAction(t, function PlayerLeave);
     }
 }
-//! endzinc

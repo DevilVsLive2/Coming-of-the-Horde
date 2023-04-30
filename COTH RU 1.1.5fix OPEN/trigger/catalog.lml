@@ -1,0 +1,617 @@
+'01-Init scripts': 'Init scripts'
+    1-APITypecast: APITypecast
+    '2-Create units': 'Create units'
+        Run
+    '3-Init sounds': 'Init sounds'
+        Run
+'02-Alliance Main Triggers': 'Alliance Main Triggers'
+    01-Zepplin_Teleport: Zepplin_Teleport
+    02-Azeroth_Zepplin: Azeroth_Zepplin
+    03-Lordaeron_Zepplin: Lordaeron_Zepplin
+    04-Stromgarde_Zepplin: Stromgarde_Zepplin
+    05-Kul_Tiras_Zepplin: Kul_Tiras_Zepplin
+    06-Kul_Tiras_Zepplin_Early: Kul_Tiras_Zepplin_Early
+    07-Quelthalas_Zepplin: Quelthalas_Zepplin
+    08-Khaz_Modan_Zepplin: Khaz_Modan_Zepplin
+    09-Gilneas_Zepplin: Gilneas_Zepplin
+    10-Dalaran_Zepplin: Dalaran_Zepplin
+    11-Aerie_Peak_Zepplin: Aerie_Peak_Zepplin
+    12-Refuge_Zepplin: Refuge_Zepplin
+    13-Refuge_Zone_1: Refuge_Zone_1
+    14-Refuge_Zone_2: Refuge_Zone_2
+    15-Refuge_Zone_3: Refuge_Zone_3
+    16-Refuge_Zone_Warning: Refuge_Zone_Warning
+    17-Shipyard_Limiter_Alliance: Shipyard_Limiter_Alliance
+    18-Shipyard_Limiter_Horde: Shipyard_Limiter_Horde
+    19-Alliance_Item_Point_Divider: Alliance_Item_Point_Divider
+    20-Allied_Victory_Two: Allied_Victory_Two
+'03-Other triggers': 'Other triggers'
+    01-Upgrades: Upgrades
+    '02-Player leaves': 'Player leaves'
+    03-Sandbox: Sandbox
+    04-Camera: Camera
+    05-Aura: Aura
+    06-Resources: Resources
+    07-Map_Initialization: Map_Initialization
+        Run
+    08-QuestText: QuestText
+        Run
+    '09-QuestText Копировать': 'QuestText Копировать'
+        Disab
+        Run
+    10-Map_Begin: Map_Begin
+    11-Item_Shop_Floating_Text: Item_Shop_Floating_Text
+    12-Game_Timer: Game_Timer
+    13-Music_Beginning: Music_Beginning
+    14-Music_Power_of_the_Horde: Music_Power_of_the_Horde
+    15-Music_Warcraft_2_Intro: Music_Warcraft_2_Intro
+    16-Music_Stop: Music_Stop
+    17-Item_Tooltip: Item_Tooltip
+    18-Kick_Vote_Initiate: Kick_Vote_Initiate
+    19-Kick_Vote_Process: Kick_Vote_Process
+    20-Kick_Vote_End: Kick_Vote_End
+    21-Hero_Revival: Hero_Revival
+    22-Hero_Revival_Reset: Hero_Revival_Reset
+    23-Hero_Experience: Hero_Experience
+    24-Sunwell_Guardian_Top: Sunwell_Guardian_Top
+    25-Sunwell_Guardian_Bot: Sunwell_Guardian_Bot
+    26-Sunwell_Guardian_Top_Death: Sunwell_Guardian_Top_Death
+    27-Sunwell_Guardian_Bot_Death: Sunwell_Guardian_Bot_Death
+    28-Gatling_Engine_Death: Gatling_Engine_Death
+    29-Battle_Engine: Battle_Engine
+    30-Burning_Blade_Color: Burning_Blade_Color
+    31-Mount_Dismount_Holy_Light: Mount_Dismount_Holy_Light
+    32-Citadel_Guard_Embued_Shields_Upgrade: Citadel_Guard_Embued_Shields_Upgrade
+    33-Citadel_Guard_Embued_Shields_Training: Citadel_Guard_Embued_Shields_Training
+    34-Map_Edge: Map_Edge
+    35-Team_Killing_Alliance: Team_Killing_Alliance
+    36-Team_Killing_Horde: Team_Killing_Horde
+    37-Thandol_Span_West_to_East: Thandol_Span_West_to_East
+    38-Thandol_Span_East_to_West: Thandol_Span_East_to_West
+    39-Sandbox2: Sandbox2
+        Disab
+    40-Sandbox_Creeps: Sandbox_Creeps
+        Disab
+    41-Sandbox_Refresh: Sandbox_Refresh
+        Disab
+    42-Player_unused: Player_unused
+    43-Gold_Bonus_1: Gold_Bonus_1
+    44-Gold_Bonus_2: Gold_Bonus_2
+    45-Gold_Bonus_3: Gold_Bonus_3
+    46-Gold_Bonus_4: Gold_Bonus_4
+    47-Gold_Bonus_5: Gold_Bonus_5
+    48-Gold_Bonus_6: Gold_Bonus_6
+    49-Gold_Bonus_7: Gold_Bonus_7
+    50-Gold_Bonus_8: Gold_Bonus_8
+    51-Gold_Bonus_9: Gold_Bonus_9
+    52-Stop_Abuse_On: Stop_Abuse_On
+'04-Alliance Hero Abillity': 'Alliance Hero Abillity'
+    001-Красный: Красный
+        Comment
+    002-Rejuventation_Heal_Red: Rejuventation_Heal_Red
+    003-Rejuventation_Damage_Red: Rejuventation_Damage_Red
+    004-Rejuventation_Stop_Red: Rejuventation_Stop_Red
+    005-Торас: Торас
+        Comment
+    006-Magic_Resistance: Magic_Resistance
+    007-Данат: Данат
+        Comment
+    008-Stength_of_Stromgarde: Stength_of_Stromgarde
+    009-Гален: Гален
+        Comment
+    010-Galen_Decay: Galen_Decay
+    011-Galen_Revives: Galen_Revives
+    012-Galen_Dies: Galen_Dies
+    013-Blistering_Blade_Finish: Blistering_Blade_Finish
+    014-Blistering_Blade_Attack: Blistering_Blade_Attack
+    015-Fury_Level: Fury_Level
+    016-Курдран: Курдран
+        Comment
+    017-Thunder_Shield: Thunder_Shield
+    018-Thunder_Shield_Start: Thunder_Shield_Start
+    019-Skyree_Reset: Skyree_Reset
+    020-Синий: Синий
+        Comment
+    021-Rejuventation_Heal_Blue: Rejuventation_Heal_Blue
+    022-Rejuventation_Damage_Blue: Rejuventation_Damage_Blue
+    023-Rejuventation_Stop_Blue: Rejuventation_Stop_Blue
+    024-Мара: Мара
+        Comment
+    025-Holy_Bulwark_Starts: Holy_Bulwark_Starts
+    026-Holy_Bulwark: Holy_Bulwark
+    027-Holy_Bulwark_Ends: Holy_Bulwark_Ends
+    028-Judgement: Judgement
+    029-Кадгар: Кадгар
+        Comment
+    030-Starfall_Damage: Starfall_Damage
+    031-Tornado: Tornado
+    032-Лотар: Лотар
+        Comment
+    033-Dragonhide_Armor: Dragonhide_Armor
+    034-Бирюзовый: Бирюзовый
+        Comment
+    035-Rejuventation_Heal_Teal: Rejuventation_Heal_Teal
+    036-Rejuventation_Damage_Teal: Rejuventation_Damage_Teal
+    037-Rejuventation_Stop_Teal: Rejuventation_Stop_Teal
+    038-Мишан: Мишан
+        Comment
+    039-Duel_Target_Damage: Duel_Target_Damage
+    040-Duel_Mishan_Damage: Duel_Mishan_Damage
+    041-Duel_Finish: Duel_Finish
+    042-Mishan_Attack_Start: Mishan_Attack_Start
+    043-Mishan_Stop_Abuse: Mishan_Stop_Abuse
+    044-Дюк: Дюк
+        Comment
+    045-Net: Net
+    046-Фиолетовый: Фиолетовый
+        Comment
+    047-Rejuventation_Heal_Purple: Rejuventation_Heal_Purple
+    048-Rejuventation_Damage_Purple: Rejuventation_Damage_Purple
+    049-Rejuventation_Stop_Purple: Rejuventation_Stop_Purple
+    050-Антонидас: Антонидас
+        Comment
+    051-Tranquility_Level: Tranquility_Level
+    052-Аэгвин: Аэгвин
+        Comment
+    053-Stellar_Recall_Mimic_Move: Stellar_Recall_Mimic_Move
+    054-Stellar_Recall_Move: Stellar_Recall_Move
+    055-Ронин: Ронин
+        Comment
+    056-Mana_Shield: Mana_Shield
+    057-Кель: Кель
+        Comment
+    058-Inferno_Level: Inferno_Level
+    059-Pyre_Damage: Pyre_Damage
+    060-Pyre_Reset: Pyre_Reset
+    061-Оранжевый: Оранжевый
+        Comment
+    062-Rejuventation_Heal_Orange: Rejuventation_Heal_Orange
+    063-Rejuventation_Damage_Orange: Rejuventation_Damage_Orange
+    064-Rejuventation_Stop_Orange: Rejuventation_Stop_Orange
+    065-Мурадин: Мурадин
+        Comment
+    066-On_the_House_Learn: On_the_House_Learn
+    067-On_the_House: On_the_House
+    068-On_the_House_Damage: On_the_House_Damage
+    069-Avatar_Sound: Avatar_Sound
+    070-Avatar_Activate: Avatar_Activate
+    071-Бранн: Бранн
+        Comment
+    072-Haste: Haste
+    073-Гелбин: Гелбин
+        Comment
+    074-Gelbin_Spawn: Gelbin_Spawn
+    075-Repair_Bots_Mana_Regen: Repair_Bots_Mana_Regen
+    076-Megaton_Bomb_Afterburner: Megaton_Bomb_Afterburner
+    077-Магни: Магни
+        Comment
+    '078-Mass thunderbolt': 'Mass thunderbolt'
+    079-Зелёный: Зелёный
+        Comment
+    080-Split_Shot_On: Split_Shot_On
+    081-Wind_Shot_Move: Wind_Shot_Move
+    082-Hail_of_Arrows_Deactivate: Hail_of_Arrows_Deactivate
+    083-Hail_of_Arrows_Graphic: Hail_of_Arrows_Graphic
+    084-Hail_of_Arrows_Damage: Hail_of_Arrows_Damage
+    085-Trueshot: Trueshot
+    086-Warmth: Warmth
+    087-Evade: Evade
+    088-Arrow_Storm: Arrow_Storm
+    089-Arrow_Storm_Cancel: Arrow_Storm_Cancel
+    090-Split_Shot_Off: Split_Shot_Off
+    091-Split_Shot_Revive: Split_Shot_Revive
+    092-Split_Shot_Mana_Low: Split_Shot_Mana_Low
+    093-Split_Shot_Mana_Increase: Split_Shot_Mana_Increase
+    '094-Flamestrike Damage from intellect': 'Flamestrike Damage from intellect'
+    '095-Fireball Damage from intellect': 'Fireball Damage from intellect'
+    096-Rejuventation_Heal_Green: Rejuventation_Heal_Green
+    097-Rejuventation_Damage_Green: Rejuventation_Damage_Green
+    098-Rejuventation_Stop_Green: Rejuventation_Stop_Green
+    099-Розовый: Розовый
+        Comment
+    100-Sanctuary: Sanctuary
+    101-Sanctuary_Heal: Sanctuary_Heal
+    102-Battle_Primed_Start: Battle_Primed_Start
+    103-Battle_Primed_End: Battle_Primed_End
+    104-Explosive_Barrel_Move: Explosive_Barrel_Move
+    105-Staggering_Move: Staggering_Move
+    106-Corpse_Explosion_Begin: Corpse_Explosion_Begin
+    107-Corpse_Explosion_Reset: Corpse_Explosion_Reset
+    108-Vengeance: Vengeance
+    109-Rejuventation_Heal_Pink: Rejuventation_Heal_Pink
+    110-Rejuventation_Damage_Pink: Rejuventation_Damage_Pink
+    111-Rejuventation_Stop_Pink: Rejuventation_Stop_Pink
+    112-Серый: Серый
+        Comment
+    113-Holy_Strike: Holy_Strike
+    114-Righteous_Fury_Attack: Righteous_Fury_Attack
+        Disab
+    115-Righteous_Fury_Finish_2: Righteous_Fury_Finish_2
+        Disab
+    116-Righteous_Fury_Finish_1: Righteous_Fury_Finish_1
+        Disab
+    117-Righteous_Fury_Finish_3: Righteous_Fury_Finish_3
+        Disab
+    118-Righteous_Fury_Finish_4: Righteous_Fury_Finish_4
+        Disab
+    119-Invulerability_Remove: Invulerability_Remove
+    120-Navigation_Bonus: Navigation_Bonus
+    121-Bombardment_On: Bombardment_On
+    122-Smite: Smite
+    123-Rejuventation_Stop_Grey: Rejuventation_Stop_Grey
+    124-Rejuventation_Heal_Grey: Rejuventation_Heal_Grey
+    125-Rejuventation_Damage_Grey: Rejuventation_Damage_Grey
+'05-Alliance Heroes': 'Alliance Heroes'
+    '01-Alliance Hero Selection': 'Alliance Hero Selection'
+    02-Красный: Красный
+        Comment
+    03-Red_Hero_Selection: Red_Hero_Selection
+    04-Red_Hero_Begin: Red_Hero_Begin
+    05-Red_Hero_Cancel: Red_Hero_Cancel
+    06-Danath_Starts: Danath_Starts
+    07-Galen_Starts: Galen_Starts
+    08-Thoras_Starts: Thoras_Starts
+    09-Kurdran_Starts: Kurdran_Starts
+    '10-Danath abils': 'Danath abils'
+        Disab
+    '11-Galen abils': 'Galen abils'
+        Disab
+    '12-Thoras abils': 'Thoras abils'
+        Disab
+    '13-Curdran abils': 'Curdran abils'
+        Disab
+    14-Синий: Синий
+        Comment
+    15-Blue_Hero_Selection: Blue_Hero_Selection
+    16-Blue_Hero_Begin: Blue_Hero_Begin
+    17-Blue_Hero_Cancel: Blue_Hero_Cancel
+    18-Mara_Learns: Mara_Learns
+    19-Mara_Starts: Mara_Starts
+    20-Llane_Starts: Llane_Starts
+    21-Khadgar_Starts: Khadgar_Starts
+    22-Lothar_Starts: Lothar_Starts
+    '23-Anduin abils': 'Anduin abils'
+        Disab
+    '24-Llane abils': 'Llane abils'
+        Disab
+    '25-Mara abils': 'Mara abils'
+        Disab
+    '26-Khadgar abils': 'Khadgar abils'
+        Disab
+    27-Бирюзовый: Бирюзовый
+        Comment
+    28-Teal_Hero_Selection: Teal_Hero_Selection
+    29-Teal_Hero_Begin: Teal_Hero_Begin
+    30-Teal_Hero_Cancel: Teal_Hero_Cancel
+    31-Mishan_Starts: Mishan_Starts
+    32-Duke_Starts: Duke_Starts
+    33-Daelin_Starts: Daelin_Starts
+    34-Daelin_Learns: Daelin_Learns
+    35-Derek_Starts: Derek_Starts
+    '36-Mishan abils': 'Mishan abils'
+        Disab
+    '37-Duke abils': 'Duke abils'
+        Disab
+    '38-Daelin abils': 'Daelin abils'
+        Disab
+    '39-Derek abils': 'Derek abils'
+        Disab
+    40-Фиолетовый: Фиолетовый
+        Comment
+    41-Purple_Hero_Selection: Purple_Hero_Selection
+    42-Purple_Hero_Begin: Purple_Hero_Begin
+    43-Purple_Hero_Cancel: Purple_Hero_Cancel
+    44-Antonidas_Starts: Antonidas_Starts
+    45-Aegwynn_Starts: Aegwynn_Starts
+    46-Rhonin_Starts: Rhonin_Starts
+    47-Rhonin_Learns: Rhonin_Learns
+    48-Kael_Starts: Kael_Starts
+    49-Antonidas: Antonidas
+        Disab
+    50-Aegwynn: Aegwynn
+        Disab
+    51-Rhonin: Rhonin
+        Disab
+    52-Оранжевый: Оранжевый
+        Comment
+    53-Orange_Hero_Selection: Orange_Hero_Selection
+    54-Orange_Hero_Begin: Orange_Hero_Begin
+    55-Orange_Hero_Cancel: Orange_Hero_Cancel
+    56-Muradin_Starts: Muradin_Starts
+    57-Magni_Starts: Magni_Starts
+    58-Brann_Starts: Brann_Starts
+    59-Geblin_Starts: Geblin_Starts
+    60-Зелёный: Зелёный
+        Comment
+    61-Green_Hero_Selection: Green_Hero_Selection
+    62-Green_Hero_Begin: Green_Hero_Begin
+    63-Green_Hero_Cancel: Green_Hero_Cancel
+    64-Lorthemar_Starts: Lorthemar_Starts
+    65-Sylvanas_Starts: Sylvanas_Starts
+    66-Anasterian_Starts: Anasterian_Starts
+    67-Alleria_Starts: Alleria_Starts
+    68-Розовый: Розовый
+        Comment
+    69-Pink_Hero_Selection: Pink_Hero_Selection
+    70-Pink_Hero_Begin: Pink_Hero_Begin
+    71-Pink_Hero_Cancel: Pink_Hero_Cancel
+    72-Gavinrad_Starts: Gavinrad_Starts
+    73-Darius_Starts: Darius_Starts
+    74-Arugal_Starts: Arugal_Starts
+    75-Greymane_Starts: Greymane_Starts
+    76-Серый: Серый
+        Comment
+    77-Gray_Hero_Selection: Gray_Hero_Selection
+    78-Gray_Hero_Begin: Gray_Hero_Begin
+    79-Gray_Hero_Cancel: Gray_Hero_Cancel
+    80-Turalyon_Starts: Turalyon_Starts
+    81-Uther_Starts: Uther_Starts
+    82-Tirion_Starts: Tirion_Starts
+    83-Alonsus_Starts: Alonsus_Starts
+'06-Horde main triggers': 'Horde main triggers'
+    01-Horde_Victory: Horde_Victory
+    02-Ship_Limiter_Legion: Ship_Limiter_Legion
+    03-Dark_Green_Altar_Death: Dark_Green_Altar_Death
+    04-Brown_Altar_Death: Brown_Altar_Death
+    05-Horde_Altar: Horde_Altar
+    06-Horde_Altar_Select: Horde_Altar_Select
+    07-Yellow_Altar_Death: Yellow_Altar_Death
+    08-Light_Blue_Altar_Death: Light_Blue_Altar_Death
+    09-Horde_Item_Point_Divider: Horde_Item_Point_Divider
+    10-Blackrock_Warning: Blackrock_Warning
+    11-Dark_Portal_Vulnerable: Dark_Portal_Vulnerable
+    12-Dark_Portal_Warning: Dark_Portal_Warning
+'07-Horde Heroes': 'Horde Heroes'
+    01-Yellow_Hero_Selection: Yellow_Hero_Selection
+    02-Yellow_Hero_Begin: Yellow_Hero_Begin
+    03-Yellow_Hero_Cancel: Yellow_Hero_Cancel
+    04-Altar_Replace_Light_Blue: Altar_Replace_Light_Blue
+    05-Altar_Replace_Dark_Green: Altar_Replace_Dark_Green
+    06-Altar_Replace_Brown: Altar_Replace_Brown
+    07-Teron_Starts: Teron_Starts
+    08-Teron_Learns: Teron_Learns
+    09-Zuluhed_Starts: Zuluhed_Starts
+    10-Kilrogg_Starts: Kilrogg_Starts
+    11-Griselda_Starts: Griselda_Starts
+    12-Griselda_Learns: Griselda_Learns
+    13-Guldan_Starts: Guldan_Starts
+    14-Ratso_Starts: Ratso_Starts
+    15-Azgalor_Starts: Azgalor_Starts
+    16-Azgalor_Learns: Azgalor_Learns
+    17-Medivh_Starts: Medivh_Starts
+    18-Medivh_Learns: Medivh_Learns
+    19-Garona_Starts: Garona_Starts
+    20-Zuljin_Starts: Zuljin_Starts
+    21-Archimonde_Starts: Archimonde_Starts
+    22-Chogall_Starts: Chogall_Starts
+    23-Chogall_Level: Chogall_Level
+    24-Blackhand_Starts: Blackhand_Starts
+    25-Grom_Starts: Grom_Starts
+    26-Kargath_Starts: Kargath_Starts
+    27-Nerzhul_Starts: Nerzhul_Starts
+    28-Mannoroth_Starts: Mannoroth_Starts
+    29-Dentarg_Starts: Dentarg_Starts
+    30-Tichondrius_Starts: Tichondrius_Starts
+    31-Rend_Starts: Rend_Starts
+    32-Fenris_Starts: Fenris_Starts
+    33-Maim_Starts: Maim_Starts
+    34-Kiljaeden_Starts: Kiljaeden_Starts
+    35-Orgrim_Starts: Orgrim_Starts
+    '36-Horde Hero Selection': 'Horde Hero Selection'
+    '37-Hero orc limit': 'Hero orc limit'
+    '38-Hero orc cancel': 'Hero orc cancel'
+'08-Horde Hero Abillity': 'Horde Hero Abillity'
+    01-Garona_Attack_Start: Garona_Attack_Start
+    02-Dark_Touch: Dark_Touch
+    03-Slice_and_Dice: Slice_and_Dice
+    04-SliceAndDiceGromAttack: SliceAndDiceGromAttack
+    05-Hellfire_Blast: Hellfire_Blast
+    06-Dragon_Aspect_Damage: Dragon_Aspect_Damage
+    07-Dragon_Mastery: Dragon_Mastery
+    08-Griselda_Heal: Griselda_Heal
+    09-Griselda_Summons: Griselda_Summons
+    10-Griselda_Dies: Griselda_Dies
+    11-Griselda_Damage: Griselda_Damage
+    12-Blackhands_Orders: Blackhands_Orders
+    13-Blackhands_Orders_Death: Blackhands_Orders_Death
+    14-Bladestorm_Removal: Bladestorm_Removal
+    15-Bladestorm_Damage_Reduce: Bladestorm_Damage_Reduce
+    16-Bladestorm_Damage: Bladestorm_Damage
+    17-Automated_Machinery_Activate: Automated_Machinery_Activate
+    18-Steam_Contraption_On: Steam_Contraption_On
+    19-Steam_Contraption_Off: Steam_Contraption_Off
+    20-Automated_Machinery: Automated_Machinery
+    21-Tinker_Dies: Tinker_Dies
+    22-Howl_of_Terror_Move: Howl_of_Terror_Move
+    23-Scorched_Earth: Scorched_Earth
+    24-Hellish_Shroud_Damage: Hellish_Shroud_Damage
+    25-Hellish_Shroud_Explode: Hellish_Shroud_Explode
+    26-Avatar_of_Sargeras: Avatar_of_Sargeras
+    27-Quake_of_Doom_Interrupted: Quake_of_Doom_Interrupted
+    28-Disguise_End_Attack: Disguise_End_Attack
+    29-Disguise_End: Disguise_End
+    30-Disguise_Revive: Disguise_Revive
+    31-Fan_of_Knives_Learn: Fan_of_Knives_Learn
+    32-Fan_of_Knives_Reset: Fan_of_Knives_Reset
+    33-Nether_Portal_Teleport: Nether_Portal_Teleport
+    34-Self_Mutilate_Drop: Self_Mutilate_Drop
+    35-Life_Rip_Move: Life_Rip_Move
+    36-Rain_of_Chaos: Rain_of_Chaos
+    37-Valor: Valor
+    38-Valor_Bonus: Valor_Bonus
+    39-Gorehowl_Slow: Gorehowl_Slow
+    40-Corrupted_Blood_Ends: Corrupted_Blood_Ends
+    41-Corrupted_Blood: Corrupted_Blood
+    42-Slash_Move: Slash_Move
+    43-Mannoroth_Orders: Mannoroth_Orders
+    44-Death_Pact: Death_Pact
+    45-Trample_Interrupted: Trample_Interrupted
+    46-Trample_Move: Trample_Move
+    47-Trample_AOE_Attack: Trample_AOE_Attack
+    48-Black_Aura: Black_Aura
+    49-Nether_Spirits_Level: Nether_Spirits_Level
+    50-Shadow_of_the_Fallen_Begin: Shadow_of_the_Fallen_Begin
+    51-Shadow_of_the_Fallen: Shadow_of_the_Fallen
+    52-Hellish_Projectile_Level: Hellish_Projectile_Level
+    53-Trophies_of_the_Fallen_Turn_on: Trophies_of_the_Fallen_Turn_on
+    54-Trophies_and_Libation_and_Teron_Reset: Trophies_and_Libation_and_Teron_Reset
+    55-Libation_of_Blood_Turn_on: Libation_of_Blood_Turn_on
+    56-The_Darkener_Damage_Reduce: The_Darkener_Damage_Reduce
+    '57-Teron Aura': 'Teron Aura'
+    58-Undying_Strength: Undying_Strength
+    59-Intoxicating_Pain: Intoxicating_Pain
+    60-Intoxicating_Pain_Start: Intoxicating_Pain_Start
+    61-Inner_Rage: Inner_Rage
+    62-Spirit_Wolf_Stomp: Spirit_Wolf_Stomp
+    63-Spirit_Wolf_Death: Spirit_Wolf_Death
+    64-Last_Rider_Death: Last_Rider_Death
+    65-Retaliate_Slaughter_Armor: Retaliate_Slaughter_Armor
+    66-Volcano: Volcano
+    67-Volcano_Stop: Volcano_Stop
+    68-Shade: Shade
+    69-Shade_Text: Shade_Text
+    70-Shade_Death: Shade_Death
+    71-Shade_Start: Shade_Start
+    72-Shade_End: Shade_End
+    73-Dark_Touch_On: Dark_Touch_On
+    74-Dark_Touch_Off: Dark_Touch_Off
+    75-Rejuventation_Heal_Yellow: Rejuventation_Heal_Yellow
+    76-Rejuventation_Damage_Yellow: Rejuventation_Damage_Yellow
+    77-Rejuventation_Stop_Yellow: Rejuventation_Stop_Yellow
+    78-Rejuventation_Heal_Light_Blue: Rejuventation_Heal_Light_Blue
+    79-Rejuventation_Damage_Light_Blue: Rejuventation_Damage_Light_Blue
+    80-Rejuventation_Stop_Light_Blue: Rejuventation_Stop_Light_Blue
+    81-Rejuventation_Heal_Dark_Green: Rejuventation_Heal_Dark_Green
+    82-Rejuventation_Damage_Dark_Green: Rejuventation_Damage_Dark_Green
+    83-Rejuventation_Stop_Dark_Green: Rejuventation_Stop_Dark_Green
+    84-Rejuventation_Heal_Brown: Rejuventation_Heal_Brown
+    85-Rejuventation_Damage_Brown: Rejuventation_Damage_Brown
+    86-Rejuventation_Stop_Brown: Rejuventation_Stop_Brown
+'09-Throne Refuge': 'Throne Refuge'
+    01-Northshire: Northshire
+    02-TrollGoblinOgre: TrollGoblinOgre
+    03-Throne_Reduce: Throne_Reduce
+    04-Azeroth_Farm_Fire: Azeroth_Farm_Fire
+    05-Hillsbrad: Hillsbrad
+    06-Azeroth_Tower_Fire_Upper: Azeroth_Tower_Fire_Upper
+    07-Azeroth_Tower_Fire_Lower: Azeroth_Tower_Fire_Lower
+    08-Azeroth_Refuge: Azeroth_Refuge
+    09-Iron_Forge_Fire_Lower: Iron_Forge_Fire_Lower
+    10-Iron_Forge_Fire_Upper: Iron_Forge_Fire_Upper
+    11-Iron_Forge_Barrel_Fire: Iron_Forge_Barrel_Fire
+    12-Dwarf_Refuge: Dwarf_Refuge
+    13-Aerie_Peak: Aerie_Peak
+    14-Kul_Tiras_Refuge: Kul_Tiras_Refuge
+    15-Kul_Tiras_Farm_Fire: Kul_Tiras_Farm_Fire
+    16-Kul_Tiras_Fountain_Destroyed: Kul_Tiras_Fountain_Destroyed
+    17-Kul_Tiras_Tower_East: Kul_Tiras_Tower_East
+    18-Kul_Tiras_Tower_West: Kul_Tiras_Tower_West
+    19-Stromgarde_Refuge: Stromgarde_Refuge
+    20-Stromgarde_Farm_Fire: Stromgarde_Farm_Fire
+    21-Stromgarde_Tower_West: Stromgarde_Tower_West
+    22-Stromgarde_Tower_East: Stromgarde_Tower_East
+    23-Alterac_Event: Alterac_Event
+    24-Alterac_Avenged: Alterac_Avenged
+    25-Gilneas_Refuge: Gilneas_Refuge
+    26-Gilneas_Upper_Tower_Fire: Gilneas_Upper_Tower_Fire
+    27-Gilneas_Lower_Tower_Fre: Gilneas_Lower_Tower_Fre
+    28-Gilneas_Farm_Fire: Gilneas_Farm_Fire
+    29-Sunwell_Vulnerable: Sunwell_Vulnerable
+    30-Elf_Refuge: Elf_Refuge
+    31-Elf_Farm_Fire: Elf_Farm_Fire
+    32-Dalaran_Refuge: Dalaran_Refuge
+    33-Lordaeron_Refuge: Lordaeron_Refuge
+    34-Lordaeron_Upper_Tower_Fire: Lordaeron_Upper_Tower_Fire
+    35-Lordaeron_Lower_Tower_Fire: Lordaeron_Lower_Tower_Fire
+    36-Lordaeron_Fountain_Destroyed: Lordaeron_Fountain_Destroyed
+    37-Lord_Farm_Fire: Lord_Farm_Fire
+    38-Refuge_Buildings_1: Refuge_Buildings_1
+    39-Refuge_Buildings_2: Refuge_Buildings_2
+    40-Dalaran_Shield: Dalaran_Shield
+    41-Dalaran_Shield_II: Dalaran_Shield_II
+    42-Dalaran_Shield_Dies: Dalaran_Shield_Dies
+    43-Dalaran_Shield_II_Dies: Dalaran_Shield_II_Dies
+'10-Gates and levers': 'Gates and levers'
+    '01-Врата Синего': 'Врата Синего'
+        Comment
+    02-Azeroth_Main_Gate: Azeroth_Main_Gate
+    03-Azeroth_Main_Gate_Life_Upper: Azeroth_Main_Gate_Life_Upper
+    04-Azeroth_Main_Gate_Lever_Death: Azeroth_Main_Gate_Lever_Death
+    05-Azeroth_Main_Gate_Life_Lower: Azeroth_Main_Gate_Life_Lower
+    06-Azeroth_North_Gate: Azeroth_North_Gate
+    07-Azeroth_North_Gate_Life: Azeroth_North_Gate_Life
+    08-Azeroth_Open_South_Gate: Azeroth_Open_South_Gate
+    09-Azeroth_South_Gate_Life: Azeroth_South_Gate_Life
+    10-Azeroth_Open_Throne_Room: Azeroth_Open_Throne_Room
+    11-Azeroth_Throne_Gate_Life: Azeroth_Throne_Gate_Life
+    12-Northshire_Gate_Life: Northshire_Gate_Life
+    13-Northshire_Open_Gate: Northshire_Open_Gate
+    '14-Врата Красного': 'Врата Красного'
+        Comment
+    15-Stromgarde_Open_Main_Gate: Stromgarde_Open_Main_Gate
+    16-Stromgarde_Main_Gate_Life_First: Stromgarde_Main_Gate_Life_First
+    17-Stromgarde_Main_Gate_Life_Second: Stromgarde_Main_Gate_Life_Second
+    18-Stromgarde_Open_West_Gate: Stromgarde_Open_West_Gate
+    19-Stromgarde_West_Gate_Life: Stromgarde_West_Gate_Life
+    20-Stromgarde_Open_East_Gate: Stromgarde_Open_East_Gate
+    21-Stromgarde_East_Gate_Life: Stromgarde_East_Gate_Life
+    22-Stromgarde_Open_Throne_Room: Stromgarde_Open_Throne_Room
+    23-Stromgarde_Throne_Gate_Life: Stromgarde_Throne_Gate_Life
+    '24-Врата Зелёного': 'Врата Зелёного'
+        Comment
+    25-Quelthalas_Open_Gate: Quelthalas_Open_Gate
+    26-Quelthalas_Gate_Life: Quelthalas_Gate_Life
+    '27-Врата Бирюзового': 'Врата Бирюзового'
+        Comment
+    28-Kul_Tiras_Open_Gate: Kul_Tiras_Open_Gate
+    29-Kul_Tiras_Gate_Life: Kul_Tiras_Gate_Life
+    '30-Врата Фиолетового': 'Врата Фиолетового'
+        Comment
+    31-Dalaran_Open_Gate: Dalaran_Open_Gate
+    32-Dalaran_Gate_Life: Dalaran_Gate_Life
+    33-Dalaran_Force_Wall: Dalaran_Force_Wall
+    '34-Врата Розового': 'Врата Розового'
+        Comment
+    35-Gilneas_Final_Gate_Open: Gilneas_Final_Gate_Open
+    36-Gilneas_Final_Gate_Life: Gilneas_Final_Gate_Life
+    37-Gilneas_South_Gate_Open: Gilneas_South_Gate_Open
+    38-Gilneas_South_Gate_Life: Gilneas_South_Gate_Life
+    39-Gilneas_East_Gate_Open: Gilneas_East_Gate_Open
+    40-Gilneas_East_Gate_Life: Gilneas_East_Gate_Life
+    '41-Врата Серого': 'Врата Серого'
+        Comment
+    42-Lordaeron_Open_First_Gate: Lordaeron_Open_First_Gate
+    43-Lordaeron_First_Gate_Life: Lordaeron_First_Gate_Life
+    44-Lordaeron_Open_South_Gate: Lordaeron_Open_South_Gate
+    45-Lordaeron_South_Gate_Life: Lordaeron_South_Gate_Life
+    46-Lordaeron_South_Gate_Lever_Death: Lordaeron_South_Gate_Lever_Death
+    47-Lordaeron_North_Gate_Lever_Death: Lordaeron_North_Gate_Lever_Death
+    48-Lordaeron_Open_North_Gate: Lordaeron_Open_North_Gate
+    49-Lordaeron_North_Gate_Life: Lordaeron_North_Gate_Life
+'11-Item and other abillities': 'Item and other abillities'
+    01-Item_Activate: Item_Activate
+    02-Item_Aquired2: Item_Aquired2
+        Disab
+    '03-Item Aquired': 'Item Aquired'
+    04-Test: Test
+    05-Hero_Armor_On: Hero_Armor_On
+        Disab
+    06-Item_Orb_On: Item_Orb_On
+    07-Glacial_Shield_On: Glacial_Shield_On
+        Disab
+    '08-Glacial Shield': 'Glacial Shield'
+    09-Deaths_Edge_On: Deaths_Edge_On
+        Disab
+    '10-Deaths Edge': 'Deaths Edge'
+    11-Shields_Move: Shields_Move
+    12-Attack_Damage: Attack_Damage
+    '13-Unit on damage': 'Unit on damage'
+'12-Custom Scripts': 'Custom Scripts'
+    '1-Not used trg': 'Not used trg'
+    2-Piercing_Blade: Piercing_Blade
+13-Help: Help
+    1-HelpStart: HelpStart
+14-Debug: Debug
+    1-Debug: Debug
+15-HandleCounter: HandleCounter
+    1-LibHC: LibHC

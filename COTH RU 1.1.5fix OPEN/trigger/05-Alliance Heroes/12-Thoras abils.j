@@ -1,0 +1,1 @@
+//! import "D:/Coth/code/zinc/Hero abilities/Stromgarde/Thoras.j"
