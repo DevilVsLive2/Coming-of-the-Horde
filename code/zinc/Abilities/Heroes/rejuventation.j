@@ -16,5 +16,6 @@ library RejuventationSpell initializer onInit requires CothUtilities
     TriggerRegisterAnyUnitEventBJ(onRejuventationEffect, EVENT_PLAYER_UNIT_SPELL_EFFECT)
     TriggerAddCondition(onRejuventationEffect, Filter(function isCastRejuventation))
     TriggerAddAction(onRejuventationEffect, onRejuvCast)
+    Curdran
   endfunction
 endlibrary
