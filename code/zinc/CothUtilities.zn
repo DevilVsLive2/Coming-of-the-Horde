@@ -738,7 +738,7 @@ library CothUtilities {
 
   public function AddUnitLifePercent (unit whichUnit, real percent)  -> boolean {
     if (IsUnitDeadBJ(whichUnit)) return false;
-    SetUnitState(whichUnit, UNIT_STATE_LIFE, GetUnitState(whichUnit, UNIT_STATE_LIFE) * (1 + percent / 100));
+    SetUnitState(whichUnit, UNIT_STATE_LIFE, GetUnitState(whichUnit, UNIT_STATE_LIFE) + GetUnitState(whichUnit, UNIT_STATE_MAX_LIFE) * ( percent / 100 ));
     return true;
   }
 
