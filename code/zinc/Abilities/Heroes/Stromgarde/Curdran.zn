@@ -15,10 +15,10 @@ library CurdranAbils requires CothUtilities {
     trigger onCurdranDamaged = CreateTrigger();
 
     TriggerRegisterAnyUnitEventBJ(onCurdranCastSpell, EVENT_PLAYER_UNIT_SPELL_EFFECT);
-    TriggerAddCondition(onCurdranCastSpell, Filter( () -> boolean [
+    TriggerAddCondition(onCurdranCastSpell, Filter(function () -> boolean {
       return GetUnitTypeId(GetTriggerUnit()) == Curdran;
-    ] ));
-    TriggerAddAction(onCurdranCastSpell, () {
+    } ));
+    TriggerAddAction(onCurdranCastSpell, function () {
       integer castedSpell = GetSpellAbilityId();
       unit caster = GetTriggerUnit();
       unit stormHammerMissle = null;
@@ -29,13 +29,13 @@ library CurdranAbils requires CothUtilities {
 
       if ( castedSpell == stormHammer ) {
         //Create missle, and move it to the target point
-        stormHammerMissle = CreateUnit(GetTriggerPlayer(), 'h01G', GetUnitX(caster), GetUnitY(caster));
+        stormHammerMissle = CreateUnit(GetTriggerPlayer(), 'h01G', GetUnitX(caster), GetUnitY(caster), 0);
         stormHammerMissleMoveTimer = CreateTimer();
         SaveUnitHandle(abilityData, GetHandleId(stormHammerMissleMoveTimer), 0, stormHammerMissle);
         SaveUnitHandle(abilityData, GetHandleId(stormHammerMissleMoveTimer), 1, caster);
         SaveReal(abilityData, GetHandleId(stormHammerMissleMoveTimer), 0, targetX);
         SaveReal(abilityData, GetHandleId(stormHammerMissleMoveTimer), 1, targetY);
-        TimerStart(stormHammerMissleMoveTimer, 1 / stormHammerUpdateSpeed, true, (){
+        TimerStart(stormHammerMissleMoveTimer, 1 / stormHammerUpdateSpeed, true, function(){
           real targetX = LoadReal(abilityData, GetHandleId(GetExpiredTimer()), 0);
           real targetY = LoadReal(abilityData, GetHandleId(GetExpiredTimer()), 1);
           unit stormHammerMissle = LoadUnitHandle(abilityData, GetHandleId(GetExpiredTimer()), 0);
@@ -58,7 +58,7 @@ library CurdranAbils requires CothUtilities {
             KillUnit(stormHammerMissle);
             boomEffect = AddSpecialEffect("Abilities\\Spells\\Human\\Thunderclap\\ThunderClapCaster.mdl", targetX, targetY);
             targets = CreateGroup();
-            GroupEnumUnitsInRange(targets, targetX, targetY, stormHammerAreaOfEffect + 150);
+            GroupEnumUnitsInRange(targets, targetX, targetY, stormHammerAreaOfEffect + 150, null);
 
             while (FirstOfGroup(targets) != null) {
               target = FirstOfGroup(targets);
@@ -80,13 +80,13 @@ library CurdranAbils requires CothUtilities {
           SetUnitY(stormHammerMissle, newMissleY);
           stormHammerMissle = null;
           
-        } )
+        } );
       }
-    })
+    });
   }
 }
 
-
+/**
 
 //! zinc
   library CurdranAbils requires CothUtilities {
@@ -356,4 +356,6 @@ library CurdranAbils requires CothUtilities {
       TriggerAddAction(t, function RejuvStop);
     }
   }
-//! endzinc
+
+  **/
+  
