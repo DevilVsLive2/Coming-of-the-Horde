@@ -6,12 +6,14 @@ library CothUtilities {
     force AllianceForce = CreateForce();
 
     group FightingStartUnits = CreateGroup();
-    //*Герои
+    //* Герои и их способности
     //Герои красного
     constant integer Curdran = 'Hmbr';
     constant integer CurdranMorphFirst = 'H01N';
     constant integer CurdranMorphSecond = 'H01O';
     constant integer CurdranMorphThird = 'H014';
+    constant integer stormHammer = 'A051';
+    constant integer stormShield = 'A05L';
     unit CurdranUnit;
     constant integer Galen = 'H01I';
     unit GalenUnit;
@@ -602,7 +604,7 @@ library CothUtilities {
 
     constant integer EveryHowAGIIncreaseArmor = 5;
 
-    hashtable RejuvHashtable = InitHashtable();
+    hashtable abilityData = InitHashtable();
     
     //*Хэш-таблицы для способностей героев
     hashtable UnitAbilityData = InitHashtable();

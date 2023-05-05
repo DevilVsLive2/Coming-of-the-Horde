@@ -1,3 +1,93 @@
+
+library CurdranAbils requires CothUtilities {
+
+  constant real stormHammerMissleSpeedPixelsPerSecond = 700;
+  //How many updates should be every second, if player has 60 fps and value is 60 - then
+  //it means missle position will be update every frame
+  constant real stormHammerUpdateSpeed = 60;
+  constant real stormHammerAreaOfEffect = 210;
+
+  //Calculates, how far should be missle moved each position update
+  constant real stormHammerSpeedPerUpdate = stormHammerMissleSpeedPixelsPerSecond * (1 / stormHammerUpdateSpeed);
+
+  function onInit(){
+    trigger onCurdranCastSpell = CreateTrigger();
+    trigger onCurdranDamaged = CreateTrigger();
+
+    TriggerRegisterAnyUnitEventBJ(onCurdranCastSpell, EVENT_PLAYER_UNIT_SPELL_EFFECT);
+    TriggerAddCondition(onCurdranCastSpell, Filter( () -> boolean [
+      return GetUnitTypeId(GetTriggerUnit()) == Curdran;
+    ] ));
+    TriggerAddAction(onCurdranCastSpell, () {
+      integer castedSpell = GetSpellAbilityId();
+      unit caster = GetTriggerUnit();
+      unit stormHammerMissle = null;
+      timer stormHammerMissleMoveTimer = null;
+
+      real targetX = GetSpellTargetX();
+      real targetY = GetSpellTargetY();
+
+      if ( castedSpell == stormHammer ) {
+        //Create missle, and move it to the target point
+        stormHammerMissle = CreateUnit(GetTriggerPlayer(), 'h01G', GetUnitX(caster), GetUnitY(caster));
+        stormHammerMissleMoveTimer = CreateTimer();
+        SaveUnitHandle(abilityData, GetHandleId(stormHammerMissleMoveTimer), 0, stormHammerMissle);
+        SaveUnitHandle(abilityData, GetHandleId(stormHammerMissleMoveTimer), 1, caster);
+        SaveReal(abilityData, GetHandleId(stormHammerMissleMoveTimer), 0, targetX);
+        SaveReal(abilityData, GetHandleId(stormHammerMissleMoveTimer), 1, targetY);
+        TimerStart(stormHammerMissleMoveTimer, 1 / stormHammerUpdateSpeed, true, (){
+          real targetX = LoadReal(abilityData, GetHandleId(GetExpiredTimer()), 0);
+          real targetY = LoadReal(abilityData, GetHandleId(GetExpiredTimer()), 1);
+          unit stormHammerMissle = LoadUnitHandle(abilityData, GetHandleId(GetExpiredTimer()), 0);
+          real distanceBetweenMissleAndTargetPoint = SquareRoot(Pow(targetX - GetUnitX(stormHammerMissle), 2) + Pow(targetY - GetUnitY(stormHammerMissle), 2));
+          real angleToTargetPoint = Atan2(targetY - GetUnitY(stormHammerMissle), targetX - GetUnitX(stormHammerMissle));
+          unit caster = LoadUnitHandle(abilityData, GetHandleId(GetExpiredTimer()), 1);
+
+          real newMissleX = GetUnitX(stormHammerMissle) + stormHammerSpeedPerUpdate * Cos(angleToTargetPoint);
+          real newMissleY = GetUnitY(stormHammerMissle) + stormHammerSpeedPerUpdate * Sin(angleToTargetPoint);
+          real newDistanceBetweenMissleAndTargetPoint = SquareRoot(Pow(targetX - newMissleX, 2) + Pow(targetY - newMissleY, 2));
+
+          effect boomEffect = null;
+          group targets = null;
+          unit target = null;
+
+          //Missle become further from target point, move to target point, and make boom
+          if (newDistanceBetweenMissleAndTargetPoint > distanceBetweenMissleAndTargetPoint) {
+            SetUnitX(stormHammerMissle, targetX);
+            SetUnitY(stormHammerMissle, targetY);
+            KillUnit(stormHammerMissle);
+            boomEffect = AddSpecialEffect("Abilities\\Spells\\Human\\Thunderclap\\ThunderClapCaster.mdl", targetX, targetY);
+            targets = CreateGroup();
+            GroupEnumUnitsInRange(targets, targetX, targetY, stormHammerAreaOfEffect + 150);
+
+            while (FirstOfGroup(targets) != null) {
+              target = FirstOfGroup(targets);
+              GroupRemoveUnit(targets, target);
+              if (IsUnitInRangeXY(target, targetX, targetY, stormHammerAreaOfEffect)) {
+                //UnitDamageTarget(caster, target, )
+              }
+            }
+
+
+            FlushChildHashtable(abilityData, GetHandleId(GetExpiredTimer()));
+            DestroyTimer(GetExpiredTimer());
+            RemoveUnit(stormHammerMissle);
+            stormHammerMissle = null;
+
+            return;
+          }
+          SetUnitX(stormHammerMissle, newMissleX);
+          SetUnitY(stormHammerMissle, newMissleY);
+          stormHammerMissle = null;
+          
+        } )
+      }
+    })
+  }
+}
+
+
+
 //! zinc
   library CurdranAbils requires CothUtilities {
 
@@ -117,7 +207,7 @@
       //Штормовой молот
       if (GetSpellAbilityId() == 'A051') {
         //Молот, летяющий в точку каста
-        StormHammer = CreateUnitAtLoc(GetTriggerPlayer(), 'h01G', GetUnitLoc(Caster), AngleBetweenPoints(GetUnitLoc(Caster), TargetLoc));
+        StormHamcmer = CreateUnitAtLoc(GetTriggerPlayer(), 'h01G', GetUnitLoc(Caster), AngleBetweenPoints(GetUnitLoc(Caster), TargetLoc));
         IssuePointOrderLoc(StormHammer, "move", TargetLoc);
         PolledWait(DistanceBetweenPoints(GetUnitLoc(Caster), GetUnitLoc(StormHammer)) / 625);
         Placeholder = CreateUnitAtLoc(GetOwningPlayer(Caster), 'o008', TargetLoc, 0);
