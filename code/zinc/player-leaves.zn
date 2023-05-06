@@ -27,7 +27,7 @@ library PlayerLeaves requires CothUtilities {
         PlayerColorPrefix[8] = "|c00959697";
         PlayerColorPrefix[9] = "|c007EBFF1";
         PlayerColorPrefix[10] = "|c00106246";
-        PlayerColorPrefix[11] = "|c004E2A04";
+        PlayerColorPrefix[11] = "|c004e2a04";
         for (0 <= index <= 11) {
             TriggerRegisterPlayerEvent(t, Player(index), EVENT_PLAYER_LEAVE);
         }

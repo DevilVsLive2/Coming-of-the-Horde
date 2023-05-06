@@ -10,16 +10,20 @@ library CurdranAbils requires CothUtilities {
   //Calculates, how far should be missle moved each position update
   constant real stormHammerSpeedPerUpdate = stormHammerMissleSpeedPixelsPerSecond * (1 / stormHammerUpdateSpeed);
 
+  function isStormShieldCD(stormShieldOwner) {
+    return (LoadTimerHandle(abilityData, GetHandleId(stormShieldOwner), stormShield) != null) && (TimerGetRemaining(LoadTimerHandle(abilityData, GetHandleId(stormShieldOwner), stormShield) ) <= 0.1);
+  }
+
   function onInit(){
     trigger onCurdranCastSpell = CreateTrigger();
-    trigger onCurdranDamaged = CreateTrigger();
+    trigger onCurdranLearnSpell = CreateTrigger();
 
     TriggerRegisterAnyUnitEventBJ(onCurdranCastSpell, EVENT_PLAYER_UNIT_SPELL_EFFECT);
     TriggerAddCondition(onCurdranCastSpell, Filter(function () -> boolean {
-      return GetUnitTypeId(GetTriggerUnit()) == Curdran;
+      return (GetUnitTypeId(GetTriggerUnit()) == Curdran) || (GetUnitTypeId(GetTriggerUnit()) == CurdranMorphFirst) || (GetUnitTypeId(GetTriggerUnit()) == CurdranMorphSecond) || (GetUnitTypeId(GetTriggerUnit()) == CurdranMorphThird);
     } ));
     TriggerAddAction(onCurdranCastSpell, function () {
-      integer castedSpell = GetSpellAbilityId();
+      integer castedSpellId = GetSpellAbilityId();
       unit caster = GetTriggerUnit();
       unit stormHammerMissle = null;
       timer stormHammerMissleMoveTimer = null;
@@ -27,7 +31,7 @@ library CurdranAbils requires CothUtilities {
       real targetX = GetSpellTargetX();
       real targetY = GetSpellTargetY();
 
-      if ( castedSpell == stormHammer ) {
+      if ( castedSpellId == stormHammer ) {
         //Create missle, and move it to the target point
         stormHammerMissle = CreateUnit(GetTriggerPlayer(), 'h01G', GetUnitX(caster), GetUnitY(caster), 0);
         stormHammerMissleMoveTimer = CreateTimer();
@@ -63,8 +67,11 @@ library CurdranAbils requires CothUtilities {
             while (FirstOfGroup(targets) != null) {
               target = FirstOfGroup(targets);
               GroupRemoveUnit(targets, target);
-              if (IsUnitInRangeXY(target, targetX, targetY, stormHammerAreaOfEffect)) {
-                //UnitDamageTarget(caster, target, )
+              if (IsUnitInRangeXY(target, targetX, targetY, stormHammerAreaOfEffect) &&
+                  IsUnitEnemy(target, GetOwningPlayer(caster)) &&
+                  IsUnitType(target, UNIT_TYPE_GROUND)) {
+                UnitDamageTarget(caster, target, 70 * GetUnitAbilityLevel(caster, stormHammer), true, false, ATTACK_TYPE_MAGIC, DAMAGE_TYPE_MAGIC, WEAPON_TYPE_WHOKNOWS );
+                //TODO: Make an effect, like Tauren's stomp, effect of destroying stormbolt on targets, and add debuff to targets
               }
             }
 
@@ -82,7 +89,40 @@ library CurdranAbils requires CothUtilities {
           
         } );
       }
+
+      //TODO: finish this spell
+      if ( castedSpellId == skyRee ) {
+        if (
+          GetUnitTypeId(caster) == CurdranMorphFirst ||
+          GetUnitTypeId(caster) == CurdranMorphSecond ||
+          GetUnitTypeId(caster) == CurdranMorphThird
+        ) {
+          ModifyHeroStat(bj_HEROSTAT_INT, caster, bj_MODIFYMETHOD_SUB, 16 - GetUnitAbilityLevel(caster, GetSpellAbilityId()) * 4);
+        }
+      }
     });
+
+    TriggerRegisterAnyUnitEventBJ(onCurdranLearnSpell, EVENT_PLAYER_HERO_SKILL);
+    TriggerAddCondition(onCurdranLearnSpell, Filter( function() -> boolean {
+      return (GetUnitTypeId(GetTriggerUnit()) == Curdran) || (GetUnitTypeId(GetTriggerUnit()) == CurdranMorphFirst) || (GetUnitTypeId(GetTriggerUnit()) == CurdranMorphSecond) || (GetUnitTypeId(GetTriggerUnit()) == CurdranMorphThird);
+    } ));
+    TriggerAddAction(onCurdranLearnSpell, function() {
+      trigger onCurdranDamaged = null;
+      if ( GetSpellAbilityId() == stormShield ) {
+        onCurdranDamaged = CreateTrigger();
+        TriggerRegisterUnitEvent(onCurdranDamaged, GetTriggerUnit(), EVENT_UNIT_DAMAGED);
+        SaveTimerHandle(abilityData, GetHandleId(GetTriggerUnit()), stormShield, CreateTimer());
+        TriggerAddAction(onCurdranDamaged, function(){
+          unit curdran = GetTriggerUnit();
+          timer stormShieldCDTimer = null;
+          if ( !isStormShieldCD(curdran) && IsUnitEnemy(GetEventDamageSource(), GetOwningPlayer(curdran)) ) {
+            stormShieldCDTimer = LoadTimerHandle(abilityData, GetHandleId(curdran), stormShield);
+            TimerStart(stormShieldCDTimer, 30 - 6 * GetUnitAbilityLevel(curdran, stormShield), false, null);
+
+          }
+        });
+      }
+    })
   }
 }
 

@@ -14,8 +14,11 @@ library CothUtilities {
     constant integer CurdranMorphThird = 'H014';
     constant integer stormHammer = 'A051';
     constant integer stormShield = 'A05L';
+    constant integer skyRee = 'Arav';
     unit CurdranUnit;
     constant integer Galen = 'H01I';
+    constant integer shieldStrike = 'AHtb';
+    constant integer battleCry = 'A03G';
     unit GalenUnit;
     constant integer Thoras = 'Huth';
     unit ThorasUnit;

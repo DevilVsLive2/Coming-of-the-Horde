@@ -1,3 +1,33 @@
+library DanathAbils requires CothUtilities {
+  function onInit(){
+    trigger onCastSpell = CreateTrigger();
+    TriggerRegisterAnyUnitEventBJ(onCastSpell, EVENT_PLAYER_UNIT_SPELL_EFFECT);
+    TriggerAddCondition(onCastSpell, Filter(function () -> boolean {
+      return GetUnitTypeId(GetTriggerUnit()) == Danath;
+    }));
+    TriggerAddAction(onCastSpell, function(){
+      unit caster = GetTriggerUnit();
+      integer castedSpellId = GetSpellAbilityId();
+      unit target = null;
+
+      if (castedSpellId == shieldStrike) {
+        target = GetSpellTargetUnit();
+        if (!IsUnitMagicImmune(target)) {
+          UnitDamageTarget(caster, target, 43 * (GetUnitAbilityLevel(caster, GetSpellAbilityId()) + 15), true, false, ATTACK_TYPE_MELEE, DAMAGE_TYPE_NORMAL, WEAPON_TYPE_WHOKNOWS);
+          UnitDamageTarget(caster, target, 42 * ( GetUnitAbilityLevel(caster, GetSpellAbilityId()) + 15 ), true, false, ATTACK_TYPE_MELEE, DAMAGE_TYPE_NORMAL, WEAPON_TYPE_WHOKNOWS);
+        }
+      }
+    });
+
+    if (castedSpellId == battleCry) {
+      
+    }
+
+
+
+  }
+}
+
 //! zinc
   library DanathAbils requires CothUtilities {
 
