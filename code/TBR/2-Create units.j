@@ -11,13 +11,14 @@ real array udg_StromgardeEastBreak
 real array udg_StromgardeThroneBreak
 real array udg_QuelthalasBreak
 real array udg_DalaranBreak
-real array udg_LordaeronFirstBreakx
+real array udg_LordaeronFirstBreak
 real array udg_LordaeronSecondBreak
 real array udg_LordaeronFinalBreak
 real array udg_KulTirasBreak
 real array udg_GilneasFinalBreak
 real array udg_GilneasSouthBreak
 real array udg_GilneasEastBreak
+force debugForce = CreateForce()
 integer udg_HordeGoldDivider=0
 integer udg_LegionGoldDivider=0
 integer udg_AllianceGoldDivider1=0

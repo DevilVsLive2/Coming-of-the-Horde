@@ -30,6 +30,7 @@ library RejuventationSpell requires CothUtilities {
     TriggerAddAction(onRejuvSpellEffect, function(){
       unit caster = GetTriggerUnit();
       integer casterId = GetHandleId(caster);
+      trigger onCasterDamaged = null;
       effect yellowBall = LoadEffectHandle(rejuventationData, casterId, 0);
       
       clearRejuventationDataForCaster(caster);
@@ -40,14 +41,18 @@ library RejuventationSpell requires CothUtilities {
       onCasterDamaged = CreateTrigger();
       TriggerRegisterUnitEvent(onCasterDamaged, caster, EVENT_UNIT_DAMAGED);
       TriggerAddCondition(onCasterDamaged, Filter(function() -> boolean {
-        IssueImmediateOrder(caster, "stop");
+        IssueImmediateOrder(GetTriggerUnit(), "stop");
         return true;
       }));
       caster = null;
       yellowBall = null;
+      onCasterDamaged = null;
     });
 
     TriggerRegisterAnyUnitEventBJ(onRejuvSpellEndcast, EVENT_PLAYER_UNIT_SPELL_FINISH);
+    TriggerAddCondition(onRejuvSpellEndcast, Filter( function() -> boolean {
+      return GetSpellAbilityId() == 'AEsf'; 
+    } ));
     TriggerAddAction(onRejuvSpellEndcast, function (){
       unit caster = GetTriggerUnit();
       integer casterId = GetHandleId(caster);
@@ -62,7 +67,7 @@ library RejuventationSpell requires CothUtilities {
       onCasterDamaged = CreateTrigger();
       TriggerRegisterUnitEvent(onCasterDamaged, caster, EVENT_UNIT_DAMAGED);
       TriggerAddCondition(onCasterDamaged, Filter(function() -> boolean {
-        clearRejuventationDataForCaster(caster);
+        clearRejuventationDataForCaster(GetTriggerUnit());
         return true;
       }));
 

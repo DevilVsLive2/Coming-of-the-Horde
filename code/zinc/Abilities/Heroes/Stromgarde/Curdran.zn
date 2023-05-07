@@ -10,7 +10,7 @@ library CurdranAbils requires CothUtilities {
   //Calculates, how far should be missle moved each position update
   constant real stormHammerSpeedPerUpdate = stormHammerMissleSpeedPixelsPerSecond * (1 / stormHammerUpdateSpeed);
 
-  function isStormShieldCD(stormShieldOwner) {
+  function isStormShieldCD(unit stormShieldOwner) -> boolean {
     return (LoadTimerHandle(abilityData, GetHandleId(stormShieldOwner), stormShield) != null) && (TimerGetRemaining(LoadTimerHandle(abilityData, GetHandleId(stormShieldOwner), stormShield) ) <= 0.1);
   }
 
@@ -33,7 +33,8 @@ library CurdranAbils requires CothUtilities {
 
       if ( castedSpellId == stormHammer ) {
         //Create missle, and move it to the target point
-        stormHammerMissle = CreateUnit(GetTriggerPlayer(), 'h01G', GetUnitX(caster), GetUnitY(caster), 0);
+        stormHammerMissle = CreateUnit(GetTriggerPlayer(), 'h01G', GetUnitX(caster), GetUnitY(caster), AngleBetweenPoints(GetUnitLoc(caster), GetSpellTargetLoc()));
+        SetUnitFlyHeight(stormHammerMissle, 0, 0);
         stormHammerMissleMoveTimer = CreateTimer();
         SaveUnitHandle(abilityData, GetHandleId(stormHammerMissleMoveTimer), 0, stormHammerMissle);
         SaveUnitHandle(abilityData, GetHandleId(stormHammerMissleMoveTimer), 1, caster);
@@ -52,15 +53,18 @@ library CurdranAbils requires CothUtilities {
           real newDistanceBetweenMissleAndTargetPoint = SquareRoot(Pow(targetX - newMissleX, 2) + Pow(targetY - newMissleY, 2));
 
           effect boomEffect = null;
+          effect lightningEffect = null;
           group targets = null;
           unit target = null;
+          unit slowDummyCaster = null;
 
           //Missle become further from target point, move to target point, and make boom
           if (newDistanceBetweenMissleAndTargetPoint > distanceBetweenMissleAndTargetPoint) {
             SetUnitX(stormHammerMissle, targetX);
             SetUnitY(stormHammerMissle, targetY);
-            KillUnit(stormHammerMissle);
+            UnitApplyTimedLife(stormHammerMissle, 'BTLF', .01);
             boomEffect = AddSpecialEffect("Abilities\\Spells\\Human\\Thunderclap\\ThunderClapCaster.mdl", targetX, targetY);
+            //TerrainDeformCrater(targetX, targetY, stormHammerAreaOfEffect, 32, 250, false);
             targets = CreateGroup();
             GroupEnumUnitsInRange(targets, targetX, targetY, stormHammerAreaOfEffect + 150, null);
 
@@ -69,8 +73,20 @@ library CurdranAbils requires CothUtilities {
               GroupRemoveUnit(targets, target);
               if (IsUnitInRangeXY(target, targetX, targetY, stormHammerAreaOfEffect) &&
                   IsUnitEnemy(target, GetOwningPlayer(caster)) &&
-                  IsUnitType(target, UNIT_TYPE_GROUND)) {
+                  IsUnitType(target, UNIT_TYPE_GROUND) &&
+                  !IsUnitMagicImmune(target)) {
                 UnitDamageTarget(caster, target, 70 * GetUnitAbilityLevel(caster, stormHammer), true, false, ATTACK_TYPE_MAGIC, DAMAGE_TYPE_MAGIC, WEAPON_TYPE_WHOKNOWS );
+                slowDummyCaster = CreateUnit(GetOwningPlayer(caster), 'o008', GetUnitX(target), GetUnitY(target), 0);
+                UnitApplyTimedLife(slowDummyCaster, 'BTLF', 3);
+                UnitAddAbility(slowDummyCaster, 'SHSL');
+                SetUnitAbilityLevel(slowDummyCaster, 'SHSL', GetUnitAbilityLevel(caster, stormHammer));
+                IssueTargetOrder(slowDummyCaster, "slow", target);
+                lightningEffect = AddSpecialEffectTarget("Abilities\\Weapons\\Bolt\\BoltImpact.mdl", target, "origin");
+                DestroyEffect(lightningEffect);
+                lightningEffect = null;
+
+                slowDummyCaster = null;
+
                 //TODO: Make an effect, like Tauren's stomp, effect of destroying stormbolt on targets, and add debuff to targets
               }
             }
@@ -78,7 +94,6 @@ library CurdranAbils requires CothUtilities {
 
             FlushChildHashtable(abilityData, GetHandleId(GetExpiredTimer()));
             DestroyTimer(GetExpiredTimer());
-            RemoveUnit(stormHammerMissle);
             stormHammerMissle = null;
 
             return;
@@ -92,7 +107,7 @@ library CurdranAbils requires CothUtilities {
 
       //TODO: finish this spell
       if ( castedSpellId == skyRee ) {
-        if (
+        if ( 
           GetUnitTypeId(caster) == CurdranMorphFirst ||
           GetUnitTypeId(caster) == CurdranMorphSecond ||
           GetUnitTypeId(caster) == CurdranMorphThird
@@ -122,7 +137,7 @@ library CurdranAbils requires CothUtilities {
           }
         });
       }
-    })
+    });
   }
 }
 

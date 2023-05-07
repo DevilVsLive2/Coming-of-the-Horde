@@ -28,6 +28,7 @@ library DanathAbils requires CothUtilities {
   }
 }
 
+/*
 //! zinc
   library DanathAbils requires CothUtilities {
 
@@ -270,3 +271,5 @@ library DanathAbils requires CothUtilities {
     }
   }
 //! endzinc
+
+*/

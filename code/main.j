@@ -486,12 +486,12 @@ trigger gg_trg_Deaths_Edge= null
 trigger gg_trg_Shields_Move= null
 trigger gg_trg_Attack_Damage= null
 trigger gg_trg_Unit_on_damage= null
-trigger gg_trg_Not_used_trg= null
 trigger gg_trg_Piercing_Blade= null
 trigger gg_trg_HelpStart= null
 trigger gg_trg_Debug= null
 trigger gg_trg_LibHC= null
 endglobals
+//! import jass "./TBR/2-Create units.j"
 //! import jass "./TBR/1-APITypecast.j"
 //! import jass "./TBR/01-Garona_Attack_Start.j"
 //! import jass "./TBR/01-Horde_Victory.j"
@@ -501,7 +501,6 @@ endglobals
 //! import jass "./TBR/01-Zepplin_Teleport.j"
 //! import jass "./TBR/02-Azeroth_Main_Gate.j"
 //! import jass "./TBR/02-Azeroth_Zepplin.j"
-//! import jass "./TBR/2-Create units.j"
 //! import jass "./TBR/02-Dark_Touch.j"
 //! import jass "./TBR/02-Item_Aquired2.j"
 //! import jass "./TBR/2-Piercing_Blade.j"
