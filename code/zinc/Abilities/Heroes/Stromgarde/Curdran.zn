@@ -31,6 +31,8 @@ library CurdranAbils requires CothUtilities {
       real targetX = GetSpellTargetX();
       real targetY = GetSpellTargetY();
 
+      integer modifierStrengthCurdran = 0;
+
       if ( castedSpellId == stormHammer ) {
         //Create missle, and move it to the target point
         stormHammerMissle = CreateUnit(GetTriggerPlayer(), 'h01G', GetUnitX(caster), GetUnitY(caster), AngleBetweenPoints(GetUnitLoc(caster), GetSpellTargetLoc()));
@@ -86,8 +88,6 @@ library CurdranAbils requires CothUtilities {
                 lightningEffect = null;
 
                 slowDummyCaster = null;
-
-                //TODO: Make an effect, like Tauren's stomp, effect of destroying stormbolt on targets, and add debuff to targets
               }
             }
 
@@ -105,15 +105,25 @@ library CurdranAbils requires CothUtilities {
         } );
       }
 
-      //TODO: finish this spell
       if ( castedSpellId == skyRee ) {
+        //Cast from air form to ground form
         if ( 
           GetUnitTypeId(caster) == CurdranMorphFirst ||
           GetUnitTypeId(caster) == CurdranMorphSecond ||
           GetUnitTypeId(caster) == CurdranMorphThird
         ) {
-          ModifyHeroStat(bj_HEROSTAT_INT, caster, bj_MODIFYMETHOD_SUB, 16 - GetUnitAbilityLevel(caster, GetSpellAbilityId()) * 4);
+          modifierStrengthCurdran = 16 - GetUnitAbility(caster, castedSpellId) * 4;
+          SaveInteger(abilityData, GetHandleId(caster), skyRee, modifierStrengthCurdran);
+          ModifyHeroStat(bj_HEROSTAT_INT, caster, modifierStrengthCurdran);
+        } else {
+          ModifyHeroStat(bj_HEROSTAT_INT, caster, bj_MODIFYMETHOD_ADD, LoadInteger(abilityData, GetHandleId(caster), skyRee));
         }
+
+        UnitMakeAbilityPermanent(caster, true, 'AEsf');
+        UnitMakeAbilityPermanent(caster, true, 'A05Y');
+        SetUnitInvulnerable(caster, true);
+        TriggerSleepAction(0.01);
+        SetUnitInvulnerable(caster, false);
       }
     });
 
@@ -123,7 +133,16 @@ library CurdranAbils requires CothUtilities {
     } ));
     TriggerAddAction(onCurdranLearnSpell, function() {
       trigger onCurdranDamaged = null;
+      timer stormShieldCDTimer = null;
       if ( GetSpellAbilityId() == stormShield ) {
+        stormShieldCDTimer = LoadTimerHandle(abilityData, GetHandleId(GetTriggerUnit()), stormShield);
+        //Storm shield already researched, just decrease cooldown if storm shield on cooldown
+        if (stormShieldCDTimer != null) {
+          PauseTimer(stormShieldCDTimer);
+          TimerStart(stormShieldCDTimer, TimerGetRemaining(stormShieldCDTimer) - 6, false, null);
+          stormShieldCDTimer = null;
+          return;
+        }
         onCurdranDamaged = CreateTrigger();
         TriggerRegisterUnitEvent(onCurdranDamaged, GetTriggerUnit(), EVENT_UNIT_DAMAGED);
         SaveTimerHandle(abilityData, GetHandleId(GetTriggerUnit()), stormShield, CreateTimer());
@@ -133,7 +152,6 @@ library CurdranAbils requires CothUtilities {
           if ( !isStormShieldCD(curdran) && IsUnitEnemy(GetEventDamageSource(), GetOwningPlayer(curdran)) ) {
             stormShieldCDTimer = LoadTimerHandle(abilityData, GetHandleId(curdran), stormShield);
             TimerStart(stormShieldCDTimer, 30 - 6 * GetUnitAbilityLevel(curdran, stormShield), false, null);
-
           }
         });
       }
@@ -141,7 +159,7 @@ library CurdranAbils requires CothUtilities {
   }
 }
 
-/**
+/** 
 
 //! zinc
   library CurdranAbils requires CothUtilities {
