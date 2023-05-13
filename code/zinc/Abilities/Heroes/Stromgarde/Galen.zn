@@ -13,6 +13,7 @@ library GalenAbils requires CothUtilities {
   constant key galenAgillityCountKey;
 
   constant key onGalenAttackDesperationTriggerKey;
+  constant key onGalenAttackDesperationTriggerGalenKey;
 
   function getFirstFreeHandleKey(hashtable inWhichHashtable, integer parentKey) -> integer {
     integer i = 0;
@@ -127,14 +128,31 @@ library GalenAbils requires CothUtilities {
       trigger onGalenAttack = null;
       trigger onGalenOrderStop = null;
 
-      SaveUnitHandle(abilityData, )
       if (learnedSpell == desperation) {
 
+        onGalenAttack = LoadTriggerHandle(abilityData, GetHandleId(GetTriggerUnit()), onGalenAttackDesperationTriggerKey);
+        TriggerClearConditions(onGalenAttack);
+        FlushChildHashtable(abilityData, GetHandleId(onGalenAttack));
+        DestroyTrigger(onGalenAttack);
         onGalenAttack = CreateTrigger();
+        SaveTriggerHandle(abilityData, GetHandleId(GetTriggerUnit()), onGalenAttackDesperationTriggerKey, onGalenAttack);
         TriggerRegisterAnyUnitEventBJ(onGalenAttack, EVENT_PLAYER_UNIT_ATTACKED);
+        SaveUnitHandle(abilityData, GetHandleId(onGalenAttack), onGalenAttackDesperationTriggerGalenKey, GetTriggerUnit());
+        if (GetLearnedSkillLevel() == 1) {
+          TriggerAddCondition(onGalenAttack, Filter(function () -> boolean {
+            unit galen = LoadUnitHandle(abilityData, GetHandleId(GetTriggeringTrigger()), onGalenAttackDesperationTriggerGalenKey);
+            if (GetAttacker() != galen) {
+              galen = null;
+              return false; 
+            }
+            
 
+
+            return false;
+          }));
+        }
       }
-    })
+    });
 
   }
 }

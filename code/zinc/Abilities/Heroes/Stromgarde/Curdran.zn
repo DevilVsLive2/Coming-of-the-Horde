@@ -10,8 +10,15 @@ library CurdranAbils requires CothUtilities {
   //Calculates, how far should be missle moved each position update
   constant real stormHammerSpeedPerUpdate = stormHammerMissleSpeedPixelsPerSecond * (1 / stormHammerUpdateSpeed);
 
+  constant key stormHammerMissleKey;
+  constant key stormHammerCasterKey;
+  constant key stormHammerTargetXKey;
+  constant key stormHammerTargetYKey;
+  
+  constant key stormShieldCooldownTimerKey;
+
   function isStormShieldCD(unit stormShieldOwner) -> boolean {
-    return (LoadTimerHandle(abilityData, GetHandleId(stormShieldOwner), stormShield) != null) && (TimerGetRemaining(LoadTimerHandle(abilityData, GetHandleId(stormShieldOwner), stormShield) ) <= 0.1);
+    return (LoadTimerHandle(abilityData, GetHandleId(stormShieldOwner), stormShieldCooldownTimerKey) != null) && (TimerGetRemaining(LoadTimerHandle(abilityData, GetHandleId(stormShieldOwner), stormShieldCooldownTimerKey) ) <= 0.1);
   }
 
   function onInit(){
@@ -38,17 +45,17 @@ library CurdranAbils requires CothUtilities {
         stormHammerMissle = CreateUnit(GetTriggerPlayer(), 'h01G', GetUnitX(caster), GetUnitY(caster), AngleBetweenPoints(GetUnitLoc(caster), GetSpellTargetLoc()));
         SetUnitFlyHeight(stormHammerMissle, 0, 0);
         stormHammerMissleMoveTimer = CreateTimer();
-        SaveUnitHandle(abilityData, GetHandleId(stormHammerMissleMoveTimer), 0, stormHammerMissle);
-        SaveUnitHandle(abilityData, GetHandleId(stormHammerMissleMoveTimer), 1, caster);
-        SaveReal(abilityData, GetHandleId(stormHammerMissleMoveTimer), 0, targetX);
-        SaveReal(abilityData, GetHandleId(stormHammerMissleMoveTimer), 1, targetY);
+        SaveUnitHandle(abilityData, GetHandleId(stormHammerMissleMoveTimer), stormHammerMissleKey, stormHammerMissle);
+        SaveUnitHandle(abilityData, GetHandleId(stormHammerMissleMoveTimer), stormHammerCasterKey, caster);
+        SaveReal(abilityData, GetHandleId(stormHammerMissleMoveTimer), stormHammerTargetXKey, targetX);
+        SaveReal(abilityData, GetHandleId(stormHammerMissleMoveTimer), stormHammerTargetYKey, targetY);
         TimerStart(stormHammerMissleMoveTimer, 1 / stormHammerUpdateSpeed, true, function(){
-          real targetX = LoadReal(abilityData, GetHandleId(GetExpiredTimer()), 0);
-          real targetY = LoadReal(abilityData, GetHandleId(GetExpiredTimer()), 1);
-          unit stormHammerMissle = LoadUnitHandle(abilityData, GetHandleId(GetExpiredTimer()), 0);
+          real targetX = LoadReal(abilityData, GetHandleId(GetExpiredTimer()), stormHammerTargetXKey);
+          real targetY = LoadReal(abilityData, GetHandleId(GetExpiredTimer()), stormHammerTargetYKey);
+          unit stormHammerMissle = LoadUnitHandle(abilityData, GetHandleId(GetExpiredTimer()), stormHammerMissleKey);
           real distanceBetweenMissleAndTargetPoint = SquareRoot(Pow(targetX - GetUnitX(stormHammerMissle), 2) + Pow(targetY - GetUnitY(stormHammerMissle), 2));
           real angleToTargetPoint = Atan2(targetY - GetUnitY(stormHammerMissle), targetX - GetUnitX(stormHammerMissle));
-          unit caster = LoadUnitHandle(abilityData, GetHandleId(GetExpiredTimer()), 1);
+          unit caster = LoadUnitHandle(abilityData, GetHandleId(GetExpiredTimer()), stormHammerCasterKey);
 
           real newMissleX = GetUnitX(stormHammerMissle) + stormHammerSpeedPerUpdate * Cos(angleToTargetPoint);
           real newMissleY = GetUnitY(stormHammerMissle) + stormHammerSpeedPerUpdate * Sin(angleToTargetPoint);
@@ -145,12 +152,12 @@ library CurdranAbils requires CothUtilities {
         }
         onCurdranDamaged = CreateTrigger();
         TriggerRegisterUnitEvent(onCurdranDamaged, GetTriggerUnit(), EVENT_UNIT_DAMAGED);
-        SaveTimerHandle(abilityData, GetHandleId(GetTriggerUnit()), stormShield, CreateTimer());
+        SaveTimerHandle(abilityData, GetHandleId(GetTriggerUnit()), stormShieldCooldownTimerKey, CreateTimer());
         TriggerAddAction(onCurdranDamaged, function(){
           unit curdran = GetTriggerUnit();
           timer stormShieldCDTimer = null;
           if ( !isStormShieldCD(curdran) && IsUnitEnemy(GetEventDamageSource(), GetOwningPlayer(curdran)) ) {
-            stormShieldCDTimer = LoadTimerHandle(abilityData, GetHandleId(curdran), stormShield);
+            stormShieldCDTimer = LoadTimerHandle(abilityData, GetHandleId(curdran), stormShieldCooldownTimerKey);
             TimerStart(stormShieldCDTimer, 30 - 6 * GetUnitAbilityLevel(curdran, stormShield), false, null);
           }
         });
