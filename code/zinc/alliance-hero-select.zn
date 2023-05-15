@@ -3,7 +3,7 @@ library AllianceHeroSelection requires CothUtilities {
     trigger onHeroSelection = CreateTrigger();
     TriggerRegisterAnyUnitEventBJ(onHeroSelection, EVENT_PLAYER_UNIT_TRAIN_START);
     TriggerAddCondition(onHeroSelection, Filter( function() -> boolean {
-      return IsUnitHero(GetTrainedUnit());
+      return IsUnitType(GetTrainedUnit(), UNIT_TYPE_HERO);
     }));
     TriggerAddAction(onHeroSelection, function(){
       integer trainedUnitType = GetTrainedUnitType();

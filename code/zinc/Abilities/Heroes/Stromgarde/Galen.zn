@@ -7,6 +7,18 @@ library GalenAbils requires CothUtilities {
   constant integer disarm = 'A0DY';
   constant integer fury = 'A06Y';
   constant integer desperation = 'A06F';
+  constant integer desperationBonusAttackSpeed = 'A046';
+  constant integer desperationBonusMovementSpeed = 'A0FX';
+
+  constant real desperationBonusMovementSpeedDuration = 3.5;
+  constant real desperationBonusAttackSpeedDuration = 3.5;
+  constant integer desperationMaximumBonusMovementSpeedPercent = 20;
+  constant integer desperationMaximumBonusAttackSpeedPercent = 80;
+
+  //Bonus for each attack on each level of abillity
+  // Index here is a level of abillity, starts from one.
+  integer array desperationBonusAttackSpeedPercentPerAttack;
+  integer array desperationBonusMovementSpeedPercentPerAttack;
 
   constant key onGalenAttackTriggerKey;
   constant key onGalenAttackTriggerGalenKey;
@@ -14,6 +26,11 @@ library GalenAbils requires CothUtilities {
 
   constant key onGalenAttackDesperationTriggerKey;
   constant key onGalenAttackDesperationTriggerGalenKey;
+  constant key onGalenAttackDesperationTriggerBonusAttackSpeedPercentKey;
+  constant key onGalenAttackDesperationTriggerBonusMovementSpeedPercentKey;
+
+  constant key additionalAttackSpeedTimerGalenKey;
+  constant key additionalMovementSpeedTimerGalenKey;
 
   function getFirstFreeHandleKey(hashtable inWhichHashtable, integer parentKey) -> integer {
     integer i = 0;
@@ -120,15 +137,25 @@ library GalenAbils requires CothUtilities {
     });
 
     TriggerRegisterAnyUnitEventBJ(onSpellLearn, EVENT_PLAYER_HERO_SKILL);
-    TriggerAddCondition(onSpellLearn, Filter(function () -> boolean [
+    TriggerAddCondition(onSpellLearn, Filter(function () -> boolean {
       return GetUnitTypeId(GetTriggerUnit()) == galenId;
-    ]));
+    }));
+    desperationBonusAttackSpeedPercentPerAttack[1] = 5;
+    desperationBonusMovementSpeedPercentPerAttack[1] = 5;
+    desperationBonusAttackSpeedPercentPerAttack[2] = 10;
+    desperationBonusMovementSpeedPercentPerAttack[2] = 10;
+    desperationBonusAttackSpeedPercentPerAttack[3] = 15;
+    desperationBonusMovementSpeedPercentPerAttack[3] = 15;
+    desperationBonusAttackSpeedPercentPerAttack[4] = 20;
+    desperationBonusMovementSpeedPercentPerAttack[4] = 20;
     TriggerAddAction(onSpellLearn, function(){
       integer learnedSpell = GetLearnedSkill();
       trigger onGalenAttack = null;
       trigger onGalenOrderStop = null;
 
       if (learnedSpell == desperation) {
+
+        BJDebugMsg("Desperation learned!");
 
         onGalenAttack = LoadTriggerHandle(abilityData, GetHandleId(GetTriggerUnit()), onGalenAttackDesperationTriggerKey);
         TriggerClearConditions(onGalenAttack);
@@ -139,15 +166,64 @@ library GalenAbils requires CothUtilities {
         TriggerRegisterAnyUnitEventBJ(onGalenAttack, EVENT_PLAYER_UNIT_ATTACKED);
         SaveUnitHandle(abilityData, GetHandleId(onGalenAttack), onGalenAttackDesperationTriggerGalenKey, GetTriggerUnit());
         if (GetLearnedSkillLevel() == 1) {
+          UnitAddAbility(GetTriggerUnit(), desperationBonusAttackSpeed);
+          UnitAddAbility(GetTriggerUnit(), desperationBonusMovementSpeed);
           TriggerAddCondition(onGalenAttack, Filter(function () -> boolean {
             unit galen = LoadUnitHandle(abilityData, GetHandleId(GetTriggeringTrigger()), onGalenAttackDesperationTriggerGalenKey);
+            integer additionalAttackSpeedPercent;
+            integer additionalMovementSpeedPercent;
+            timer additionalAttackSpeedTimer;
+            timer additionalMovementSpeedTimer;
             if (GetAttacker() != galen) {
               galen = null;
               return false; 
             }
+
+            additionalAttackSpeedPercent = LoadInteger(abilityData, GetHandleId(GetTriggeringTrigger()), onGalenAttackDesperationTriggerBonusAttackSpeedPercentKey);
+            additionalMovementSpeedPercent = LoadInteger(abilityData, GetHandleId(GetTriggeringTrigger()), onGalenAttackDesperationTriggerBonusMovementSpeedPercentKey);
+
+            if (additionalAttackSpeedPercent < desperationMaximumBonusAttackSpeedPercent) {
+              additionalAttackSpeedPercent += desperationBonusAttackSpeedPercentPerAttack[1];
+              if (additionalAttackSpeedPercent > desperationMaximumBonusAttackSpeedPercent) {
+                additionalAttackSpeedPercent = desperationMaximumBonusAttackSpeedPercent;
+              }
+              SaveInteger(abilityData, GetHandleId(GetTriggeringTrigger()), onGalenAttackDesperationTriggerBonusAttackSpeedPercentKey, additionalAttackSpeedPercent);
+              SetUnitAbilityLevel(galen, desperationBonusAttackSpeed, GetUnitAbilityLevel(galen, desperationBonusAttackSpeed) + 1);
+              additionalAttackSpeedTimer = CreateTimer();
+              SaveUnitHandle(abilityData, GetHandleId(additionalAttackSpeedTimer), additionalAttackSpeedTimerGalenKey, galen);
+              SaveTriggerHandle(abilityData, GetHandleId(additionalAttackSpeedTimer), onGalenAttackTriggerKey, GetTriggeringTrigger());
+              TimerStart(additionalAttackSpeedTimer, desperationBonusAttackSpeedDuration, false, function(){
+                unit galen = LoadUnitHandle(abilityData, GetHandleId(GetExpiredTimer()), additionalAttackSpeedTimerGalenKey);
+                trigger onGalenAttack = LoadTriggerHandle(abilityData, GetHandleId(GetExpiredTimer()), onGalenAttackTriggerKey);
+                integer additionalAttackSpeedPercent = LoadInteger(abilityData, GetHandleId(onGalenAttack), onGalenAttackDesperationTriggerBonusAttackSpeedPercentKey);
+                additionalAttackSpeedPercent -= 5;
+                SaveInteger(abilityData, GetHandleId(onGalenAttack), onGalenAttackDesperationTriggerBonusAttackSpeedPercentKey, additionalAttackSpeedPercent);
+                SetUnitAbilityLevel(galen, desperationBonusAttackSpeed, GetUnitAbilityLevel(galen, desperationBonusAttackSpeed) - 1);
+
+                galen = null;
+              })
+            }
+
+            if (additionalMovementSpeedPercent < desperationMaximumBonusMovementSpeedPercent) {
+              additionalMovementSpeedPercent += 5;
+              if (additionalMovementSpeedPercent > desperationMaximumBonusMovementSpeedPercent) {
+                additionalMovementSpeedPercent = desperationMaximumBonusMovementSpeedPercent;
+              }
+              SaveInteger(abilityData, GetHandleId(GetTriggeringTrigger()), onGalenAttackDesperationTriggerBonusMovementSpeedPercentKey, additionalMovementSpeedPercent);
+              SetUnitAbilityLevel(galen, desperationBonusMovementSpeed, GetUnitAbilityLevel(galen, desperationBonusMovementSpeed) + 1);
+              additionalMovementSpeedTimer = CreateTimer();
+              SaveUnitHandle(abilityData, GetHandleId(additionalMovementSpeedTimer), additionalMovementSpeedTimerGalenKey, galen);
+              SaveTriggerHandle(abilityData, GetHandleId(additionalMovementSpeedTimer), onGalenAttackTriggerKey, GetTriggeringTrigger());
+              TimerStart(additionalMovementSpeedTimer, desperationBonusMovementSpeedDuration, false, function(){
+                unit galen = LoadUnitHandle(abilityData, GetHandleId(GetExpiredTimer()), additionalMovementSpeedTimerGalenKey);
+                trigger onGalenAttack = LoadTriggerHandle(abilityData, GetHandleId(GetExpiredTimer()), onGalenAttackTriggerKey);
+                integer additionalMovementSpeedPercent = LoadInteger(abilityData, GetHandleId(onGalenAttack), onGalenAttackDesperationTriggerBonusMovementSpeedPercentKey);
+                additionalMovementSpeedPercent -= 5;
+                SaveInteger(abilityData, GetHandleId(onGalenAttack), onGalenAttackDesperationTriggerBonusMovementSpeedPercentKey, additionalMovementSpeedPercent);
+                SetUnitAbilityLevel(galen, desperationBonusMovementSpeed, GetUnitAbilityLevel(galen, desperationBonusMovementSpeed) - 1);
+              })
+            }
             
-
-
             return false;
           }));
         }
@@ -157,7 +233,7 @@ library GalenAbils requires CothUtilities {
   }
 }
 
-
+/*
 //! zinc
   library GalenAbils requires CothUtilities {
 
@@ -374,6 +450,8 @@ library GalenAbils requires CothUtilities {
       TriggerRegisterAnyUnitEventBJ(t, EVENT_PLAYER_UNIT_ATTACKED);
       TriggerAddCondition(t, Filter(function IsAttackerGalen));
       TriggerAddAction(t, function GalenDamaging);
+
+      
     }
   }
 //! endzinc
