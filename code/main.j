@@ -963,5 +963,4 @@ endglobals
 //! import zinc "./zinc/teron-aura.zn"
 //! import zinc "./zinc/unit-damaged-events.zn"
 //! import zinc "./zinc/vengeance.zn"
-//! import zinc "./zinc/Abilities/Heroes/Stromgarde/Curdran.zn"
-//! import zinc "./zinc/Abilities/Heroes/rejuventation.zn"
+//! import zinc "./zinc/Abilities/Heroes/event-handler.zn"

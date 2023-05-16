@@ -1,0 +1,47 @@
+library EventHandler {
+
+  public constant hashtable eventSpellEffectStructureHashtable = InitHashtable();
+
+  public struct eventSpellEffectStructure {
+    unit caster;
+    integer spellId;
+    integer spellLevel;
+    integer casterId;
+    real targetX;
+    real targetY;
+    unit target;
+
+    static method create() -> thistype {
+      thistype this = allocate();
+      caster = GetTriggerUnit();
+      spellId = GetSpellAbilityId();
+      spellLevel = GetUnitAbilityLevel(caster, spellId);
+      casterId = GetUnitTypeId(caster);
+      targetX = GetSpellTargetX();
+      targetY = GetSpellTargetY();
+      target = GetSpellTargetUnit();
+
+      return this;
+    }
+  }
+
+  function onInit(){
+    trigger onSpellEffect = CreateTrigger();
+    trigger onSpellLearn = CreateTrigger();
+
+    TriggerRegisterAnyUnitEventBJ(onSpellEffect, EVENT_PLAYER_UNIT_SPELL_EFFECT);
+    TriggerAddAction(onSpellEffect, function(){
+      eventSpellEffectStructure eventSpellEffect = eventSpellEffectStructure.create();
+    });
+  }
+
+  //Saves a eventSpellEffectStructure in hashtable eventSpellEffectStructureHashtable, with 
+  public function registerEventForUnit(eventid whichEvent, unit whichUnit, code handler) {
+    handler(5);
+  }
+
+  public function registerEventForUnitType(eventid whichEvent, integer whichUnitType, code handler) {
+
+  }
+
+}
