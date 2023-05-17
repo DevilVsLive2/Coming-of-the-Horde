@@ -1,8 +1,128 @@
-#include "../../../CothUtilities.zn"
-
 library GalenAbils requires CothUtilities {
+
+  constant integer galenId = 'H01I';
+  
+  constant integer fury = 'A06Y';
+  constant integer disarm = 'A0DY';
+  //Config for spell disarm
+  constant real disarmRadius = 100;
+  real array disarmDamage;
+  //Configuration for spell fury
+  constant real furyDuration = 30;
+  constant real bonusAgilityDuration = 5;
+  integer array bonusAgilityForAttack; 
+  integer array maximumBonusAgilityForAttacks;
+  constant key onGalenAttackTriggerKey;
+  constant key onGalenAttackTriggerGalenKey;
+  constant key onGalenAttackTriggerFuryLevelKey;
+  constant key onGalenAttackTriggerAdditionalAgilityKey;
+
+  
+
+
   function onInit(){
     trigger onSpellEffect = CreateTrigger();
-    TriggerRegisterAnyUn
+    bonusAgilityForAttack[1] = 3;
+    bonusAgilityForAttack[2] = 4;
+    bonusAgilityForAttack[3] = 5;
+    maximumBonusAgilityForAttacks[1] = 30;
+    maximumBonusAgilityForAttacks[2] = 40;
+    maximumBonusAgilityForAttacks[3] = 50;
+
+    disarmDamage[1] = 130;
+    disarmDamage[2] = 195;
+    disarmDamage[3] = 260;
+    disarmDamage[4] = 325;
+
+    TriggerRegisterAnyUnitEventBJ(onSpellEffect, EVENT_PLAYER_UNIT_SPELL_EFFECT);
+    TriggerAddCondition(onSpellEffect, Filter(function() -> boolean {
+      return GetUnitTypeId(GetTriggerUnit()) == galenId;
+    }));
+    TriggerAddAction(onSpellEffect, function(){
+      unit caster = GetTriggerUnit();
+      integer castedSpell = GetSpellAbilityId();
+      unit target = GetSpellTargetUnit();
+      group targets;
+
+      trigger onGalenAttack;
+      if (castedSpell == fury) {
+        onGalenAttack = LoadTriggerHandle(abilityData, GetHandleId(caster), onGalenAttackTriggerKey);
+        FlushChildHashtable(abilityData, GetHandleId(onGalenAttack));
+        TriggerClearConditions(onGalenAttack);
+        DestroyTrigger(onGalenAttack);
+        onGalenAttack = CreateTrigger();
+        SaveTriggerHandle(abilityData, GetHandleId(caster), onGalenAttackTriggerKey, onGalenAttack);
+
+        //Transfer caster into trigger
+        SaveUnitHandle(abilityData, GetHandleId(onGalenAttack), onGalenAttackTriggerGalenKey, caster);
+        //Transfer casted spell level into trigger
+        SaveInteger(abilityData, GetHandleId(onGalenAttack), onGalenAttackTriggerFuryLevelKey, GetUnitAbilityLevel(caster, castedSpell));
+        TriggerAddCondition(onGalenAttack, Filter(function () -> boolean {
+          unit galen = LoadUnitHandle(abilityData, GetHandleId(GetTriggeringTrigger()), onGalenAttackTriggerGalenKey);
+          integer furyLevel = LoadInteger(abilityData, GetHandleId(GetTriggeringTrigger()), onGalenAttackTriggerFuryLevelKey);
+          integer currentAdditionalAgility = LoadInteger(abilityData, GetHandleId(GetTriggeringTrigger()), onGalenAttackTriggerAdditionalAgilityKey);
+          integer maximumAdditionalAgility = maximumBonusAgilityForAttacks[furyLevel];
+          integer additionalAgility;
+          timer additionalAgilityTimer;
+          if (GetAttacker() != galen) {
+            galen = null;
+            return false;
+          }
+
+          //We already got limit of additional agility
+          if (currentAdditionalAgility >= maximumAdditionalAgility) {
+            galen = null;
+            return false;
+          }
+
+          if (additionalAgilityPerAttack + currentAdditionalAgility > maximumAdditionalAgility) {
+            additionalAgility = maximumAdditionalAgility - currentAdditionalAgility;
+          } else {
+            additionalAgility = bonusAgilityForAttack[furyLevel];
+          }
+          currentAdditionalAgility += additionalAgility;
+          SaveInteger(abilityData, GetHandleId(GetTriggeringTrigger()), onGalenAttackTriggerAdditionalAgilityKey, currentAdditionalAgility);
+          additionalAgilityTimer = CreateTimer();
+          
+          SaveUnitHandle(abilityData, GetHandleId(additionalAgilityTimer), onGalenAttackTriggerGalenKey, galen);
+          SaveInteger(abilityData, GetHandleId(additionalAgilityTimer), onGalenAttackTriggerAdditionalAgilityKey, additionalAgility);
+          SaveTriggerHandle(abilityData, GetHandleId(additionalAgilityTimer), onGalenAttackTriggerKey, GetTriggeringTrigger());
+          SetHeroAgi(galen, GetHeroAgi(galen, false) + additionalAgility, false);
+          TimerStart(additionalAgilityTimer, bonusAgilityDuration, false, function(){
+            unit galen = LoadUnitHandle(abilityData, GetHandleId(GetExpiredTimer()), onGalenAttackTriggerGalenKey);
+            integer additionalAgility = LoadInteger(abilityData, GetHandleId(GetExpiredTimer()), onGalenAttackTriggerAdditionalAgilityKey);
+            trigger onGalenAttack = LoadTriggerActionHandle(abilityData, GetHandleId(GetExpiredTimer()), onGalenAttackTriggerKey);
+            if (onGalenAttack != null) {
+              SaveInteger(abilityData, GetHandleId(onGalenAttack), onGalenAttackTriggerAdditionalAgilityKey, LoadInteger(abilityData, GetHandleId(onGalenAttack), onGalenAttackTriggerAdditionalAgilityKey) - additionalAgility);
+            }
+            SetHeroAgi(galen, GetHeroAgi(galen, false) - additionalAgility, true);
+            galen = null;
+            onGalenAttack = null;
+            FlushChildHashtable(abilityData, GetHandleId(GetExpiredTimer()));
+            DestroyTimer(GetExpiredTimer());
+          });
+          
+
+          additionalAgilityTimer = null;
+          return false;
+        }));
+      }
+
+      if (castedSpell == disarm) {
+        targets = CreateGroup()
+        GroupEnumUnitsInRange(targets, GetSpellTargetX(), GetSpellTargetY(), disarmRadius + 300, null);
+        while (FirstOfGroup(targets) != null) {
+          target = FirstOfGroup(targets);
+          GroupRemoveUnit(targets, target);
+          if (IsUnitInRangeXY(target, GetSpellTargetX(), GetSpellTargetY(), disarmRadius) &&
+            IsUnitEnemy(target, GetOwningPlayer(caster)) &&
+            !IsUnitType(target, UNIT_TYPE_MAGIC_IMMUNE)) {
+              UnitDamageTarget(caster, target, disarmDamage[GetUnitAbilityLevel(caster, castedSpell)], true, true, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_MAGIC, WEAPON_TYPE_WHOKNOWS);
+          }
+        }
+      }
+
+
+    });
   }
 }
