@@ -1,3 +1,4 @@
+//! zinc
 library TestItemAq requires CothUtilities {
 
   integer RemovedItem[6];
@@ -145,6 +146,17 @@ library TestItemAq requires CothUtilities {
       UnitRemoveItem(GetTriggerUnit(), GetManipulatedItem());
       return;
     }
+    if (ItemID == Book_of_Agillity || ItemID == Book_of_Strength || ItemID == Book_of_Intelligence) {
+      if (!IsHeroInventoryFullWithUniqueItems(GetTriggerUnit())) {
+        DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "Необходимо, что бы у вас инвентарь был заполнен уникальными предметами!");
+        SetPlayerState(GetTriggerPlayer(), PLAYER_STATE_RESOURCE_GOLD, GetPlayerState(GetTriggerPlayer(), PLAYER_STATE_RESOURCE_GOLD) + price);
+        return;
+      }
+      //Если у нас все уникальные - добавляем триггерно характеристику
+      if (ItemID == Book_of_Agillity) SetHeroAgi(GetTriggerUnit(), GetHeroAgi(GetTriggerUnit(), false) + 1, true);
+      if (ItemID == Book_of_Intelligence) SetHeroInt(GetTriggerUnit(), GetHeroInt(GetTriggerUnit(), false) + 1, true);
+      if (ItemID == Book_of_Strength) SetHeroStr(GetTriggerUnit(), GetHeroStr(GetTriggerUnit(), false) + 1, true);
+    }
     //Мы подобрали предмет, а не купили руну
     if (LoadInteger(ItemDataHashtable, ItemID, 7) == 0) {
       SetItemPlayer(GetManipulatedItem(), GetTriggerPlayer(), false);
@@ -158,17 +170,6 @@ library TestItemAq requires CothUtilities {
     if (ItemID == Talisman_of_the_Wild && !IsPlayerInForce(GetTriggerPlayer(), AllianceForce)) {
       DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "Этот предмет доступен только игрокам альянса! Его аналог для орды - урна");
       return;
-    }
-    if (ItemID == Book_of_Agillity || ItemID == Book_of_Strength || ItemID == Book_of_Intelligence) {
-      if (!IsHeroInventoryFullWithUniqueItems(GetTriggerUnit())) {
-        DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "Необходимо, что бы у вас инвентарь был заполнен уникальными предметами!");
-        SetPlayerState(GetTriggerPlayer(), PLAYER_STATE_RESOURCE_GOLD, GetPlayerState(GetTriggerPlayer(), PLAYER_STATE_RESOURCE_GOLD) + price);
-        return;
-      }
-      //Если у нас все уникальные - добавляем триггерно характеристику
-      if (ItemID == Book_of_Agillity) SetHeroAgi(GetTriggerUnit(), GetHeroAgi(GetTriggerUnit(), false) + 1, true);
-      if (ItemID == Book_of_Intelligence) SetHeroInt(GetTriggerUnit(), GetHeroInt(GetTriggerUnit(), false) + 1, true);
-      if (ItemID == Book_of_Strength) SetHeroStr(GetTriggerUnit(), GetHeroStr(GetTriggerUnit(), false) + 1, true);
     }
     if (ItemID == Journeys_End) {
       if
@@ -552,3 +553,4 @@ library TestItemAq requires CothUtilities {
     TriggerAddAction(t, function Stonepath_Update);
   }
 }
+//! endzinc

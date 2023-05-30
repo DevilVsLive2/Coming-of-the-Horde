@@ -1,3 +1,4 @@
+//! zinc
 library UnitDamaged requires CothUtilities {
 
   hashtable UnitDataHashtable = InitHashtable();
@@ -453,3 +454,4 @@ library UnitDamaged requires CothUtilities {
     TriggerAddAction(t, function DisableGaronaTriggeringUltToAbility);
   }
 }
+//! endzinc

@@ -1,4 +1,4 @@
-
+//! zinc
 library CurdranAbils requires CothUtilities {
 
   constant real stormHammerMissleSpeedPixelsPerSecond = 700;
@@ -16,10 +16,6 @@ library CurdranAbils requires CothUtilities {
   constant key stormHammerTargetYKey;
   
   constant key stormShieldCooldownTimerKey;
-
-  function isStormShieldCD(unit stormShieldOwner) -> boolean {
-    return (LoadTimerHandle(abilityData, GetHandleId(stormShieldOwner), stormShieldCooldownTimerKey) != null) && (TimerGetRemaining(LoadTimerHandle(abilityData, GetHandleId(stormShieldOwner), stormShieldCooldownTimerKey) ) <= 0.1);
-  }
 
   function onInit(){
     trigger onCurdranCastSpell = CreateTrigger();
@@ -139,32 +135,19 @@ library CurdranAbils requires CothUtilities {
       return (GetUnitTypeId(GetTriggerUnit()) == Curdran) || (GetUnitTypeId(GetTriggerUnit()) == CurdranMorphFirst) || (GetUnitTypeId(GetTriggerUnit()) == CurdranMorphSecond) || (GetUnitTypeId(GetTriggerUnit()) == CurdranMorphThird);
     } ));
     TriggerAddAction(onCurdranLearnSpell, function() {
-      trigger onCurdranDamaged = null;
       timer stormShieldCDTimer = null;
       if ( GetSpellAbilityId() == stormShield ) {
-        stormShieldCDTimer = LoadTimerHandle(abilityData, GetHandleId(GetTriggerUnit()), stormShield);
-        //Storm shield already researched, just decrease cooldown if storm shield on cooldown
-        if (stormShieldCDTimer != null) {
-          PauseTimer(stormShieldCDTimer);
+        stormShieldCDTimer = LoadTimerHandle(abilityData, GetHandleId(GetTriggerUnit()), StringHash("StormShieldCooldownTimer"));
+        if (stormShieldCDTimer == null) stormShieldCDTimer = CreateTimer();
+        else {
           TimerStart(stormShieldCDTimer, TimerGetRemaining(stormShieldCDTimer) - 6, false, null);
-          stormShieldCDTimer = null;
-          return;
         }
-        onCurdranDamaged = CreateTrigger();
-        TriggerRegisterUnitEvent(onCurdranDamaged, GetTriggerUnit(), EVENT_UNIT_DAMAGED);
-        SaveTimerHandle(abilityData, GetHandleId(GetTriggerUnit()), stormShieldCooldownTimerKey, CreateTimer());
-        TriggerAddAction(onCurdranDamaged, function(){
-          unit curdran = GetTriggerUnit();
-          timer stormShieldCDTimer = null;
-          if ( !isStormShieldCD(curdran) && IsUnitEnemy(GetEventDamageSource(), GetOwningPlayer(curdran)) ) {
-            stormShieldCDTimer = LoadTimerHandle(abilityData, GetHandleId(curdran), stormShieldCooldownTimerKey);
-            TimerStart(stormShieldCDTimer, 30 - 6 * GetUnitAbilityLevel(curdran, stormShield), false, null);
-          }
-        });
       }
     });
   }
 }
+
+//! endzinc
 
 /** 
 

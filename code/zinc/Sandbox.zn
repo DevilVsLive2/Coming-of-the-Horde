@@ -1,3 +1,4 @@
+//! zinc
 library Sandbox requires CothUtilities, PlayerLeaves {
   integer CountofLeavedPlayers = 0;
   string tempString[];
@@ -704,3 +705,4 @@ library Sandbox requires CothUtilities, PlayerLeaves {
 
   }
 }
+//! endzinc

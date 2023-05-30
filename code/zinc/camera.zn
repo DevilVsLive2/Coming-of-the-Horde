@@ -1,3 +1,4 @@
+//! zinc
 library Camera requires CothUtilities {
     private function ChangeCamera ()  -> nothing {
         boolean ZoomMin = S2I(SubString(GetEventPlayerChatString(), 6, 10)) >= 1650;
@@ -33,3 +34,4 @@ library Camera requires CothUtilities {
         TriggerAddAction(t, function ChangeCamera);
     }
 }
+//! endzinc

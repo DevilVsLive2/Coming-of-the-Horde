@@ -1,11 +1,22 @@
+//! zinc
 library CothUtilities {
   private constant string sLetters = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+  public hashtable onDamagedTriggers = InitHashtable();
   public {
     //*Группы игроков и отряды юнитов
     force HordeForce = CreateForce();
     force AllianceForce = CreateForce();
 
     group FightingStartUnits = CreateGroup();
+    group tempGroup[8000];
+    unit tempUnit[8000];
+    integer tempInteger[8000];
+    timer tempTimer[8000];
+    effect tempEffect[8000];
+
+    constant integer ORDER_attack = 851983;
+    constant integer ORDER_move = 851971;
+
     //* Герои и их способности
     //Герои красного
     constant integer Curdran = 'Hmbr';
@@ -17,14 +28,23 @@ library CothUtilities {
     constant integer skyRee = 'Arav';
     unit CurdranUnit;
     constant integer Galen = 'H01I';
+    constant integer desperation = 'A06F';
+    constant integer desperationBuffAttackSpeed = 'A05K';
+    constant integer desperationBuffMovementSpeed = 'A0FX';
+    constant integer fury = 'A06Y';
+    constant integer furyBuff = 'B023';
     constant integer blisteringBlade = 'A07I';
     constant integer disarm = 'A0DY';
     constant integer shieldStrike = 'AHtb';
     constant integer battleCry = 'A03G';
     unit GalenUnit;
     constant integer Thoras = 'Huth';
+    constant integer heroicStrike = 'ANab';
+    constant integer godlyStrength = 'A0E4';
+    constant integer strengthOfGods = 'Aroa';
     unit ThorasUnit;
     constant integer Danath = 'Hdgo';
+    constant integer stormgardeStrength = 'A02Q';
     unit DanathUnit;
     //Герои синего
     constant integer Anduin = 'Hlgr';
@@ -2476,6 +2496,14 @@ library CothUtilities {
     GaronaUnit      = gg_unit_O00M_0518;
     MaimUnit        = gg_unit_Obla_0496;
     GriseldaUnit    = gg_unit_Ekee_0528;
+
+    //
+    for (0 <= index <= 11) {
+      SetPlayerAbilityAvailable(Player(index), desperationBuffMovementSpeed, false);
+      SetPlayerAbilityAvailable(Player(index), desperationBuffAttackSpeed, false);
+      SetPlayerAbilityAvailable(Player(index), 'A046', false);
+    }
   }
 
 }
+//! endzinc

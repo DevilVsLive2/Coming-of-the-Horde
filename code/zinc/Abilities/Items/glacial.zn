@@ -1,3 +1,4 @@
+//! zinc
 library GlacialShield {
   timer GlacialTimer[11];
   hashtable GlacialHashtable = InitHashtable();
@@ -35,3 +36,4 @@ library GlacialShield {
       TriggerAddAction(t, function GlacialUsed);
   }
 }
+//! endzinc

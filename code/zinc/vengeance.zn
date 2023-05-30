@@ -1,3 +1,4 @@
+//! zinc
   library GennVengeance {
 
     function Vengeance_Conditions ()  -> boolean {
@@ -63,3 +64,4 @@
         TriggerAddAction(t, function Vengeance_Downgrade);
     }
   }
+//! endzinc

@@ -1,3 +1,4 @@
+//! zinc
 library MaxUpgrades requires CothUtilities {
     private function Upgrade ()  -> nothing {
         integer Research = GetResearched();
@@ -65,3 +66,4 @@ library MaxUpgrades requires CothUtilities {
         TriggerAddAction(t, function Upgrade);
     }
 }
+//! endzinc

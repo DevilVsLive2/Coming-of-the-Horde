@@ -1,3 +1,4 @@
+//! zinc
 library HeroSelection requires CothUtilities {
   public integer CountOfTrainedHeroes = 0;
   trigger HeroStart;
@@ -48,3 +49,4 @@ library HeroSelection requires CothUtilities {
     TriggerAddAction(t, function CountOfHeroes);
   }
 }
+//! endzinc

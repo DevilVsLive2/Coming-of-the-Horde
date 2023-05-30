@@ -1,3 +1,4 @@
+//! zinc
 library libHelp requires CothUtilities, PlayerLeaves {
 
   boolean IsPlayerWroteHelp[11];
@@ -1065,3 +1066,5 @@ library libHelp requires CothUtilities, PlayerLeaves {
   }
 
 }
+
+//! endzinc

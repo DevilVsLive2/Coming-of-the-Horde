@@ -1,3 +1,4 @@
+//! zinc
 library Aura {
 integer indexOfAuraUpgrade = 0;
 
@@ -43,3 +44,4 @@ function onInit ()  -> nothing {
     TimerStart(t, 900, false, function AuraUpgrade);
 }
 }
+//! endzinc
