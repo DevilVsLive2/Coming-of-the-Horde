@@ -14,8 +14,6 @@
 
       //Desperation handling
       if (GetUnitAbilityLevel(damager, desperation) > 0 && IsUnitEnemy(GetTriggerUnit(), GetOwningPlayer(damager))) {
-        BJDebugMsg("Ms: " + R2S(GetUnitMoveSpeed(damager)));
-        BJDebugMsg("BuffAtk: " + I2S(GetUnitAbilityLevel(damager, 'B04W')) + " Buffms: " + I2S(GetUnitAbilityLevel(damager, 'B04V')));
         if (GetUnitAbilityLevel(damager, desperationBuffAttackSpeed) < 17) {
           tempTimer[0] = CreateTimer();
           SaveUnitHandle(data, GetHandleId(tempTimer[0]), StringHash("GalenUnit"), damager);
