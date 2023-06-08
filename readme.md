@@ -1,10 +1,10 @@
-# Важно, при открытии карты:
-Требуется редактор JNGP. При запуске карты в редакторе, в верхном меню выбрать пункт UMSWE, включить UMSWE если он выключен и поставить галочку на Custom Tile Pathability.
-Открыть Customize Tile Pathability и изменить следующие тайлы:
-В группе Village, выбрать 4-й тайл по верхнему ряду (Village Cobble Path) и изменить галочки так:
-Buildable: true
-Walkable: true
-Flyable: true
+# Как скомпилить?
+Требуется редактор JNGP. При запуске карты в редакторе, в верхном меню выбрать пункт UMSWE, включить UMSWE если он выключен и поставить галочку на Custom Tile Pathability.\n
+Открыть Customize Tile Pathability и изменить следующие тайлы:\n
+В группе Village, выбрать 4-й тайл по верхнему ряду (Village Cobble Path) и изменить галочки так:\n
+Buildable: true\n
+Walkable: true\n
+Flyable: true\n
 В группе Lordaeron Winter, выбрать 4-й тайл по верхнему ряду (Lordaeron Winter Rock), и изменить галочки так:
 Buildable: false
 Walkable: false
