@@ -1,9 +1,11 @@
 # Как скомпилить?
 Требуется редактор JNGP. При запуске карты в редакторе, в верхном меню выбрать пункт UMSWE, включить UMSWE если он выключен и поставить галочку на Custom Tile Pathability. \
 Открыть Customize Tile Pathability и изменить следующие тайлы: \
-| Название группы | Настройки галочек                                                                                       |
-| --- | --- |
-| Village         | Buildable:  ${\color{green}true}$ \ Walkable: ${\color{green}true}$ \ Flyable: ${\color{green}true}$    |                  
+| Название группы | Название тайла      | Настройки галочек                                                                                       |
+| ---             | ---                 | ---                                                                                                     |
+| Village         | Village Cobble Path | Buildable:  ${\color{green}true}$
+Walkable: ${\color{green}true}$
+ Flyable: ${\color{green}true}$                     |                  
 В группе Village, выбрать 4-й тайл по верхнему ряду (Village Cobble Path) и изменить галочки так: \
 Buildable: $${\color{green}true}$$ \
 Walkable: true \
