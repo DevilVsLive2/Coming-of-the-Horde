@@ -3,7 +3,7 @@
 Открыть Customize Tile Pathability и изменить следующие тайлы: \
 | Название группы | Настройки галочек |
 | --- | --- |
-| Village         | Buildable:  $${\color{green}true}$$ \n Walkable:  $${\color{green}true}$$ \n Flyable:  $${\color{green}true}$$ \n |                  
+| Village         | Buildable:  ${\color{green}true}$ \n Walkable:  $${\color{green}true}$$ \n Flyable:  $${\color{green}true}$$ \n |                  
 В группе Village, выбрать 4-й тайл по верхнему ряду (Village Cobble Path) и изменить галочки так: \
 Buildable: $${\color{green}true}$$ \
 Walkable: true \
