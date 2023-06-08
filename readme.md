@@ -2,7 +2,7 @@
 Требуется редактор JNGP. При запуске карты в редакторе, в верхном меню выбрать пункт UMSWE, включить UMSWE если он выключен и поставить галочку на Custom Tile Pathability. \
 Открыть Customize Tile Pathability и изменить следующие тайлы: \
 В группе Village, выбрать 4-й тайл по верхнему ряду (Village Cobble Path) и изменить галочки так: \
-Buildable: `hsl(212, 92%, 45%)` true \
+Buildable: $${\color{green}true} \
 Walkable: true \
 Flyable: true \
 В группе Lordaeron Winter, выбрать 4-й тайл по верхнему ряду (Lordaeron Winter Rock), и изменить галочки так:
