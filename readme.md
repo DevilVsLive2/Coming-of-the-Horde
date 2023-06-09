@@ -1,29 +1,12 @@
 # Как скомпилить?
 Требуется редактор JNGP. При запуске карты в редакторе, в верхном меню выбрать пункт UMSWE, включить UMSWE если он выключен и поставить галочку на Custom Tile Pathability. \
-Открыть Customize Tile Pathability и изменить следующие тайлы: \
-| Название группы | Название тайла      | Настройки галочек                                                                                                    |
-| ---             | ---                 | ---                                                                                                                  |
-| Village         | Village Cobble Path | Buildable: ${\color{green}true}$ <br /> Walkable: ${\color{green}true}$ <br /> Flyable: ${\color{green}true}$        |                  
-В группе Village, выбрать 4-й тайл по верхнему ряду (Village Cobble Path) и изменить галочки так: \
-Buildable: $${\color{green}true}$$ \
-Walkable: true \
-Flyable: true \
-В группе Lordaeron Winter, выбрать 4-й тайл по верхнему ряду (Lordaeron Winter Rock), и изменить галочки так:
-Buildable: false
-Walkable: false
-Flyable: true
-В группе Ashenvale, выбрать 4-й тайл по верхнему ряду (Ashenvale Rock), и изменить галочки так:
-Buildable: false
-Walkable: false
-Flyable: true
-В группе Northrend, выбрать 3-й тайл по верхнему ряду (Northrend Rock), и изменить галочки так:
-Buildable: false
-Walkable: false
-Flyable: true
-В группе Cityscape, выбрать 4-й тайл по центральному ряду (Cityscape Grass Trim) и изменить галочки так:
-Buildable: false
-Walkable: true
-Flyable: true
-# После выполнения пункта первого
-После того, как выполните действия выше, необходимо нажать на кнопку OK и перезапустить редактор. После можно редактировать карту.
-Весь код в папке code. 
+Открыть Customize Tile Pathability и изменить следующие тайлы:
+| Название группы  | Название тайла        | Buildable?            | Walkable?             | Flyable?              |
+| ---              | ---                   | ---                   | ---                   | ---                   |
+| Village          | Village Cobble Path   | ${\color{green}true}$ | ${\color{green}true}$ | ${\color{green}true}$ |                  
+| Lordaeron Winter | Lordaeron Winter Rock | ${\color{red}false}$  | ${\color{red}false}$  | ${\color{green}true}$ |
+| Ashenvale        | Ashenvale Rock        | ${\color{red}false}$  | ${\color{red}false}$  | ${\color{green}true}$ | 
+| Northrend        | Northrend Rock        | ${\color{red}false}$  | ${\color{red}false}$  | ${\color{green}true}$ |
+| Cityscape        | Cityscape Grass Trim  | ${\color{red}false}$  | ${\color{green}true}$ | ${\color{green}true}$ |
+| ---              | ---                   | ---                   | ---                   | ---                   |
+Что бы изменения вступили в силу, необходимо нажать OK и перезапустить редактор.
