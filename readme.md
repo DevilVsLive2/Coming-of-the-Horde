@@ -8,5 +8,5 @@
 | Ashenvale        | Ashenvale Rock        | ${\color{red}false}$  | ${\color{red}false}$  | ${\color{green}true}$ | 
 | Northrend        | Northrend Rock        | ${\color{red}false}$  | ${\color{red}false}$  | ${\color{green}true}$ |
 | Cityscape        | Cityscape Grass Trim  | ${\color{red}false}$  | ${\color{green}true}$ | ${\color{green}true}$ |
-| ---              | ---                   | ---                   | ---                   | ---                   |
+#
 Что бы изменения вступили в силу, необходимо нажать OK и перезапустить редактор.
