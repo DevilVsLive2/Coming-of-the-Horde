@@ -77,9 +77,6 @@ trigger gg_trg_Gold_Bonus_7= null
 trigger gg_trg_Gold_Bonus_8= null
 trigger gg_trg_Gold_Bonus_9= null
 trigger gg_trg_Stop_Abuse_On= null
-trigger gg_trg_Rejuventation_Heal_Red= null
-trigger gg_trg_Rejuventation_Damage_Red= null
-trigger gg_trg_Rejuventation_Stop_Red= null
 trigger gg_trg_Magic_Resistance= null
 trigger gg_trg_Stength_of_Stromgarde= null
 trigger gg_trg_Galen_Decay= null
@@ -91,9 +88,6 @@ trigger gg_trg_Fury_Level= null
 trigger gg_trg_Thunder_Shield= null
 trigger gg_trg_Thunder_Shield_Start= null
 trigger gg_trg_Skyree_Reset= null
-trigger gg_trg_Rejuventation_Heal_Blue= null
-trigger gg_trg_Rejuventation_Damage_Blue= null
-trigger gg_trg_Rejuventation_Stop_Blue= null
 trigger gg_trg_Holy_Bulwark_Starts= null
 trigger gg_trg_Holy_Bulwark= null
 trigger gg_trg_Holy_Bulwark_Ends= null
@@ -101,18 +95,12 @@ trigger gg_trg_Judgement= null
 trigger gg_trg_Starfall_Damage= null
 trigger gg_trg_Tornado= null
 trigger gg_trg_Dragonhide_Armor= null
-trigger gg_trg_Rejuventation_Heal_Teal= null
-trigger gg_trg_Rejuventation_Damage_Teal= null
-trigger gg_trg_Rejuventation_Stop_Teal= null
 trigger gg_trg_Duel_Target_Damage= null
 trigger gg_trg_Duel_Mishan_Damage= null
 trigger gg_trg_Duel_Finish= null
 trigger gg_trg_Mishan_Attack_Start= null
 trigger gg_trg_Mishan_Stop_Abuse= null
 trigger gg_trg_Net= null
-trigger gg_trg_Rejuventation_Heal_Purple= null
-trigger gg_trg_Rejuventation_Damage_Purple= null
-trigger gg_trg_Rejuventation_Stop_Purple= null
 trigger gg_trg_Tranquility_Level= null
 trigger gg_trg_Stellar_Recall_Mimic_Move= null
 trigger gg_trg_Stellar_Recall_Move= null
@@ -120,9 +108,6 @@ trigger gg_trg_Mana_Shield= null
 trigger gg_trg_Inferno_Level= null
 trigger gg_trg_Pyre_Damage= null
 trigger gg_trg_Pyre_Reset= null
-trigger gg_trg_Rejuventation_Heal_Orange= null
-trigger gg_trg_Rejuventation_Damage_Orange= null
-trigger gg_trg_Rejuventation_Stop_Orange= null
 trigger gg_trg_On_the_House_Learn= null
 trigger gg_trg_On_the_House= null
 trigger gg_trg_On_the_House_Damage= null
@@ -149,9 +134,6 @@ trigger gg_trg_Split_Shot_Mana_Low= null
 trigger gg_trg_Split_Shot_Mana_Increase= null
 trigger gg_trg_Flamestrike_Damage_from_intellect= null
 trigger gg_trg_Fireball_Damage_from_intellect= null
-trigger gg_trg_Rejuventation_Heal_Green= null
-trigger gg_trg_Rejuventation_Damage_Green= null
-trigger gg_trg_Rejuventation_Stop_Green= null
 trigger gg_trg_Sanctuary= null
 trigger gg_trg_Sanctuary_Heal= null
 trigger gg_trg_Battle_Primed_Start= null
@@ -161,9 +143,6 @@ trigger gg_trg_Staggering_Move= null
 trigger gg_trg_Corpse_Explosion_Begin= null
 trigger gg_trg_Corpse_Explosion_Reset= null
 trigger gg_trg_Vengeance= null
-trigger gg_trg_Rejuventation_Heal_Pink= null
-trigger gg_trg_Rejuventation_Damage_Pink= null
-trigger gg_trg_Rejuventation_Stop_Pink= null
 trigger gg_trg_Holy_Strike= null
 trigger gg_trg_Righteous_Fury_Attack= null
 trigger gg_trg_Righteous_Fury_Finish_2= null
@@ -174,9 +153,6 @@ trigger gg_trg_Invulerability_Remove= null
 trigger gg_trg_Navigation_Bonus= null
 trigger gg_trg_Bombardment_On= null
 trigger gg_trg_Smite= null
-trigger gg_trg_Rejuventation_Stop_Grey= null
-trigger gg_trg_Rejuventation_Heal_Grey= null
-trigger gg_trg_Rejuventation_Damage_Grey= null
 trigger gg_trg_Alliance_Hero_Selection= null
 trigger gg_trg_Red_Hero_Selection= null
 trigger gg_trg_Red_Hero_Begin= null
@@ -376,18 +352,6 @@ trigger gg_trg_Shade_Start= null
 trigger gg_trg_Shade_End= null
 trigger gg_trg_Dark_Touch_On= null
 trigger gg_trg_Dark_Touch_Off= null
-trigger gg_trg_Rejuventation_Heal_Yellow= null
-trigger gg_trg_Rejuventation_Damage_Yellow= null
-trigger gg_trg_Rejuventation_Stop_Yellow= null
-trigger gg_trg_Rejuventation_Heal_Light_Blue= null
-trigger gg_trg_Rejuventation_Damage_Light_Blue= null
-trigger gg_trg_Rejuventation_Stop_Light_Blue= null
-trigger gg_trg_Rejuventation_Heal_Dark_Green= null
-trigger gg_trg_Rejuventation_Damage_Dark_Green= null
-trigger gg_trg_Rejuventation_Stop_Dark_Green= null
-trigger gg_trg_Rejuventation_Heal_Brown= null
-trigger gg_trg_Rejuventation_Damage_Brown= null
-trigger gg_trg_Rejuventation_Stop_Brown= null
 trigger gg_trg_Northshire= null
 trigger gg_trg_TrollGoblinOgre= null
 trigger gg_trg_Throne_Reduce= null
@@ -504,7 +468,6 @@ endglobals
 //! import jass "./TBR/02-Dark_Touch.j"
 //! import jass "./TBR/02-Item_Aquired2.j"
 //! import jass "./TBR/2-Piercing_Blade.j"
-//! import jass "./TBR/002-Rejuventation_Heal_Red.j"
 //! import jass "./TBR/02-Ship_Limiter_Legion.j"
 //! import jass "./TBR/02-TrollGoblinOgre.j"
 //! import jass "./TBR/02-Yellow_Hero_Begin.j"
@@ -513,7 +476,6 @@ endglobals
 //! import jass "./TBR/3-Init sounds.j"
 //! import jass "./TBR/03-Lordaeron_Zepplin.j"
 //! import jass "./TBR/03-Red_Hero_Selection.j"
-//! import jass "./TBR/003-Rejuventation_Damage_Red.j"
 //! import jass "./TBR/03-Slice_and_Dice.j"
 //! import jass "./TBR/03-Throne_Reduce.j"
 //! import jass "./TBR/03-Yellow_Hero_Cancel.j"
@@ -522,7 +484,6 @@ endglobals
 //! import jass "./TBR/04-Azeroth_Main_Gate_Lever_Death.j"
 //! import jass "./TBR/04-Brown_Altar_Death.j"
 //! import jass "./TBR/04-Red_Hero_Begin.j"
-//! import jass "./TBR/004-Rejuventation_Stop_Red.j"
 //! import jass "./TBR/04-SliceAndDiceGromAttack.j"
 //! import jass "./TBR/04-Stromgarde_Zepplin.j"
 //! import jass "./TBR/05-Altar_Replace_Dark_Green.j"
@@ -656,7 +617,6 @@ endglobals
 //! import jass "./TBR/21-Archimonde_Starts.j"
 //! import jass "./TBR/21-Hero_Revival.j"
 //! import jass "./TBR/21-Khadgar_Starts.j"
-//! import jass "./TBR/021-Rejuventation_Heal_Blue.j"
 //! import jass "./TBR/21-Stromgarde_East_Gate_Life.j"
 //! import jass "./TBR/21-Stromgarde_Tower_West.j"
 //! import jass "./TBR/21-Tinker_Dies.j"
@@ -664,13 +624,11 @@ endglobals
 //! import jass "./TBR/22-Hero_Revival_Reset.j"
 //! import jass "./TBR/22-Howl_of_Terror_Move.j"
 //! import jass "./TBR/22-Lothar_Starts.j"
-//! import jass "./TBR/022-Rejuventation_Damage_Blue.j"
 //! import jass "./TBR/22-Stromgarde_Open_Throne_Room.j"
 //! import jass "./TBR/22-Stromgarde_Tower_East.j"
 //! import jass "./TBR/23-Alterac_Event.j"
 //! import jass "./TBR/23-Chogall_Level.j"
 //! import jass "./TBR/23-Hero_Experience.j"
-//! import jass "./TBR/023-Rejuventation_Stop_Blue.j"
 //! import jass "./TBR/23-Scorched_Earth.j"
 //! import jass "./TBR/23-Stromgarde_Throne_Gate_Life.j"
 //! import jass "./TBR/24-Alterac_Avenged.j"
@@ -743,17 +701,14 @@ endglobals
 //! import jass "./TBR/35-Life_Rip_Move.j"
 //! import jass "./TBR/35-Lordaeron_Lower_Tower_Fire.j"
 //! import jass "./TBR/35-Orgrim_Starts.j"
-//! import jass "./TBR/035-Rejuventation_Heal_Teal.j"
 //! import jass "./TBR/35-Team_Killing_Alliance.j"
 //! import jass "./TBR/36-Gilneas_Final_Gate_Life.j"
 //! import jass "./TBR/36-Lordaeron_Fountain_Destroyed.j"
 //! import jass "./TBR/36-Rain_of_Chaos.j"
-//! import jass "./TBR/036-Rejuventation_Damage_Teal.j"
 //! import jass "./TBR/36-Team_Killing_Horde.j"
 //! import jass "./TBR/37-Gilneas_South_Gate_Open.j"
 //! import jass "./TBR/37-Hero orc limit.j"
 //! import jass "./TBR/37-Lord_Farm_Fire.j"
-//! import jass "./TBR/037-Rejuventation_Stop_Teal.j"
 //! import jass "./TBR/37-Thandol_Span_West_to_East.j"
 //! import jass "./TBR/37-Valor.j"
 //! import jass "./TBR/38-Gilneas_South_Gate_Life.j"
@@ -803,18 +758,15 @@ endglobals
 //! import jass "./TBR/46-Trample_Move.j"
 //! import jass "./TBR/47-Gold_Bonus_5.j"
 //! import jass "./TBR/47-Lordaeron_North_Gate_Lever_Death.j"
-//! import jass "./TBR/047-Rejuventation_Heal_Purple.j"
 //! import jass "./TBR/47-Rhonin_Learns.j"
 //! import jass "./TBR/47-Trample_AOE_Attack.j"
 //! import jass "./TBR/48-Black_Aura.j"
 //! import jass "./TBR/48-Gold_Bonus_6.j"
 //! import jass "./TBR/48-Kael_Starts.j"
 //! import jass "./TBR/48-Lordaeron_Open_North_Gate.j"
-//! import jass "./TBR/048-Rejuventation_Damage_Purple.j"
 //! import jass "./TBR/49-Gold_Bonus_7.j"
 //! import jass "./TBR/49-Lordaeron_North_Gate_Life.j"
 //! import jass "./TBR/49-Nether_Spirits_Level.j"
-//! import jass "./TBR/049-Rejuventation_Stop_Purple.j"
 //! import jass "./TBR/50-Gold_Bonus_8.j"
 //! import jass "./TBR/50-Shadow_of_the_Fallen_Begin.j"
 //! import jass "./TBR/51-Gold_Bonus_9.j"
@@ -845,14 +797,11 @@ endglobals
 //! import jass "./TBR/61-Green_Hero_Selection.j"
 //! import jass "./TBR/61-Inner_Rage.j"
 //! import jass "./TBR/62-Green_Hero_Begin.j"
-//! import jass "./TBR/062-Rejuventation_Heal_Orange.j"
 //! import jass "./TBR/62-Spirit_Wolf_Stomp.j"
 //! import jass "./TBR/63-Green_Hero_Cancel.j"
-//! import jass "./TBR/063-Rejuventation_Damage_Orange.j"
 //! import jass "./TBR/63-Spirit_Wolf_Death.j"
 //! import jass "./TBR/64-Last_Rider_Death.j"
 //! import jass "./TBR/64-Lorthemar_Starts.j"
-//! import jass "./TBR/064-Rejuventation_Stop_Orange.j"
 //! import jass "./TBR/65-Retaliate_Slaughter_Armor.j"
 //! import jass "./TBR/65-Sylvanas_Starts.j"
 //! import jass "./TBR/66-Anasterian_Starts.j"
@@ -880,33 +829,21 @@ endglobals
 //! import jass "./TBR/74-Dark_Touch_Off.j"
 //! import jass "./TBR/074-Gelbin_Spawn.j"
 //! import jass "./TBR/75-Greymane_Starts.j"
-//! import jass "./TBR/75-Rejuventation_Heal_Yellow.j"
 //! import jass "./TBR/075-Repair_Bots_Mana_Regen.j"
 //! import jass "./TBR/076-Megaton_Bomb_Afterburner.j"
-//! import jass "./TBR/76-Rejuventation_Damage_Yellow.j"
 //! import jass "./TBR/77-Gray_Hero_Selection.j"
-//! import jass "./TBR/77-Rejuventation_Stop_Yellow.j"
 //! import jass "./TBR/78-Gray_Hero_Begin.j"
-//! import jass "./TBR/78-Rejuventation_Heal_Light_Blue.j"
 //! import jass "./TBR/79-Gray_Hero_Cancel.j"
-//! import jass "./TBR/79-Rejuventation_Damage_Light_Blue.j"
-//! import jass "./TBR/80-Rejuventation_Stop_Light_Blue.j"
 //! import jass "./TBR/080-Split_Shot_On.j"
 //! import jass "./TBR/80-Turalyon_Starts.j"
-//! import jass "./TBR/81-Rejuventation_Heal_Dark_Green.j"
 //! import jass "./TBR/81-Uther_Starts.j"
 //! import jass "./TBR/081-Wind_Shot_Move.j"
 //! import jass "./TBR/082-Hail_of_Arrows_Deactivate.j"
-//! import jass "./TBR/82-Rejuventation_Damage_Dark_Green.j"
 //! import jass "./TBR/82-Tirion_Starts.j"
 //! import jass "./TBR/83-Alonsus_Starts.j"
 //! import jass "./TBR/083-Hail_of_Arrows_Graphic.j"
-//! import jass "./TBR/83-Rejuventation_Stop_Dark_Green.j"
 //! import jass "./TBR/084-Hail_of_Arrows_Damage.j"
-//! import jass "./TBR/84-Rejuventation_Heal_Brown.j"
-//! import jass "./TBR/85-Rejuventation_Damage_Brown.j"
 //! import jass "./TBR/085-Trueshot.j"
-//! import jass "./TBR/86-Rejuventation_Stop_Brown.j"
 //! import jass "./TBR/086-Warmth.j"
 //! import jass "./TBR/087-Evade.j"
 //! import jass "./TBR/088-Arrow_Storm.j"
@@ -917,9 +854,6 @@ endglobals
 //! import jass "./TBR/093-Split_Shot_Mana_Increase.j"
 //! import jass "./TBR/094-Flamestrike Damage from intellect.j"
 //! import jass "./TBR/095-Fireball Damage from intellect.j"
-//! import jass "./TBR/096-Rejuventation_Heal_Green.j"
-//! import jass "./TBR/097-Rejuventation_Damage_Green.j"
-//! import jass "./TBR/098-Rejuventation_Stop_Green.j"
 //! import jass "./TBR/100-Sanctuary.j"
 //! import jass "./TBR/101-Sanctuary_Heal.j"
 //! import jass "./TBR/102-Battle_Primed_Start.j"
@@ -928,9 +862,6 @@ endglobals
 //! import jass "./TBR/105-Staggering_Move.j"
 //! import jass "./TBR/106-Corpse_Explosion_Begin.j"
 //! import jass "./TBR/107-Corpse_Explosion_Reset.j"
-//! import jass "./TBR/109-Rejuventation_Heal_Pink.j"
-//! import jass "./TBR/110-Rejuventation_Damage_Pink.j"
-//! import jass "./TBR/111-Rejuventation_Stop_Pink.j"
 //! import jass "./TBR/113-Holy_Strike.j"
 //! import jass "./TBR/114-Righteous_Fury_Attack.j"
 //! import jass "./TBR/115-Righteous_Fury_Finish_2.j"
@@ -941,9 +872,6 @@ endglobals
 //! import jass "./TBR/120-Navigation_Bonus.j"
 //! import jass "./TBR/121-Bombardment_On.j"
 //! import jass "./TBR/122-Smite.j"
-//! import jass "./TBR/123-Rejuventation_Stop_Grey.j"
-//! import jass "./TBR/124-Rejuventation_Heal_Grey.j"
-//! import jass "./TBR/125-Rejuventation_Damage_Grey.j"
 // TODO: Add here QuestText trigger, right now it isn't converted to JASS code
 
 //! Only imports should be here
