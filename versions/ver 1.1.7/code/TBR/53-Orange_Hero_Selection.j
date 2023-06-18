@@ -32,9 +32,6 @@ function Trig_Orange_Hero_Selection_Func001Func007Func001Func001C takes nothing 
     call ShowUnitShow(gg_unit_Hmkg_0476)
     call SetPlayerHandicapXPBJ(Player(5),99.00)
     call TriggerRegisterUnitEvent(gg_trg_Magni_Starts,gg_unit_Hmkg_0476,EVENT_UNIT_SPELL_EFFECT)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Damage_Orange,gg_unit_Hmkg_0476,EVENT_UNIT_DAMAGED)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Heal_Orange,gg_unit_Hmkg_0476,EVENT_UNIT_SPELL_FINISH)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Stop_Orange,gg_unit_Hmkg_0476,EVENT_UNIT_SPELL_ENDCAST)
     else
     if(Trig_Orange_Hero_Selection_Func001Func007C())then
     call RemoveUnit(GetTrainedUnit())
@@ -45,9 +42,6 @@ function Trig_Orange_Hero_Selection_Func001Func007Func001Func001C takes nothing 
     call ShowUnitShow(gg_unit_H005_0502)
     call TriggerRegisterUnitEvent(gg_trg_Brann_Starts,gg_unit_H005_0502,EVENT_UNIT_SPELL_EFFECT)
     call TriggerRegisterUnitEvent(gg_trg_Haste,gg_unit_H005_0502,EVENT_UNIT_SPELL_EFFECT)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Damage_Orange,gg_unit_H005_0502,EVENT_UNIT_DAMAGED)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Heal_Orange,gg_unit_H005_0502,EVENT_UNIT_SPELL_FINISH)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Stop_Orange,gg_unit_H005_0502,EVENT_UNIT_SPELL_ENDCAST)
     call SetPlayerHandicapXPBJ(Player(5),92.00)
     call UnitAddAbilityBJ('A06W',gg_unit_o008_0505)
     else
@@ -62,9 +56,6 @@ function Trig_Orange_Hero_Selection_Func001Func007Func001Func001C takes nothing 
     call TriggerRegisterPlayerUnitEventSimple(gg_trg_Megaton_Bomb_Afterburner,Player(5),EVENT_PLAYER_UNIT_SPELL_EFFECT)
     call TriggerRegisterUnitEvent(gg_trg_Repair_Bots_Mana_Regen,gg_unit_Hpal_0463,EVENT_UNIT_HERO_SKILL)
     call TriggerRegisterUnitEvent(gg_trg_Gelbin_Spawn,gg_unit_Hpal_0463,EVENT_UNIT_SUMMON)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Damage_Orange,gg_unit_Hpal_0463,EVENT_UNIT_DAMAGED)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Heal_Orange,gg_unit_Hpal_0463,EVENT_UNIT_SPELL_FINISH)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Stop_Orange,gg_unit_Hpal_0463,EVENT_UNIT_SPELL_ENDCAST)
     call SetPlayerHandicapXPBJ(Player(5),92.00)
     else
     if(Trig_Orange_Hero_Selection_Func001Func007Func001Func001C())then
@@ -79,9 +70,6 @@ function Trig_Orange_Hero_Selection_Func001Func007Func001Func001C takes nothing 
     call TriggerRegisterUnitEvent(gg_trg_Avatar_Activate,gg_unit_Ucrl_0500,EVENT_UNIT_SPELL_FINISH)
     call TriggerRegisterUnitEvent(gg_trg_Avatar_Sound,gg_unit_Ucrl_0500,EVENT_UNIT_SPELL_CAST)
     call TriggerRegisterUnitEvent(gg_trg_On_the_House_Learn,gg_unit_Ucrl_0500,EVENT_UNIT_HERO_SKILL)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Damage_Orange,gg_unit_Ucrl_0500,EVENT_UNIT_DAMAGED)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Heal_Orange,gg_unit_Ucrl_0500,EVENT_UNIT_SPELL_FINISH)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Stop_Orange,gg_unit_Ucrl_0500,EVENT_UNIT_SPELL_ENDCAST)
     else
     endif
     endif

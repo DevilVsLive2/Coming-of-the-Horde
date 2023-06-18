@@ -79,9 +79,6 @@ trigger gg_trg_Gold_Bonus_9= null
 trigger gg_trg_Stop_Abuse_On= null
 trigger gg_trg_Magic_Resistance= null
 trigger gg_trg_Stength_of_Stromgarde= null
-trigger gg_trg_Galen_Decay= null
-trigger gg_trg_Galen_Revives= null
-trigger gg_trg_Galen_Dies= null
 trigger gg_trg_Blistering_Blade_Finish= null
 trigger gg_trg_Blistering_Blade_Attack= null
 trigger gg_trg_Fury_Level= null
@@ -154,16 +151,8 @@ trigger gg_trg_Navigation_Bonus= null
 trigger gg_trg_Bombardment_On= null
 trigger gg_trg_Smite= null
 trigger gg_trg_Alliance_Hero_Selection= null
-trigger gg_trg_Red_Hero_Selection= null
-trigger gg_trg_Red_Hero_Begin= null
-trigger gg_trg_Red_Hero_Cancel= null
 trigger gg_trg_Danath_Starts= null
-trigger gg_trg_Galen_Starts= null
-trigger gg_trg_Thoras_Starts= null
-trigger gg_trg_Kurdran_Starts= null
 trigger gg_trg_Danath_abils= null
-trigger gg_trg_Galen_abils= null
-trigger gg_trg_Thoras_abils= null
 trigger gg_trg_Curdran_abils= null
 trigger gg_trg_Blue_Hero_Selection= null
 trigger gg_trg_Blue_Hero_Begin= null
@@ -475,7 +464,6 @@ endglobals
 //! import jass "./TBR/03-Dark_Green_Altar_Death.j"
 //! import jass "./TBR/3-Init sounds.j"
 //! import jass "./TBR/03-Lordaeron_Zepplin.j"
-//! import jass "./TBR/03-Red_Hero_Selection.j"
 //! import jass "./TBR/03-Slice_and_Dice.j"
 //! import jass "./TBR/03-Throne_Reduce.j"
 //! import jass "./TBR/03-Yellow_Hero_Cancel.j"
@@ -483,7 +471,6 @@ endglobals
 //! import jass "./TBR/04-Azeroth_Farm_Fire.j"
 //! import jass "./TBR/04-Azeroth_Main_Gate_Lever_Death.j"
 //! import jass "./TBR/04-Brown_Altar_Death.j"
-//! import jass "./TBR/04-Red_Hero_Begin.j"
 //! import jass "./TBR/04-SliceAndDiceGromAttack.j"
 //! import jass "./TBR/04-Stromgarde_Zepplin.j"
 //! import jass "./TBR/05-Altar_Replace_Dark_Green.j"
@@ -493,7 +480,6 @@ endglobals
 //! import jass "./TBR/05-Hillsbrad.j"
 //! import jass "./TBR/05-Horde_Altar.j"
 //! import jass "./TBR/05-Kul_Tiras_Zepplin.j"
-//! import jass "./TBR/05-Red_Hero_Cancel.j"
 //! import jass "./TBR/06-Altar_Replace_Brown.j"
 //! import jass "./TBR/06-Azeroth_North_Gate.j"
 //! import jass "./TBR/06-Azeroth_Tower_Fire_Upper.j"
@@ -507,7 +493,6 @@ endglobals
 //! import jass "./TBR/07-Azeroth_North_Gate_Life.j"
 //! import jass "./TBR/07-Azeroth_Tower_Fire_Lower.j"
 //! import jass "./TBR/07-Dragon_Mastery.j"
-//! import jass "./TBR/07-Galen_Starts.j"
 //! import jass "./TBR/07-Glacial_Shield_On.j"
 //! import jass "./TBR/07-Map_Initialization.j"
 //! import jass "./TBR/07-Quelthalas_Zepplin.j"
@@ -520,19 +505,16 @@ endglobals
 //! import jass "./TBR/08-Light_Blue_Altar_Death.j"
 //! import jass "./TBR/008-Stength_of_Stromgarde.j"
 //! import jass "./TBR/08-Teron_Learns.j"
-//! import jass "./TBR/08-Thoras_Starts.j"
 //! import jass "./TBR/09-Azeroth_South_Gate_Life.j"
 //! import jass "./TBR/09-Deaths_Edge_On.j"
 //! import jass "./TBR/09-Gilneas_Zepplin.j"
 //! import jass "./TBR/09-Griselda_Summons.j"
 //! import jass "./TBR/09-Horde_Item_Point_Divider.j"
 //! import jass "./TBR/09-Iron_Forge_Fire_Lower.j"
-//! import jass "./TBR/09-Kurdran_Starts.j"
 //! import jass "./TBR/09-Zuluhed_Starts.j"
 //! import jass "./TBR/10-Azeroth_Open_Throne_Room.j"
 //! import jass "./TBR/10-Blackrock_Warning.j"
 //! import jass "./TBR/10-Dalaran_Zepplin.j"
-//! import jass "./TBR/010-Galen_Decay.j"
 //! import jass "./TBR/10-Griselda_Dies.j"
 //! import jass "./TBR/10-Iron_Forge_Fire_Upper.j"
 //! import jass "./TBR/10-Kilrogg_Starts.j"
@@ -540,7 +522,6 @@ endglobals
 //! import jass "./TBR/11-Aerie_Peak_Zepplin.j"
 //! import jass "./TBR/11-Azeroth_Throne_Gate_Life.j"
 //! import jass "./TBR/11-Dark_Portal_Vulnerable.j"
-//! import jass "./TBR/011-Galen_Revives.j"
 //! import jass "./TBR/11-Griselda_Damage.j"
 //! import jass "./TBR/11-Griselda_Starts.j"
 //! import jass "./TBR/11-Iron_Forge_Barrel_Fire.j"
@@ -550,7 +531,6 @@ endglobals
 //! import jass "./TBR/12-Blackhands_Orders.j"
 //! import jass "./TBR/12-Dark_Portal_Warning.j"
 //! import jass "./TBR/12-Dwarf_Refuge.j"
-//! import jass "./TBR/012-Galen_Dies.j"
 //! import jass "./TBR/12-Game_Timer.j"
 //! import jass "./TBR/12-Griselda_Learns.j"
 //! import jass "./TBR/12-Northshire_Gate_Life.j"

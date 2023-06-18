@@ -117,9 +117,9 @@ library CurdranAbils requires CothUtilities {
         ) {
           modifierStrengthCurdran = 16 - GetUnitAbilityLevel(caster, castedSpellId) * 4;
           SaveInteger(abilityData, GetHandleId(caster), skyRee, modifierStrengthCurdran);
-          ModifyHeroStat(bj_HEROSTAT_INT, caster, bj_MODIFYMETHOD_SUB, modifierStrengthCurdran);
+          ModifyHeroStat(bj_HEROSTAT_STR, caster, bj_MODIFYMETHOD_ADD, modifierStrengthCurdran);
         } else {
-          ModifyHeroStat(bj_HEROSTAT_INT, caster, bj_MODIFYMETHOD_ADD, LoadInteger(abilityData, GetHandleId(caster), skyRee));
+          ModifyHeroStat(bj_HEROSTAT_STR, caster, bj_MODIFYMETHOD_SUB, LoadInteger(abilityData, GetHandleId(caster), skyRee));
         }
 
         UnitMakeAbilityPermanent(caster, true, 'AEsf');

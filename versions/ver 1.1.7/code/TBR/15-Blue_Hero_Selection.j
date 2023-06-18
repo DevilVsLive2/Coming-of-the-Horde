@@ -32,9 +32,6 @@ function Trig_Blue_Hero_Selection_Func001Func001Func001Func001C takes nothing re
     call ShowUnitShow(gg_unit_Hlgr_0523)
     call TriggerRegisterUnitEvent(gg_trg_Lothar_Starts,gg_unit_Hlgr_0523,EVENT_UNIT_SPELL_EFFECT)
     call TriggerRegisterUnitEvent(gg_trg_Dragonhide_Armor,gg_unit_Hlgr_0523,EVENT_UNIT_HERO_SKILL)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Damage_Blue,gg_unit_Hlgr_0523,EVENT_UNIT_DAMAGED)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Heal_Blue,gg_unit_Hlgr_0523,EVENT_UNIT_SPELL_FINISH)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Stop_Blue,gg_unit_Hlgr_0523,EVENT_UNIT_SPELL_ENDCAST)
     call SetPlayerHandicapXPBJ(Player(1),99.00)
     else
     if(Trig_Blue_Hero_Selection_Func001Func001C())then
@@ -45,9 +42,6 @@ function Trig_Blue_Hero_Selection_Func001Func001Func001Func001C takes nothing re
     call RemoveUnit(GetTrainedUnit())
     call ShowUnitShow(gg_unit_Hpb1_0517)
     call TriggerRegisterUnitEvent(gg_trg_Llane_Starts,gg_unit_Hpb1_0517,EVENT_UNIT_SPELL_EFFECT)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Damage_Blue,gg_unit_Hpb1_0517,EVENT_UNIT_DAMAGED)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Heal_Blue,gg_unit_Hpb1_0517,EVENT_UNIT_SPELL_FINISH)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Stop_Blue,gg_unit_Hpb1_0517,EVENT_UNIT_SPELL_ENDCAST)
     call SetPlayerHandicapXPBJ(Player(1),99.00)
     else
     if(Trig_Blue_Hero_Selection_Func001Func001Func001C())then
@@ -58,9 +52,6 @@ function Trig_Blue_Hero_Selection_Func001Func001Func001Func001C takes nothing re
     call RemoveUnit(GetTrainedUnit())
     call ShowUnitShow(gg_unit_Hgam_0513)
     call TriggerRegisterUnitEvent(gg_trg_Khadgar_Starts,gg_unit_Hgam_0513,EVENT_UNIT_SPELL_EFFECT)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Damage_Blue,gg_unit_Hgam_0513,EVENT_UNIT_DAMAGED)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Heal_Blue,gg_unit_Hgam_0513,EVENT_UNIT_SPELL_FINISH)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Stop_Blue,gg_unit_Hgam_0513,EVENT_UNIT_SPELL_ENDCAST)
     call SetPlayerHandicapXPBJ(Player(1),92.00)
     else
     if(Trig_Blue_Hero_Selection_Func001Func001Func001Func001C())then
@@ -73,9 +64,6 @@ function Trig_Blue_Hero_Selection_Func001Func001Func001Func001C takes nothing re
     call TriggerRegisterUnitEvent(gg_trg_Mara_Starts,gg_unit_Edem_0550,EVENT_UNIT_SPELL_EFFECT)
     call TriggerRegisterUnitEvent(gg_trg_Holy_Bulwark_Starts,gg_unit_Edem_0550,EVENT_UNIT_SPELL_EFFECT)
     call TriggerRegisterUnitEvent(gg_trg_Mara_Learns,gg_unit_Edem_0550,EVENT_UNIT_HERO_SKILL)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Damage_Blue,gg_unit_Edem_0550,EVENT_UNIT_DAMAGED)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Heal_Blue,gg_unit_Edem_0550,EVENT_UNIT_SPELL_FINISH)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Stop_Blue,gg_unit_Edem_0550,EVENT_UNIT_SPELL_ENDCAST)
     call SetPlayerHandicapXPBJ(Player(1),99.00)
     call SetPlayerAbilityAvailableBJ(false,'A0D5',Player(0))
     call SetPlayerAbilityAvailableBJ(false,'A0D5',Player(1))

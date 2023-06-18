@@ -32,9 +32,6 @@ function Trig_Green_Hero_Selection_Func001Func007Func001Func001C takes nothing r
     call ShowUnitShow(gg_unit_Hkal_0491)
     call TriggerRegisterUnitEvent(gg_trg_Anasterian_Starts,gg_unit_Hkal_0491,EVENT_UNIT_SPELL_EFFECT)
     call TriggerRegisterUnitEvent(gg_trg_Warmth,gg_unit_Hkal_0491,EVENT_UNIT_SPELL_EFFECT)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Damage_Green,gg_unit_Hkal_0491,EVENT_UNIT_DAMAGED)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Heal_Green,gg_unit_Hkal_0491,EVENT_UNIT_SPELL_FINISH)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Stop_Green,gg_unit_Hkal_0491,EVENT_UNIT_SPELL_ENDCAST)
     call SetPlayerHandicapXPBJ(Player(6),92.00)
     else
     if(Trig_Green_Hero_Selection_Func001Func007C())then
@@ -45,9 +42,6 @@ function Trig_Green_Hero_Selection_Func001Func007Func001Func001C takes nothing r
     call SetUnitOwner(gg_unit_H01Q_0521,Player(6),true)
     call ShowUnitShow(gg_unit_H01Q_0521)
     call TriggerRegisterUnitEvent(gg_trg_Lorthemar_Starts,gg_unit_H01Q_0521,EVENT_UNIT_SPELL_EFFECT)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Damage_Green,gg_unit_H01Q_0521,EVENT_UNIT_DAMAGED)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Heal_Green,gg_unit_H01Q_0521,EVENT_UNIT_SPELL_FINISH)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Stop_Green,gg_unit_H01Q_0521,EVENT_UNIT_SPELL_ENDCAST)
     call SetPlayerHandicapXPBJ(Player(6),99.00)
     else
     if(Trig_Green_Hero_Selection_Func001Func007Func001C())then
@@ -63,9 +57,6 @@ function Trig_Green_Hero_Selection_Func001Func007Func001Func001C takes nothing r
     call TriggerRegisterUnitEvent(gg_trg_Split_Shot_Revive,gg_unit_Hvwd_0525,EVENT_UNIT_HERO_REVIVE_FINISH)
     call TriggerRegisterUnitEvent(gg_trg_Arrow_Storm_Cancel,gg_unit_Hvwd_0525,EVENT_UNIT_SPELL_ENDCAST)
     call TriggerRegisterUnitEvent(gg_trg_Arrow_Storm_Cancel,gg_unit_Hvwd_0525,EVENT_UNIT_SPELL_FINISH)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Damage_Green,gg_unit_Hvwd_0525,EVENT_UNIT_DAMAGED)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Heal_Green,gg_unit_Hvwd_0525,EVENT_UNIT_SPELL_FINISH)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Stop_Green,gg_unit_Hvwd_0525,EVENT_UNIT_SPELL_ENDCAST)
     call SetPlayerHandicapXPBJ(Player(6),92.00)
     else
     if(Trig_Green_Hero_Selection_Func001Func007Func001Func001C())then
@@ -77,9 +68,6 @@ function Trig_Green_Hero_Selection_Func001Func007Func001Func001C takes nothing r
     call ShowUnitShow(gg_unit_Hamg_0499)
     call TriggerRegisterUnitEvent(gg_trg_Sylvanas_Starts,gg_unit_Hamg_0499,EVENT_UNIT_SPELL_EFFECT)
     call TriggerRegisterUnitEvent(gg_trg_Trueshot,gg_unit_Hamg_0499,EVENT_UNIT_HERO_SKILL)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Damage_Green,gg_unit_Hamg_0499,EVENT_UNIT_DAMAGED)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Heal_Green,gg_unit_Hamg_0499,EVENT_UNIT_SPELL_FINISH)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Stop_Green,gg_unit_Hamg_0499,EVENT_UNIT_SPELL_ENDCAST)
     call SetPlayerHandicapXPBJ(Player(6),92.00)
     else
     endif

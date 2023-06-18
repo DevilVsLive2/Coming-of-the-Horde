@@ -4,30 +4,6 @@
     endif
     return true
     endfunction
-    function Trig_Zuluhed_Starts_Func001Func001Func020Func001Func006Func004Func004C takes nothing returns boolean
-    if(not(GetOwningPlayer(GetTriggerUnit())==Player(11)))then
-    return false
-    endif
-    return true
-    endfunction
-    function Trig_Zuluhed_Starts_Func001Func001Func020Func001Func006Func004C takes nothing returns boolean
-    if(not(GetOwningPlayer(GetTriggerUnit())==Player(10)))then
-    return false
-    endif
-    return true
-    endfunction
-    function Trig_Zuluhed_Starts_Func001Func001Func020Func001Func006C takes nothing returns boolean
-    if(not(GetOwningPlayer(GetTriggerUnit())==Player(9)))then
-    return false
-    endif
-    return true
-    endfunction
-    function Trig_Zuluhed_Starts_Func001Func001Func020Func001C takes nothing returns boolean
-    if(not(GetSpellAbilityId()=='AEsf'))then
-    return false
-    endif
-    return true
-    endfunction
     function Trig_Zuluhed_Starts_Func001Func001Func020Func006Func001Func001Func001C takes nothing returns boolean
     if(not(GetUnitAbilityLevelSwapped('A014',GetTriggerUnit())==4))then
     return false
@@ -125,27 +101,6 @@
     endif
     call RemoveLocation(udg_TempPoint)
     else
-    if(Trig_Zuluhed_Starts_Func001Func001Func020Func001C())then
-    set udg_RejuvInt[GetConvertedPlayerId(GetTriggerPlayer())]=1
-    call DestroyEffect(udg_RE[GetConvertedPlayerId(GetTriggerPlayer())])
-    call AddSpecialEffectTargetUnitBJ("overhead",GetTriggerUnit(),"RejuvTarget.mdx")
-    set udg_RE[GetConvertedPlayerId(GetTriggerPlayer())]=GetLastCreatedEffectBJ()
-    if(Trig_Zuluhed_Starts_Func001Func001Func020Func001Func006C())then
-    call EnableTrigger(gg_trg_Rejuventation_Damage_Light_Blue)
-    call EnableTrigger(gg_trg_Rejuventation_Stop_Light_Blue)
-    else
-    if(Trig_Zuluhed_Starts_Func001Func001Func020Func001Func006Func004C())then
-    call EnableTrigger(gg_trg_Rejuventation_Damage_Dark_Green)
-    call EnableTrigger(gg_trg_Rejuventation_Stop_Dark_Green)
-    else
-    if(Trig_Zuluhed_Starts_Func001Func001Func020Func001Func006Func004Func004C())then
-    call EnableTrigger(gg_trg_Rejuventation_Damage_Brown)
-    call EnableTrigger(gg_trg_Rejuventation_Stop_Brown)
-    else
-    endif
-    endif
-    endif
-    else
     if(Trig_Zuluhed_Starts_Func001Func001Func020Func001Func001C())then
     set udg_HellfireCount=(udg_HellfireCount+1)
     call EnableTrigger(gg_trg_Hellfire_Blast)
@@ -200,7 +155,6 @@
     call IssueImmediateOrder(GetLastCreatedUnit(),"stomp")
     call RemoveLocation(udg_TempPoint)
     else
-    endif
     endif
     endif
     endif

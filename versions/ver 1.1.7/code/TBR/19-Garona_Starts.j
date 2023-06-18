@@ -67,12 +67,6 @@ function Trig_Garona_Starts_Func001Func003Func001Func001Func001Func004Func001C t
     endif
     return true
     endfunction
-    function Trig_Garona_Starts_Func001Func003Func001Func001C takes nothing returns boolean
-    if(not(GetSpellAbilityId()=='AEsf'))then
-    return false
-    endif
-    return true
-    endfunction
     function Trig_Garona_Starts_Func001Func003Func001Func002Func001Func001Func001Func001Func001C takes nothing returns boolean
     if(not(GetUnitStateSwap(UNIT_STATE_LIFE,GetSpellTargetUnit())<(380.00+(udg_GaronaDamage*0.70))))then
     return false
@@ -258,27 +252,6 @@ function Trig_Garona_Starts_Func001Func003Func001Func001Func001Func004Func001C t
     else
     endif
     else
-    if(Trig_Garona_Starts_Func001Func003Func001Func001C())then
-    set udg_RejuvInt[GetConvertedPlayerId(GetTriggerPlayer())]=1
-    call DestroyEffect(udg_RE[GetConvertedPlayerId(GetTriggerPlayer())])
-    call AddSpecialEffectTargetUnitBJ("overhead",GetTriggerUnit(),"RejuvTarget.mdx")
-    set udg_RE[GetConvertedPlayerId(GetTriggerPlayer())]=GetLastCreatedEffectBJ()
-    if(Trig_Garona_Starts_Func001Func003Func001Func001Func006C())then
-    call EnableTrigger(gg_trg_Rejuventation_Damage_Light_Blue)
-    call EnableTrigger(gg_trg_Rejuventation_Stop_Light_Blue)
-    else
-    if(Trig_Garona_Starts_Func001Func003Func001Func001Func006Func004C())then
-    call EnableTrigger(gg_trg_Rejuventation_Damage_Dark_Green)
-    call EnableTrigger(gg_trg_Rejuventation_Stop_Dark_Green)
-    else
-    if(Trig_Garona_Starts_Func001Func003Func001Func001Func006Func004Func004C())then
-    call EnableTrigger(gg_trg_Rejuventation_Damage_Brown)
-    call EnableTrigger(gg_trg_Rejuventation_Stop_Brown)
-    else
-    endif
-    endif
-    endif
-    else
     if(Trig_Garona_Starts_Func001Func003Func001Func001Func001C())then
     call UnitMakeAbilityPermanent(GetTriggerUnit(),true,'AEsf')
     call UnitMakeAbilityPermanent(GetTriggerUnit(),true,'AHmt')
@@ -304,7 +277,6 @@ function Trig_Garona_Starts_Func001Func003Func001Func001Func001Func004Func001C t
     call EnableTrigger(gg_trg_Disguise_End)
     call EnableTrigger(gg_trg_Disguise_End_Attack)
     else
-    endif
     endif
     endif
     endif

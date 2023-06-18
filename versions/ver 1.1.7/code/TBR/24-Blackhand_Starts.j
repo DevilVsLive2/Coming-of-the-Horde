@@ -18,30 +18,6 @@ function Trig_Blackhand_Starts_Func001Func002002003001001 takes nothing returns 
     call IssueTargetOrder(GetLastCreatedUnit(),"entanglingroots",GetEnumUnit())
     call UnitDamageTarget(gg_unit_Nbbc_0485, GetEnumUnit(), R2I(GetHeroStr(gg_unit_Nbbc_0485, true)), true, false, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_MAGIC, WEAPON_TYPE_WHOKNOWS )
     endfunction
-    function Trig_Blackhand_Starts_Func001Func007Func001Func005Func004Func004C takes nothing returns boolean
-    if(not(GetOwningPlayer(GetTriggerUnit())==Player(11)))then
-    return false
-    endif
-    return true
-    endfunction
-    function Trig_Blackhand_Starts_Func001Func007Func001Func005Func004C takes nothing returns boolean
-    if(not(GetOwningPlayer(GetTriggerUnit())==Player(10)))then
-    return false
-    endif
-    return true
-    endfunction
-    function Trig_Blackhand_Starts_Func001Func007Func001Func005C takes nothing returns boolean
-    if(not(GetOwningPlayer(GetTriggerUnit())==Player(9)))then
-    return false
-    endif
-    return true
-    endfunction
-    function Trig_Blackhand_Starts_Func001Func007Func001C takes nothing returns boolean
-    if(not(GetSpellAbilityId()=='AEsf'))then
-    return false
-    endif
-    return true
-    endfunction
     function Trig_Blackhand_Starts_Func001Func007Func007002003001001 takes nothing returns boolean
     return(IsUnitType(GetFilterUnit(),UNIT_TYPE_HERO)==true)
     endfunction
@@ -113,28 +89,6 @@ function Trig_Blackhand_Starts_Func001Func002002003001001 takes nothing returns 
     call PolledWait(8.00)
     call UnitRemoveAbilityBJ('A025',GetTriggerUnit())
     else
-    if(Trig_Blackhand_Starts_Func001Func007Func001C())then
-    set udg_RejuvInt[GetConvertedPlayerId(GetTriggerPlayer())]=1
-    call DestroyEffect(udg_RE[GetConvertedPlayerId(GetTriggerPlayer())])
-    call AddSpecialEffectTargetUnitBJ("overhead",GetTriggerUnit(),"RejuvTarget.mdx")
-    set udg_RE[GetConvertedPlayerId(GetTriggerPlayer())]=GetLastCreatedEffectBJ()
-    if(Trig_Blackhand_Starts_Func001Func007Func001Func005C())then
-    call EnableTrigger(gg_trg_Rejuventation_Damage_Light_Blue)
-    call EnableTrigger(gg_trg_Rejuventation_Stop_Light_Blue)
-    else
-    if(Trig_Blackhand_Starts_Func001Func007Func001Func005Func004C())then
-    call EnableTrigger(gg_trg_Rejuventation_Damage_Dark_Green)
-    call EnableTrigger(gg_trg_Rejuventation_Stop_Dark_Green)
-    else
-    if(Trig_Blackhand_Starts_Func001Func007Func001Func005Func004Func004C())then
-    call EnableTrigger(gg_trg_Rejuventation_Damage_Brown)
-    call EnableTrigger(gg_trg_Rejuventation_Stop_Brown)
-    else
-    endif
-    endif
-    endif
-    else
-    endif
     endif
     endif
     endfunction

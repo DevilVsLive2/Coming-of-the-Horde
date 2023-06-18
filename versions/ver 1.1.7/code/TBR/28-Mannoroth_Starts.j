@@ -1,9 +1,4 @@
-function Trig_Mannoroth_Starts_Func001Func001C takes nothing returns boolean
-    if(not(GetSpellAbilityId()=='AEsf'))then
-    return false
-    endif
-    return true
-    endfunction
+
     function Trig_Mannoroth_Starts_Func001Func019002 takes nothing returns nothing
     call UnitRemoveAbilityBJ('Aeth',GetEnumUnit())
     endfunction
@@ -38,15 +33,6 @@ function Trig_Mannoroth_Starts_Func001Func001C takes nothing returns boolean
     call DisableTrigger(gg_trg_Trample_Move)
     set udg_TrampleTarget=null
     else
-    if(Trig_Mannoroth_Starts_Func001Func001C())then
-    set udg_RejuvInt[GetConvertedPlayerId(GetTriggerPlayer())]=1
-    call DestroyEffect(udg_RE[GetConvertedPlayerId(GetTriggerPlayer())])
-    call AddSpecialEffectTargetUnitBJ("overhead",GetTriggerUnit(),"RejuvTarget.mdx")
-    set udg_RE[GetConvertedPlayerId(GetTriggerPlayer())]=GetLastCreatedEffectBJ()
-    call EnableTrigger(gg_trg_Rejuventation_Damage_Yellow)
-    call EnableTrigger(gg_trg_Rejuventation_Stop_Yellow)
-    else
-    endif
     endif
     endfunction
     function InitTrig_Mannoroth_Starts takes nothing returns nothing

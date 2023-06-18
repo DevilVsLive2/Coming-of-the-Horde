@@ -161,9 +161,9 @@ function Trig_Altar_Replace_Light_Blue_Func008Func001Func001Func001Func001Func00
     call SelectUnitForPlayerSingle(gg_unit_Ogld_0530,Player(9))
     call TriggerRegisterUnitEvent(gg_trg_Teron_Starts,gg_unit_Ogld_0530,EVENT_UNIT_SPELL_EFFECT)
     call TriggerRegisterUnitEvent(gg_trg_Teron_Learns,gg_unit_Ogld_0530,EVENT_UNIT_HERO_SKILL)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Damage_Light_Blue,gg_unit_Ogld_0530,EVENT_UNIT_DAMAGED)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Heal_Light_Blue,gg_unit_Ogld_0530,EVENT_UNIT_SPELL_FINISH)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Stop_Light_Blue,gg_unit_Ogld_0530,EVENT_UNIT_SPELL_ENDCAST)
+    
+    
+    
     call EnableTrigger(gg_trg_Trophies_and_Libation_and_Teron_Reset)
     else
     if(Trig_Altar_Replace_Light_Blue_Func008Func001Func001C())then
@@ -173,9 +173,9 @@ function Trig_Altar_Replace_Light_Blue_Func008Func001Func001Func001Func001Func00
     call SelectUnitForPlayerSingle(gg_unit_Otch_0529,Player(9))
     call TriggerRegisterUnitEvent(gg_trg_Zuluhed_Starts,gg_unit_Otch_0529,EVENT_UNIT_SPELL_EFFECT)
     call TriggerRegisterPlayerUnitEventSimple(gg_trg_Hellfire_Blast,Player(9),EVENT_PLAYER_UNIT_SPELL_EFFECT)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Damage_Light_Blue,gg_unit_Otch_0529,EVENT_UNIT_DAMAGED)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Heal_Light_Blue,gg_unit_Otch_0529,EVENT_UNIT_SPELL_FINISH)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Stop_Light_Blue,gg_unit_Otch_0529,EVENT_UNIT_SPELL_ENDCAST)
+    
+    
+    
     else
     if(Trig_Altar_Replace_Light_Blue_Func008Func001Func001Func001C())then
     call SetUnitPositionLoc(gg_unit_Ntin_0477,udg_TempPoint)
@@ -186,9 +186,9 @@ function Trig_Altar_Replace_Light_Blue_Func008Func001Func001Func001Func001Func00
     call TriggerRegisterUnitEvent(gg_trg_Automated_Machinery,gg_unit_Ntin_0477,EVENT_UNIT_SPELL_EFFECT)
     call TriggerRegisterUnitEvent(gg_trg_Steam_Contraption_On,gg_unit_Ntin_0477,EVENT_UNIT_ISSUED_ORDER)
     call TriggerRegisterUnitEvent(gg_trg_Steam_Contraption_Off,gg_unit_Ntin_0477,EVENT_UNIT_ISSUED_ORDER)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Damage_Light_Blue,gg_unit_Ntin_0477,EVENT_UNIT_DAMAGED)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Heal_Light_Blue,gg_unit_Ntin_0477,EVENT_UNIT_SPELL_FINISH)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Stop_Light_Blue,gg_unit_Ntin_0477,EVENT_UNIT_SPELL_ENDCAST)
+    
+    
+    
     else
     if(Trig_Altar_Replace_Light_Blue_Func008Func001Func001Func001Func001C())then
     call SetUnitPositionLoc(gg_unit_Othr_0515,udg_TempPoint)
@@ -196,9 +196,9 @@ function Trig_Altar_Replace_Light_Blue_Func008Func001Func001Func001Func001Func00
     call ShowUnitShow(gg_unit_Othr_0515)
     call SelectUnitForPlayerSingle(gg_unit_Othr_0515,Player(9))
     call TriggerRegisterUnitEvent(gg_trg_Guldan_Starts,gg_unit_Othr_0515,EVENT_UNIT_SPELL_EFFECT)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Damage_Light_Blue,gg_unit_Othr_0515,EVENT_UNIT_DAMAGED)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Heal_Light_Blue,gg_unit_Othr_0515,EVENT_UNIT_SPELL_FINISH)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Stop_Light_Blue,gg_unit_Othr_0515,EVENT_UNIT_SPELL_ENDCAST)
+    
+    
+    
     call EnableTrigger(gg_trg_Trophies_and_Libation_and_Teron_Reset)
     else
     if(Trig_Altar_Replace_Light_Blue_Func008Func001Func001Func001Func001Func001C())then
@@ -210,9 +210,9 @@ function Trig_Altar_Replace_Light_Blue_Func008Func001Func001Func001Func001Func00
     call TriggerRegisterPlayerUnitEventSimple(gg_trg_Last_Rider_Death,Player(9),EVENT_PLAYER_UNIT_SPELL_FINISH)
     call TriggerRegisterPlayerUnitEventSimple(gg_trg_Spirit_Wolf_Death,Player(9),EVENT_PLAYER_UNIT_SPELL_FINISH)
     call TriggerRegisterPlayerUnitEventSimple(gg_trg_Spirit_Wolf_Stomp,Player(9),EVENT_PLAYER_UNIT_SPELL_EFFECT)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Damage_Light_Blue,gg_unit_Ofar_0481,EVENT_UNIT_DAMAGED)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Heal_Light_Blue,gg_unit_Ofar_0481,EVENT_UNIT_SPELL_FINISH)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Stop_Light_Blue,gg_unit_Ofar_0481,EVENT_UNIT_SPELL_ENDCAST)
+    
+    
+    
     else
     if(Trig_Altar_Replace_Light_Blue_Func008Func001Func001Func001Func001Func001Func001C())then
     call SetUnitPositionLoc(gg_unit_Orkn_0516,udg_TempPoint)
@@ -222,9 +222,9 @@ function Trig_Altar_Replace_Light_Blue_Func008Func001Func001Func001Func001Func00
     call SelectUnitForPlayerSingle(gg_unit_Orkn_0516,Player(9))
     call TriggerRegisterUnitEvent(gg_trg_Nerzhul_Starts,gg_unit_Orkn_0516,EVENT_UNIT_SPELL_EFFECT)
     call TriggerRegisterUnitEvent(gg_trg_Nether_Spirits_Level,gg_unit_Orkn_0516,EVENT_UNIT_HERO_SKILL)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Damage_Light_Blue,gg_unit_Orkn_0516,EVENT_UNIT_DAMAGED)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Heal_Light_Blue,gg_unit_Orkn_0516,EVENT_UNIT_SPELL_FINISH)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Stop_Light_Blue,gg_unit_Orkn_0516,EVENT_UNIT_SPELL_ENDCAST)
+    
+    
+    
     else
     if(Trig_Altar_Replace_Light_Blue_Func008Func001Func001Func001Func001Func001Func001Func001C())then
     call SetUnitPositionLoc(gg_unit_Orex_0465,udg_TempPoint)
@@ -235,9 +235,9 @@ function Trig_Altar_Replace_Light_Blue_Func008Func001Func001Func001Func001Func00
     call TriggerRegisterUnitEvent(gg_trg_Chogall_Starts,gg_unit_Orex_0465,EVENT_UNIT_SPELL_EFFECT)
     call TriggerRegisterUnitEvent(gg_trg_Chogall_Level,gg_unit_Orex_0465,EVENT_UNIT_HERO_SKILL)
     call TriggerRegisterUnitEvent(gg_trg_Self_Mutilate_Drop,gg_unit_Orex_0465,EVENT_UNIT_DROP_ITEM)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Damage_Light_Blue,gg_unit_Orex_0465,EVENT_UNIT_DAMAGED)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Heal_Light_Blue,gg_unit_Orex_0465,EVENT_UNIT_SPELL_FINISH)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Stop_Light_Blue,gg_unit_Orex_0465,EVENT_UNIT_SPELL_ENDCAST)
+    
+    
+    
     else
     endif
     endif
@@ -260,9 +260,9 @@ function Trig_Altar_Replace_Light_Blue_Func008Func001Func001Func001Func001Func00
     call TriggerRegisterUnitEvent(gg_trg_Griselda_Summons,gg_unit_Ekee_0528,EVENT_UNIT_SUMMON)
     call TriggerRegisterUnitEvent(gg_trg_Griselda_Learns,gg_unit_Ekee_0528,EVENT_UNIT_HERO_SKILL)
     call TriggerRegisterUnitEvent(gg_trg_Griselda_Dies,gg_unit_Ekee_0528,EVENT_UNIT_DEATH)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Damage_Light_Blue,gg_unit_Ekee_0528,EVENT_UNIT_DAMAGED)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Heal_Light_Blue,gg_unit_Ekee_0528,EVENT_UNIT_SPELL_FINISH)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Stop_Light_Blue,gg_unit_Ekee_0528,EVENT_UNIT_SPELL_ENDCAST)
+    
+    
+    
     else
     if(Trig_Altar_Replace_Light_Blue_Func009Func001Func001C())then
     call SetUnitPositionLoc(gg_unit_Osam_0526,udg_TempPoint)
@@ -271,9 +271,9 @@ function Trig_Altar_Replace_Light_Blue_Func008Func001Func001Func001Func001Func00
     call SelectUnitForPlayerSingle(gg_unit_Osam_0526,Player(9))
     call TriggerRegisterUnitEvent(gg_trg_Kilrogg_Starts,gg_unit_Osam_0526,EVENT_UNIT_SPELL_EFFECT)
     call TriggerRegisterUnitEvent(gg_trg_Bladestorm_Removal,gg_unit_Osam_0526,EVENT_UNIT_DEATH)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Damage_Light_Blue,gg_unit_Osam_0526,EVENT_UNIT_DAMAGED)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Heal_Light_Blue,gg_unit_Osam_0526,EVENT_UNIT_SPELL_FINISH)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Stop_Light_Blue,gg_unit_Osam_0526,EVENT_UNIT_SPELL_ENDCAST)
+    
+    
+    
     else
     if(Trig_Altar_Replace_Light_Blue_Func009Func001Func001Func001C())then
     call SetUnitPositionLoc(gg_unit_Obla_0496,udg_TempPoint)
@@ -281,9 +281,9 @@ function Trig_Altar_Replace_Light_Blue_Func008Func001Func001Func001Func001Func00
     call ShowUnitShow(gg_unit_Obla_0496)
     call SelectUnitForPlayerSingle(gg_unit_Obla_0496,Player(9))
     call TriggerRegisterUnitEvent(gg_trg_Maim_Starts,gg_unit_Obla_0496,EVENT_UNIT_SPELL_EFFECT)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Damage_Light_Blue,gg_unit_Obla_0496,EVENT_UNIT_DAMAGED)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Heal_Light_Blue,gg_unit_Obla_0496,EVENT_UNIT_SPELL_FINISH)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Stop_Light_Blue,gg_unit_Obla_0496,EVENT_UNIT_SPELL_ENDCAST)
+    
+    
+    
     else
     if(Trig_Altar_Replace_Light_Blue_Func009Func001Func001Func001Func001C())then
     set udg_GaronaOwner=Player(9)
@@ -297,9 +297,9 @@ function Trig_Altar_Replace_Light_Blue_Func008Func001Func001Func001Func001Func00
     call TriggerRegisterUnitEvent(gg_trg_Fan_of_Knives_Learn,gg_unit_O00M_0518,EVENT_UNIT_HERO_SKILL)
     call TriggerRegisterUnitEvent(gg_trg_Garona_Attack_Start,gg_unit_O00M_0518,EVENT_UNIT_SPELL_CAST)
     call TriggerRegisterUnitEvent(gg_trg_Disguise_Revive,gg_unit_O00M_0518,EVENT_UNIT_HERO_REVIVE_FINISH)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Damage_Light_Blue,gg_unit_O00M_0518,EVENT_UNIT_DAMAGED)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Heal_Light_Blue,gg_unit_O00M_0518,EVENT_UNIT_SPELL_FINISH)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Stop_Light_Blue,gg_unit_O00M_0518,EVENT_UNIT_SPELL_ENDCAST)
+    
+    
+    
     else
     if(Trig_Altar_Replace_Light_Blue_Func009Func001Func001Func001Func001Func001C())then
     call SetUnitPositionLoc(gg_unit_Opgh_0483,udg_TempPoint)
@@ -309,9 +309,9 @@ function Trig_Altar_Replace_Light_Blue_Func008Func001Func001Func001Func001Func00
     call TriggerRegisterUnitEvent(gg_trg_Grom_Starts,gg_unit_Opgh_0483,EVENT_UNIT_SPELL_EFFECT)
     call TriggerRegisterUnitEvent(gg_trg_Corrupted_Blood,gg_unit_Opgh_0483,EVENT_UNIT_SPELL_FINISH)
     call EnableTrigger(gg_trg_Slice_and_Dice)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Damage_Light_Blue,gg_unit_Opgh_0483,EVENT_UNIT_DAMAGED)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Heal_Light_Blue,gg_unit_Opgh_0483,EVENT_UNIT_SPELL_FINISH)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Stop_Light_Blue,gg_unit_Opgh_0483,EVENT_UNIT_SPELL_ENDCAST)
+    
+    
+    
     else
     if(Trig_Altar_Replace_Light_Blue_Func009Func001Func001Func001Func001Func001Func001C())then
     call SetUnitPositionLoc(gg_unit_Odrt_0524,udg_TempPoint)
@@ -319,9 +319,9 @@ function Trig_Altar_Replace_Light_Blue_Func008Func001Func001Func001Func001Func00
     call ShowUnitShow(gg_unit_Odrt_0524)
     call SelectUnitForPlayerSingle(gg_unit_Odrt_0524,Player(9))
     call TriggerRegisterUnitEvent(gg_trg_Zuljin_Starts,gg_unit_Odrt_0524,EVENT_UNIT_SPELL_EFFECT)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Damage_Light_Blue,gg_unit_Odrt_0524,EVENT_UNIT_DAMAGED)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Heal_Light_Blue,gg_unit_Odrt_0524,EVENT_UNIT_SPELL_FINISH)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Stop_Light_Blue,gg_unit_Odrt_0524,EVENT_UNIT_SPELL_ENDCAST)
+    
+    
+    
     else
     endif
     endif
@@ -338,9 +338,9 @@ function Trig_Altar_Replace_Light_Blue_Func008Func001Func001Func001Func001Func00
     call ShowUnitShow(gg_unit_Ogrh_0532)
     call SelectUnitForPlayerSingle(gg_unit_Ogrh_0532,Player(9))
     call TriggerRegisterUnitEvent(gg_trg_Orgrim_Starts,gg_unit_Ogrh_0532,EVENT_UNIT_SPELL_EFFECT)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Damage_Light_Blue,gg_unit_Ogrh_0532,EVENT_UNIT_DAMAGED)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Heal_Light_Blue,gg_unit_Ogrh_0532,EVENT_UNIT_SPELL_FINISH)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Stop_Light_Blue,gg_unit_Ogrh_0532,EVENT_UNIT_SPELL_ENDCAST)
+    
+    
+    
     else
     if(Trig_Altar_Replace_Light_Blue_Func010Func001Func001C())then
     call SetUnitPositionLoc(gg_unit_Nbst_0519,udg_TempPoint)
@@ -350,9 +350,9 @@ function Trig_Altar_Replace_Light_Blue_Func008Func001Func001Func001Func001Func00
     call SelectUnitForPlayerSingle(gg_unit_Nbst_0519,Player(9))
     call TriggerRegisterUnitEvent(gg_trg_Rend_Starts,gg_unit_Nbst_0519,EVENT_UNIT_SPELL_EFFECT)
     call TriggerRegisterUnitEvent(gg_trg_Intoxicating_Pain_Start,gg_unit_Nbst_0519,EVENT_UNIT_HERO_SKILL)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Damage_Light_Blue,gg_unit_Nbst_0519,EVENT_UNIT_DAMAGED)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Heal_Light_Blue,gg_unit_Nbst_0519,EVENT_UNIT_SPELL_FINISH)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Stop_Light_Blue,gg_unit_Nbst_0519,EVENT_UNIT_SPELL_ENDCAST)
+    
+    
+    
     else
     if(Trig_Altar_Replace_Light_Blue_Func010Func001Func001Func001C())then
     call SetUnitPositionLoc(gg_unit_Ocbh_0511,udg_TempPoint)
@@ -365,9 +365,9 @@ function Trig_Altar_Replace_Light_Blue_Func008Func001Func001Func001Func001Func00
     call TriggerRegisterUnitEvent(gg_trg_Shadow_of_the_Fallen,gg_unit_Ocbh_0511,EVENT_UNIT_SPELL_FINISH)
     call TriggerRegisterUnitEvent(gg_trg_Trophies_of_the_Fallen_Turn_on,gg_unit_Ocbh_0511,EVENT_UNIT_HERO_SKILL)
     call TriggerRegisterUnitEvent(gg_trg_Hellish_Projectile_Level,gg_unit_Ocbh_0511,EVENT_UNIT_HERO_SKILL)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Damage_Light_Blue,gg_unit_Ocbh_0511,EVENT_UNIT_DAMAGED)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Heal_Light_Blue,gg_unit_Ocbh_0511,EVENT_UNIT_SPELL_FINISH)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Stop_Light_Blue,gg_unit_Ocbh_0511,EVENT_UNIT_SPELL_ENDCAST)
+    
+    
+    
     else
     if(Trig_Altar_Replace_Light_Blue_Func010Func001Func001Func001Func001C())then
     call SetUnitPositionLoc(gg_unit_Nsjs_0498,udg_TempPoint)
@@ -378,9 +378,9 @@ function Trig_Altar_Replace_Light_Blue_Func008Func001Func001Func001Func001Func00
     call TriggerRegisterPlayerUnitEventSimple(gg_trg_Death_Pact,Player(9),EVENT_PLAYER_UNIT_DEATH)
     call TriggerRegisterPlayerUnitEventSimple(gg_trg_Death_Pact,Player(10),EVENT_PLAYER_UNIT_DEATH)
     call TriggerRegisterPlayerUnitEventSimple(gg_trg_Death_Pact,Player(11),EVENT_PLAYER_UNIT_DEATH)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Damage_Light_Blue,gg_unit_Nsjs_0498,EVENT_UNIT_DAMAGED)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Heal_Light_Blue,gg_unit_Nsjs_0498,EVENT_UNIT_SPELL_FINISH)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Stop_Light_Blue,gg_unit_Nsjs_0498,EVENT_UNIT_SPELL_ENDCAST)
+    
+    
+    
     else
     if(Trig_Altar_Replace_Light_Blue_Func010Func001Func001Func001Func001Func001C())then
     call SetUnitPositionLoc(gg_unit_Nbbc_0485,udg_TempPoint)
@@ -389,9 +389,9 @@ function Trig_Altar_Replace_Light_Blue_Func008Func001Func001Func001Func001Func00
     call SelectUnitForPlayerSingle(gg_unit_Nbbc_0485,Player(9))
     call TriggerRegisterUnitEvent(gg_trg_Blackhand_Starts,gg_unit_Nbbc_0485,EVENT_UNIT_SPELL_EFFECT)
     call TriggerRegisterUnitEvent(gg_trg_Valor,gg_unit_Nbbc_0485,EVENT_UNIT_SPELL_FINISH)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Damage_Light_Blue,gg_unit_Nbbc_0485,EVENT_UNIT_DAMAGED)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Heal_Light_Blue,gg_unit_Nbbc_0485,EVENT_UNIT_SPELL_FINISH)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Stop_Light_Blue,gg_unit_Nbbc_0485,EVENT_UNIT_SPELL_ENDCAST)
+    
+    
+    
     else
     endif
     endif

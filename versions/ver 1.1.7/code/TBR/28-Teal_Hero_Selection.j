@@ -31,9 +31,6 @@ function Trig_Teal_Hero_Selection_Func001Func001Func001Func001C takes nothing re
     call SetUnitOwner(gg_unit_H01B_0507,Player(2),true)
     call ShowUnitShow(gg_unit_H01B_0507)
     call TriggerRegisterUnitEvent(gg_trg_Derek_Starts,gg_unit_H01B_0507,EVENT_UNIT_SPELL_EFFECT)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Damage_Teal,gg_unit_H01B_0507,EVENT_UNIT_DAMAGED)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Heal_Teal,gg_unit_H01B_0507,EVENT_UNIT_SPELL_FINISH)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Stop_Teal,gg_unit_H01B_0507,EVENT_UNIT_SPELL_ENDCAST)
     call SetPlayerHandicapXPBJ(Player(2),92.00)
     else
     if(Trig_Teal_Hero_Selection_Func001Func001C())then
@@ -45,9 +42,6 @@ function Trig_Teal_Hero_Selection_Func001Func001Func001Func001C takes nothing re
     call ShowUnitShow(gg_unit_Hapm_0503)
     call TriggerRegisterUnitEvent(gg_trg_Daelin_Starts,gg_unit_Hapm_0503,EVENT_UNIT_SPELL_EFFECT)
     call TriggerRegisterUnitEvent(gg_trg_Daelin_Learns,gg_unit_Hapm_0503,EVENT_UNIT_HERO_SKILL)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Damage_Teal,gg_unit_Hapm_0503,EVENT_UNIT_DAMAGED)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Heal_Teal,gg_unit_Hapm_0503,EVENT_UNIT_SPELL_FINISH)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Stop_Teal,gg_unit_Hapm_0503,EVENT_UNIT_SPELL_ENDCAST)
     call SetPlayerHandicapXPBJ(Player(2),99.00)
     else
     if(Trig_Teal_Hero_Selection_Func001Func001Func001C())then
@@ -60,9 +54,6 @@ function Trig_Teal_Hero_Selection_Func001Func001Func001Func001C takes nothing re
     call TriggerRegisterUnitEvent(gg_trg_Navigation_Bonus,gg_unit_Hhkl_0486,EVENT_UNIT_HERO_SKILL)
     call TriggerRegisterUnitEvent(gg_trg_Net,gg_unit_Hhkl_0486,EVENT_UNIT_SPELL_CAST)
     call TriggerRegisterUnitEvent(gg_trg_Duke_Starts,gg_unit_Hhkl_0486,EVENT_UNIT_SPELL_EFFECT)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Damage_Teal,gg_unit_Hhkl_0486,EVENT_UNIT_DAMAGED)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Heal_Teal,gg_unit_Hhkl_0486,EVENT_UNIT_SPELL_FINISH)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Stop_Teal,gg_unit_Hhkl_0486,EVENT_UNIT_SPELL_ENDCAST)
     call SetPlayerHandicapXPBJ(Player(2),99.00)
     else
     if(Trig_Teal_Hero_Selection_Func001Func001Func001Func001C())then
@@ -77,9 +68,6 @@ function Trig_Teal_Hero_Selection_Func001Func001Func001Func001C takes nothing re
     call TriggerRegisterUnitEvent(gg_trg_Mishan_Attack_Start,gg_unit_Emoo_0488,EVENT_UNIT_SPELL_CAST)
     call TriggerRegisterUnitEvent(gg_trg_Piercing_Blade,gg_unit_Emoo_0488,EVENT_UNIT_HERO_SKILL)
     call TriggerRegisterUnitEvent(gg_trg_Mishan_Stop_Abuse,gg_unit_Emoo_0488,EVENT_UNIT_ISSUED_ORDER)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Damage_Teal,gg_unit_Emoo_0488,EVENT_UNIT_DAMAGED)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Heal_Teal,gg_unit_Emoo_0488,EVENT_UNIT_SPELL_FINISH)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Stop_Teal,gg_unit_Emoo_0488,EVENT_UNIT_SPELL_ENDCAST)
     call UnitAddAbilityBJ('ACua',gg_unit_o008_0490)
     call SetPlayerHandicapXPBJ(Player(2),99.00)
     else

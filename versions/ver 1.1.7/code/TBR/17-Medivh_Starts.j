@@ -1,9 +1,3 @@
-function Trig_Medivh_Starts_Func001Func001Func001Func001C takes nothing returns boolean
-    if(not(GetSpellAbilityId()=='AEsf'))then
-    return false
-    endif
-    return true
-    endfunction
     function Trig_Medivh_Starts_Func001Func001Func001C takes nothing returns boolean
     if(not(GetSpellAbilityId()=='A09J'))then
     return false
@@ -150,15 +144,6 @@ function Trig_Medivh_Starts_Func001Func001Func001Func001C takes nothing returns 
     call PlaySoundAtPointBJ(gg_snd_EyeOfSargeras,100,udg_TempPoint,0)
     call RemoveLocation(udg_TempPoint)
     else
-    if(Trig_Medivh_Starts_Func001Func001Func001Func001C())then
-    set udg_RejuvInt[GetConvertedPlayerId(GetTriggerPlayer())]=1
-    call DestroyEffect(udg_RE[GetConvertedPlayerId(GetTriggerPlayer())])
-    call AddSpecialEffectTargetUnitBJ("overhead",GetTriggerUnit(),"RejuvTarget.mdx")
-    set udg_RE[GetConvertedPlayerId(GetTriggerPlayer())]=GetLastCreatedEffectBJ()
-    call EnableTrigger(gg_trg_Rejuventation_Damage_Yellow)
-    call EnableTrigger(gg_trg_Rejuventation_Stop_Yellow)
-    else
-    endif
     endif
     endif
     endif

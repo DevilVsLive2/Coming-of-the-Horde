@@ -10,12 +10,6 @@ function Trig_Azgalor_Starts_Func001Func001Func001Func001Func011C takes nothing 
     endif
     return true
     endfunction
-    function Trig_Azgalor_Starts_Func001Func001Func001C takes nothing returns boolean
-    if(not(GetSpellAbilityId()=='AEsf'))then
-    return false
-    endif
-    return true
-    endfunction
     function Trig_Azgalor_Starts_Func001Func001C takes nothing returns boolean
     if(not(GetSpellAbilityId()=='ANta'))then
     return false
@@ -80,14 +74,6 @@ function Trig_Azgalor_Starts_Func001Func001Func001Func001Func011C takes nothing 
     call UnitRemoveAbilityBJ('A065',GetTriggerUnit())
     call UnitRemoveAbilityBJ('A0FN',GetTriggerUnit())
     else
-    if(Trig_Azgalor_Starts_Func001Func001Func001C())then
-    set udg_RejuvInt[GetConvertedPlayerId(GetTriggerPlayer())]=1
-    call DestroyEffect(udg_RE[GetConvertedPlayerId(GetTriggerPlayer())])
-    call AddSpecialEffectTargetUnitBJ("overhead",GetTriggerUnit(),"RejuvTarget.mdx")
-    set udg_RE[GetConvertedPlayerId(GetTriggerPlayer())]=GetLastCreatedEffectBJ()
-    call EnableTrigger(gg_trg_Rejuventation_Damage_Yellow)
-    call EnableTrigger(gg_trg_Rejuventation_Stop_Yellow)
-    else
     if(Trig_Azgalor_Starts_Func001Func001Func001Func001C())then
     set udg_HellishShroudOn=true
     set udg_HellishShroud=(((I2R(GetUnitAbilityLevelSwapped('A0C3',gg_unit_Npld_0527))*100.00)+300.00)+(GetUnitStateSwap(UNIT_STATE_MAX_LIFE,gg_unit_Npld_0527)*0.20))
@@ -104,7 +90,6 @@ function Trig_Azgalor_Starts_Func001Func001Func001Func001Func011C takes nothing 
     else
     endif
     else
-    endif
     endif
     endif
     endif

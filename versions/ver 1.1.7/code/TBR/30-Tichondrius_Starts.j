@@ -16,12 +16,6 @@ function Trig_Tichondrius_Starts_Func001Func001Func001Func007C takes nothing ret
     endif
     return true
     endfunction
-    function Trig_Tichondrius_Starts_Func001Func001C takes nothing returns boolean
-    if(not(GetSpellAbilityId()=='AEsf'))then
-    return false
-    endif
-    return true
-    endfunction
     function Trig_Tichondrius_Starts_Func001Func003002003001 takes nothing returns boolean
     return(IsUnitType(GetFilterUnit(),UNIT_TYPE_MECHANICAL)==false)
     endfunction
@@ -58,14 +52,6 @@ function Trig_Tichondrius_Starts_Func001Func001Func001Func007C takes nothing ret
     call RemoveLocation(udg_TempPoint)
     call DestroyGroup(udg_Temp_UnitGroup)
     else
-    if(Trig_Tichondrius_Starts_Func001Func001C())then
-    set udg_RejuvInt[GetConvertedPlayerId(GetTriggerPlayer())]=1
-    call DestroyEffect(udg_RE[GetConvertedPlayerId(GetTriggerPlayer())])
-    call AddSpecialEffectTargetUnitBJ("overhead",GetTriggerUnit(),"RejuvTarget.mdx")
-    set udg_RE[GetConvertedPlayerId(GetTriggerPlayer())]=GetLastCreatedEffectBJ()
-    call EnableTrigger(gg_trg_Rejuventation_Damage_Yellow)
-    call EnableTrigger(gg_trg_Rejuventation_Stop_Yellow)
-    else
     if(Trig_Tichondrius_Starts_Func001Func001Func001C())then
     call EnableTrigger(gg_trg_The_Darkener_Damage_Reduce)
     call UnitAddAbilityBJ('A089',GetTriggerUnit())
@@ -87,7 +73,6 @@ function Trig_Tichondrius_Starts_Func001Func001Func001Func007C takes nothing ret
     call SetUnitVertexColorBJ(gg_unit_Utic_0512,100.00,100.00,100.00,0)
     call SetUnitScalePercent(gg_unit_Utic_0512,115.00,115.00,115.00)
     else
-    endif
     endif
     endif
     endfunction

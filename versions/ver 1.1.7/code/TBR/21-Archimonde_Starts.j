@@ -4,12 +4,6 @@ function Trig_Archimonde_Starts_Func001Func001Func001C takes nothing returns boo
     endif
     return true
     endfunction
-    function Trig_Archimonde_Starts_Func001Func001C takes nothing returns boolean
-    if(not(GetSpellAbilityId()=='AEsf'))then
-    return false
-    endif
-    return true
-    endfunction
     function Trig_Archimonde_Starts_Func001C takes nothing returns boolean
     if(not(GetSpellAbilityId()=='AEmb'))then
     return false
@@ -19,14 +13,6 @@ function Trig_Archimonde_Starts_Func001Func001Func001C takes nothing returns boo
     function Trig_Archimonde_Starts_Actions takes nothing returns nothing
     if(Trig_Archimonde_Starts_Func001C())then
     call UnitDamageTargetBJ(gg_unit_Uwar_0460,GetSpellTargetUnit(),(I2R(GetHeroStatBJ(bj_HEROSTAT_INT,gg_unit_Uwar_0460,true))*1.25),ATTACK_TYPE_NORMAL,DAMAGE_TYPE_MAGIC)
-    else
-    if(Trig_Archimonde_Starts_Func001Func001C())then
-    set udg_RejuvInt[GetConvertedPlayerId(GetTriggerPlayer())]=1
-    call DestroyEffect(udg_RE[GetConvertedPlayerId(GetTriggerPlayer())])
-    call AddSpecialEffectTargetUnitBJ("overhead",GetTriggerUnit(),"RejuvTarget.mdx")
-    set udg_RE[GetConvertedPlayerId(GetTriggerPlayer())]=GetLastCreatedEffectBJ()
-    call EnableTrigger(gg_trg_Rejuventation_Damage_Yellow)
-    call EnableTrigger(gg_trg_Rejuventation_Stop_Yellow)
     else
     if(Trig_Archimonde_Starts_Func001Func001Func001C())then
     call EnableTrigger(gg_trg_Nether_Portal_Teleport)
@@ -54,7 +40,6 @@ function Trig_Archimonde_Starts_Func001Func001Func001C takes nothing returns boo
     call DisableTrigger(gg_trg_Nether_Portal_Teleport)
     call RemoveLocation(udg_NetherPortalPoint)
     else
-    endif
     endif
     endif
     endfunction

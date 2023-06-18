@@ -1,27 +1,4 @@
-function Trig_Ratso_Starts_Func001Func001Func001Func005Func005Func004Func004C takes nothing returns boolean
-    if(not(GetOwningPlayer(GetTriggerUnit())==Player(11)))then
-    return false
-    endif
-    return true
-    endfunction
-    function Trig_Ratso_Starts_Func001Func001Func001Func005Func005Func004C takes nothing returns boolean
-    if(not(GetOwningPlayer(GetTriggerUnit())==Player(10)))then
-    return false
-    endif
-    return true
-    endfunction
-    function Trig_Ratso_Starts_Func001Func001Func001Func005Func005C takes nothing returns boolean
-    if(not(GetOwningPlayer(GetTriggerUnit())==Player(9)))then
-    return false
-    endif
-    return true
-    endfunction
-    function Trig_Ratso_Starts_Func001Func001Func001Func005C takes nothing returns boolean
-    if(not(GetSpellAbilityId()=='AEsf'))then
-    return false
-    endif
-    return true
-    endfunction
+
     function Trig_Ratso_Starts_Func001Func001Func001C takes nothing returns boolean
     if(not(GetSpellAbilityId()=='Abrf'))then
     return false
@@ -82,28 +59,6 @@ function Trig_Ratso_Starts_Func001Func001Func001Func005Func005Func004Func004C ta
     call UnitMakeAbilityPermanent(GetTriggerUnit(),true,'AHmt')
     call UnitMakeAbilityPermanent(GetTriggerUnit(),true,'Asbp')
     else
-    if(Trig_Ratso_Starts_Func001Func001Func001Func005C())then
-    set udg_RejuvInt[GetConvertedPlayerId(GetTriggerPlayer())]=1
-    call DestroyEffect(udg_RE[GetConvertedPlayerId(GetTriggerPlayer())])
-    call AddSpecialEffectTargetUnitBJ("overhead",GetTriggerUnit(),"RejuvTarget.mdx")
-    set udg_RE[GetConvertedPlayerId(GetTriggerPlayer())]=GetLastCreatedEffectBJ()
-    if(Trig_Ratso_Starts_Func001Func001Func001Func005Func005C())then
-    call EnableTrigger(gg_trg_Rejuventation_Damage_Light_Blue)
-    call EnableTrigger(gg_trg_Rejuventation_Stop_Light_Blue)
-    else
-    if(Trig_Ratso_Starts_Func001Func001Func001Func005Func005Func004C())then
-    call EnableTrigger(gg_trg_Rejuventation_Damage_Dark_Green)
-    call EnableTrigger(gg_trg_Rejuventation_Stop_Dark_Green)
-    else
-    if(Trig_Ratso_Starts_Func001Func001Func001Func005Func005Func004Func004C())then
-    call EnableTrigger(gg_trg_Rejuventation_Damage_Brown)
-    call EnableTrigger(gg_trg_Rejuventation_Stop_Brown)
-    else
-    endif
-    endif
-    endif
-    else
-    endif
     endif
     endif
     endif

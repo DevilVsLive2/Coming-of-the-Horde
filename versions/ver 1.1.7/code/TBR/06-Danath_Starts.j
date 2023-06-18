@@ -2,12 +2,6 @@ globals
     timer DanathTaunt = CreateTimer()
 endglobals
 
-function Trig_Danath_Starts_Func001Func001Func001C takes nothing returns boolean
-    if(not(GetSpellAbilityId()=='AEsf'))then
-    return false
-    endif
-    return true
-    endfunction
     function Trig_Danath_Starts_Func001Func001C takes nothing returns boolean
     if(not(GetSpellAbilityId()=='AHtb'))then
     return false
@@ -65,15 +59,6 @@ endfunction
     call UnitDamageTargetBJ(gg_unit_Hdgo_0520,GetSpellTargetUnit(),((42.00*I2R(GetUnitAbilityLevelSwapped('AHtb',gg_unit_Hdgo_0520)))+15.00),ATTACK_TYPE_MELEE,DAMAGE_TYPE_UNIVERSAL)
     call UnitDamageTargetBJ(gg_unit_Hdgo_0520,GetSpellTargetUnit(),((43.00*I2R(GetUnitAbilityLevelSwapped('AHtb',gg_unit_Hdgo_0520)))+15.00),ATTACK_TYPE_MELEE,DAMAGE_TYPE_NORMAL)
     else
-    if(Trig_Danath_Starts_Func001Func001Func001C())then
-    set udg_RejuvInt[GetConvertedPlayerId(GetTriggerPlayer())]=1
-    call DestroyEffect(udg_RE[GetConvertedPlayerId(GetTriggerPlayer())])
-    call AddSpecialEffectTargetUnitBJ("overhead",GetTriggerUnit(),"RejuvTarget.mdx")
-    set udg_RE[GetConvertedPlayerId(GetTriggerPlayer())]=GetLastCreatedEffectBJ()
-    call EnableTrigger(gg_trg_Rejuventation_Damage_Red)
-    call EnableTrigger(gg_trg_Rejuventation_Stop_Red)
-    else
-    endif
     endif
     endif
     

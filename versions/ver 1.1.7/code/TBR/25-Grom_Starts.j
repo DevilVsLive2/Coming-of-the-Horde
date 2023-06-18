@@ -4,30 +4,6 @@ function Trig_Grom_Starts_Func001Func013Func001Func001C takes nothing returns bo
     endif
     return true
     endfunction
-    function Trig_Grom_Starts_Func001Func013Func001Func006Func004Func004C takes nothing returns boolean
-    if(not(GetOwningPlayer(GetTriggerUnit())==Player(11)))then
-    return false
-    endif
-    return true
-    endfunction
-    function Trig_Grom_Starts_Func001Func013Func001Func006Func004C takes nothing returns boolean
-    if(not(GetOwningPlayer(GetTriggerUnit())==Player(10)))then
-    return false
-    endif
-    return true
-    endfunction
-    function Trig_Grom_Starts_Func001Func013Func001Func006C takes nothing returns boolean
-    if(not(GetOwningPlayer(GetTriggerUnit())==Player(9)))then
-    return false
-    endif
-    return true
-    endfunction
-    function Trig_Grom_Starts_Func001Func013Func001C takes nothing returns boolean
-    if(not(GetSpellAbilityId()=='AEsf'))then
-    return false
-    endif
-    return true
-    endfunction
     function Trig_Grom_Starts_Func001Func013Func003Func005Func005Func005C takes nothing returns boolean
     if(not(GetUnitAbilityLevelSwapped('ANht',GetTriggerUnit())==4))then
     return false
@@ -109,27 +85,6 @@ function Trig_Grom_Starts_Func001Func013Func001Func001C takes nothing returns bo
     endif
     endif
     else
-    if(Trig_Grom_Starts_Func001Func013Func001C())then
-    set udg_RejuvInt[GetConvertedPlayerId(GetTriggerPlayer())]=1
-    call DestroyEffect(udg_RE[GetConvertedPlayerId(GetTriggerPlayer())])
-    call AddSpecialEffectTargetUnitBJ("overhead",GetTriggerUnit(),"RejuvTarget.mdx")
-    set udg_RE[GetConvertedPlayerId(GetTriggerPlayer())]=GetLastCreatedEffectBJ()
-    if(Trig_Grom_Starts_Func001Func013Func001Func006C())then
-    call EnableTrigger(gg_trg_Rejuventation_Damage_Light_Blue)
-    call EnableTrigger(gg_trg_Rejuventation_Stop_Light_Blue)
-    else
-    if(Trig_Grom_Starts_Func001Func013Func001Func006Func004C())then
-    call EnableTrigger(gg_trg_Rejuventation_Damage_Dark_Green)
-    call EnableTrigger(gg_trg_Rejuventation_Stop_Dark_Green)
-    else
-    if(Trig_Grom_Starts_Func001Func013Func001Func006Func004Func004C())then
-    call EnableTrigger(gg_trg_Rejuventation_Damage_Brown)
-    call EnableTrigger(gg_trg_Rejuventation_Stop_Brown)
-    else
-    endif
-    endif
-    endif
-    else
     if(Trig_Grom_Starts_Func001Func013Func001Func001C())then
     call UnitMakeAbilityPermanent(GetTriggerUnit(),true,'AEsf')
     call UnitMakeAbilityPermanent(GetTriggerUnit(),true,'AHmt')
@@ -137,7 +92,6 @@ function Trig_Grom_Starts_Func001Func013Func001Func001C takes nothing returns bo
     call SetUnitAnimation(gg_unit_Opgh_0483,"stand second")
     call PlaySoundOnUnitBJ(gg_snd_BloodlustTarget,100,gg_unit_Opgh_0483)
     else
-    endif
     endif
     endif
     endif

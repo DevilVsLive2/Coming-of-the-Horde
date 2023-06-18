@@ -31,9 +31,6 @@ function Trig_Gray_Hero_Selection_Func001Func001Func001Func001C takes nothing re
     call SetUnitOwner(gg_unit_H01S_0510,Player(8),true)
     call ShowUnitShow(gg_unit_H01S_0510)
     call TriggerRegisterUnitEvent(gg_trg_Alonsus_Starts,gg_unit_H01S_0510,EVENT_UNIT_SPELL_EFFECT)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Damage_Grey,gg_unit_H01S_0510,EVENT_UNIT_DAMAGED)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Heal_Grey,gg_unit_H01S_0510,EVENT_UNIT_SPELL_FINISH)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Stop_Grey,gg_unit_H01S_0510,EVENT_UNIT_SPELL_ENDCAST)
     call SetPlayerHandicapXPBJ(Player(8),92.00)
     else
     if(Trig_Gray_Hero_Selection_Func001Func001C())then
@@ -44,9 +41,6 @@ function Trig_Gray_Hero_Selection_Func001Func001Func001Func001C takes nothing re
     call SetUnitOwner(gg_unit_Hmgd_0509,Player(8),true)
     call ShowUnitShow(gg_unit_Hmgd_0509)
     call TriggerRegisterUnitEvent(gg_trg_Uther_Starts,gg_unit_Hmgd_0509,EVENT_UNIT_SPELL_EFFECT)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Damage_Grey,gg_unit_Hmgd_0509,EVENT_UNIT_DAMAGED)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Heal_Grey,gg_unit_Hmgd_0509,EVENT_UNIT_SPELL_FINISH)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Stop_Grey,gg_unit_Hmgd_0509,EVENT_UNIT_SPELL_ENDCAST)
     call TriggerRegisterVariableEvent(gg_trg_Smite,"udg_Smite",EQUAL,1.00)
     call SetPlayerHandicapXPBJ(Player(8),99.00)
     else
@@ -58,9 +52,6 @@ function Trig_Gray_Hero_Selection_Func001Func001Func001Func001C takes nothing re
     call SetUnitOwner(gg_unit_Hart_0504,Player(8),true)
     call ShowUnitShow(gg_unit_Hart_0504)
     call TriggerRegisterUnitEvent(gg_trg_Tirion_Starts,gg_unit_Hart_0504,EVENT_UNIT_SPELL_EFFECT)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Damage_Grey,gg_unit_Hart_0504,EVENT_UNIT_DAMAGED)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Heal_Grey,gg_unit_Hart_0504,EVENT_UNIT_SPELL_FINISH)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Stop_Grey,gg_unit_Hart_0504,EVENT_UNIT_SPELL_ENDCAST)
     call EnableTrigger(gg_trg_Invulerability_Remove)
     call SetPlayerHandicapXPBJ(Player(8),99.00)
     else
@@ -72,9 +63,6 @@ function Trig_Gray_Hero_Selection_Func001Func001Func001Func001C takes nothing re
     call SetUnitOwner(gg_unit_Harf_0501,Player(8),true)
     call ShowUnitShow(gg_unit_Harf_0501)
     call TriggerRegisterUnitEvent(gg_trg_Turalyon_Starts,gg_unit_Harf_0501,EVENT_UNIT_SPELL_EFFECT)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Damage_Grey,gg_unit_Harf_0501,EVENT_UNIT_DAMAGED)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Heal_Grey,gg_unit_Harf_0501,EVENT_UNIT_SPELL_FINISH)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Stop_Grey,gg_unit_Harf_0501,EVENT_UNIT_SPELL_ENDCAST)
     call SetPlayerHandicapXPBJ(Player(8),99.00)
     else
     endif

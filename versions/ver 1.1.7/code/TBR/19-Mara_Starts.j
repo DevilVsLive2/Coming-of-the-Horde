@@ -13,12 +13,6 @@ function Trig_Mara_Starts_Func001Func002002003 takes nothing returns boolean
     endif
     return true
     endfunction
-    function Trig_Mara_Starts_Func001Func010Func001C takes nothing returns boolean
-    if(not(GetSpellAbilityId()=='AEsf'))then
-    return false
-    endif
-    return true
-    endfunction
     function Trig_Mara_Starts_Func001Func010Func011Func001Func001Func001001001 takes nothing returns boolean
     return(IsUnitType(GetEnumUnit(),UNIT_TYPE_STRUCTURE)==false)
     endfunction
@@ -114,14 +108,6 @@ function Trig_Mara_Starts_Func001Func002002003 takes nothing returns boolean
     call GroupClear(udg_Temp_UnitGroup)
     call RemoveLocation(udg_TempPoint)
     else
-    if(Trig_Mara_Starts_Func001Func010Func001C())then
-    set udg_RejuvInt[GetConvertedPlayerId(GetTriggerPlayer())]=1
-    call DestroyEffect(udg_RE[GetConvertedPlayerId(GetTriggerPlayer())])
-    call AddSpecialEffectTargetUnitBJ("overhead",GetTriggerUnit(),"RejuvTarget.mdx")
-    set udg_RE[GetConvertedPlayerId(GetTriggerPlayer())]=GetLastCreatedEffectBJ()
-    call EnableTrigger(gg_trg_Rejuventation_Damage_Blue)
-    call EnableTrigger(gg_trg_Rejuventation_Stop_Blue)
-    else
     if(Trig_Mara_Starts_Func001Func010Func001Func001C())then
     call UnitDamageTargetBJ(gg_unit_Edem_0550,GetSpellTargetUnit(),(GetUnitStateSwap(UNIT_STATE_MAX_MANA,gg_unit_Edem_0550)*0.08),ATTACK_TYPE_NORMAL,DAMAGE_TYPE_MAGIC)
     call PlaySoundOnUnitBJ(gg_snd_HolyBolt,100,GetSpellTargetUnit())
@@ -129,7 +115,6 @@ function Trig_Mara_Starts_Func001Func002002003 takes nothing returns boolean
     call PolledWait(15.00)
     call DisableTrigger(gg_trg_Judgement)
     else
-    endif
     endif
     endif
     endif

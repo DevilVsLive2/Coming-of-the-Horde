@@ -27,9 +27,6 @@ function Trig_Pink_Hero_Selection_Func001Func001Func002Func001C takes nothing re
     set udg_Greymane=GetTrainedUnit()
     set GennUnit = udg_Greymane
     call TriggerRegisterUnitEvent(gg_trg_Greymane_Starts,udg_Greymane,EVENT_UNIT_SPELL_EFFECT)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Damage_Pink,udg_Greymane,EVENT_UNIT_DAMAGED)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Heal_Pink,udg_Greymane,EVENT_UNIT_SPELL_FINISH)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Stop_Pink,udg_Greymane,EVENT_UNIT_SPELL_ENDCAST)
     call SetPlayerHandicapXPBJ(Player(7),99.00)
     else
     if(Trig_Pink_Hero_Selection_Func001Func001C())then
@@ -41,9 +38,6 @@ function Trig_Pink_Hero_Selection_Func001Func001Func002Func001C takes nothing re
     call ShowUnitShow(gg_unit_H018_0506)
     call TriggerRegisterUnitEvent(gg_trg_Gavinrad_Starts,gg_unit_H018_0506,EVENT_UNIT_SPELL_EFFECT)
     call TriggerRegisterUnitEvent(gg_trg_Sanctuary,gg_unit_H018_0506,EVENT_UNIT_SPELL_EFFECT)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Damage_Pink,gg_unit_H018_0506,EVENT_UNIT_DAMAGED)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Heal_Pink,gg_unit_H018_0506,EVENT_UNIT_SPELL_FINISH)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Stop_Pink,gg_unit_H018_0506,EVENT_UNIT_SPELL_ENDCAST)
     call EnableTrigger(gg_trg_Invulerability_Remove)
     call SetPlayerHandicapXPBJ(Player(7),99.00)
     else
@@ -58,9 +52,6 @@ function Trig_Pink_Hero_Selection_Func001Func001Func002Func001C takes nothing re
     call TriggerRegisterUnitEvent(gg_trg_Arugal_Starts,gg_unit_Hvsh_0480,EVENT_UNIT_SPELL_EFFECT)
     call TriggerRegisterUnitEvent(gg_trg_Corpse_Explosion_Begin,gg_unit_Hvsh_0480,EVENT_UNIT_SPELL_CAST)
     call TriggerRegisterUnitEvent(gg_trg_Corpse_Explosion_Reset,gg_unit_Hvsh_0480,EVENT_UNIT_SPELL_FINISH)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Damage_Pink,gg_unit_Hvsh_0480,EVENT_UNIT_DAMAGED)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Heal_Pink,gg_unit_Hvsh_0480,EVENT_UNIT_SPELL_FINISH)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Stop_Pink,gg_unit_Hvsh_0480,EVENT_UNIT_SPELL_ENDCAST)
     call SetPlayerHandicapXPBJ(Player(7),92.00)
     else
     if(Trig_Pink_Hero_Selection_Func001Func001Func002Func001C())then
@@ -72,9 +63,6 @@ function Trig_Pink_Hero_Selection_Func001Func001Func002Func001C takes nothing re
     call ShowUnitShow(gg_unit_Nalc_0495)
     call TriggerRegisterUnitEvent(gg_trg_Darius_Starts,gg_unit_Nalc_0495,EVENT_UNIT_SPELL_EFFECT)
     call TriggerRegisterUnitEvent(gg_trg_Battle_Primed_Start,gg_unit_Nalc_0495,EVENT_UNIT_SPELL_EFFECT)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Damage_Pink,gg_unit_Nalc_0495,EVENT_UNIT_DAMAGED)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Heal_Pink,gg_unit_Nalc_0495,EVENT_UNIT_SPELL_FINISH)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Stop_Pink,gg_unit_Nalc_0495,EVENT_UNIT_SPELL_ENDCAST)
     call SetPlayerHandicapXPBJ(Player(7),99.00)
     call UnitAddAbilityBJ('A0FI',gg_unit_o008_0533)
     else

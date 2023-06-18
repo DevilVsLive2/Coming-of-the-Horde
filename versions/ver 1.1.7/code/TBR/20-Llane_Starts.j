@@ -28,12 +28,6 @@ function Trig_Llane_Starts_Func001Func004C takes nothing returns boolean
     endif
     return true
     endfunction
-    function Trig_Llane_Starts_Func001Func005Func001C takes nothing returns boolean
-    if(not(GetSpellAbilityId()=='AEsf'))then
-    return false
-    endif
-    return true
-    endfunction
     function Trig_Llane_Starts_Func001Func005C takes nothing returns boolean
     if(not(GetSpellAbilityId()=='A06E'))then
     return false
@@ -74,14 +68,6 @@ function Trig_Llane_Starts_Func001Func004C takes nothing returns boolean
     call UnitRemoveAbility(gg_unit_Hpb1_0517, 'Bam2')
     call SetUnitVertexColorBJ(gg_unit_Hpb1_0517,100.00,100.00,100.00,0.00)
     else
-    if(Trig_Llane_Starts_Func001Func005Func001C())then
-    set udg_RejuvInt[GetConvertedPlayerId(GetTriggerPlayer())]=1
-    call DestroyEffect(udg_RE[GetConvertedPlayerId(GetTriggerPlayer())])
-    call AddSpecialEffectTargetUnitBJ("overhead",GetTriggerUnit(),"RejuvTarget.mdx")
-    set udg_RE[GetConvertedPlayerId(GetTriggerPlayer())]=GetLastCreatedEffectBJ()
-    call EnableTrigger(gg_trg_Rejuventation_Damage_Blue)
-    call EnableTrigger(gg_trg_Rejuventation_Stop_Blue)
-    else
     if(Trig_Llane_Starts_Func001Func005Func001Func001C())then
     set udg_TempPoint=GetUnitLoc(GetTriggerUnit())
     call CreateNUnitsAtLoc(1,'n010',Player(1),udg_TempPoint,bj_UNIT_FACING)
@@ -110,7 +96,6 @@ function Trig_Llane_Starts_Func001Func004C takes nothing returns boolean
     call UnitRemoveAbilityBJ('A096',gg_unit_Hpb1_0517)
     call UnitRemoveAbilityBJ('A094',gg_unit_Hpb1_0517)
     else
-    endif
     endif
     endif
     endif
