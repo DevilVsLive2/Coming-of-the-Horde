@@ -1,9 +1,4 @@
-function Trig_Daelin_Starts_Func001Func001Func001C takes nothing returns boolean
-    if(not(GetSpellAbilityId()=='AEsf'))then
-    return false
-    endif
-    return true
-    endfunction
+
     function Trig_Daelin_Starts_Func001Func001C takes nothing returns boolean
     if(not(GetSpellAbilityId()=='ACfd'))then
     return false
@@ -56,15 +51,6 @@ function Trig_Daelin_Starts_Func001Func001Func001C takes nothing returns boolean
     call SetUnitOwner(GetSpellTargetUnit(),Player(2),true)
     call ReplaceUnitBJ(GetSpellTargetUnit(),'nbld',bj_UNIT_STATE_METHOD_RELATIVE)
     else
-    if(Trig_Daelin_Starts_Func001Func001Func001C())then
-    set udg_RejuvInt[GetConvertedPlayerId(GetTriggerPlayer())]=1
-    call DestroyEffect(udg_RE[GetConvertedPlayerId(GetTriggerPlayer())])
-    call AddSpecialEffectTargetUnitBJ("overhead",GetTriggerUnit(),"RejuvTarget.mdx")
-    set udg_RE[GetConvertedPlayerId(GetTriggerPlayer())]=GetLastCreatedEffectBJ()
-    call EnableTrigger(gg_trg_Rejuventation_Damage_Teal)
-    call EnableTrigger(gg_trg_Rejuventation_Stop_Teal)
-    else
-    endif
     endif
     endif
     endfunction

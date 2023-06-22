@@ -58,12 +58,6 @@ function Trig_Derek_Starts_Func001Func008Func001C takes nothing returns boolean
     endif
     return true
     endfunction
-    function Trig_Derek_Starts_Func001Func016Func001C takes nothing returns boolean
-    if(not(GetSpellAbilityId()=='AEsf'))then
-    return false
-    endif
-    return true
-    endfunction
     function Trig_Derek_Starts_Func001Func016Func005002003 takes nothing returns boolean
     return(GetUnitTypeId(GetFilterUnit())=='nass')
     endfunction
@@ -109,14 +103,6 @@ function Trig_Derek_Starts_Func001Func008Func001C takes nothing returns boolean
     call PolledWait(0.40)
     call IssueTargetOrder(gg_unit_H01B_0507,"attack",udg_MarkedTarget)
     else
-    if(Trig_Derek_Starts_Func001Func016Func001C())then
-    set udg_RejuvInt[GetConvertedPlayerId(GetTriggerPlayer())]=1
-    call DestroyEffect(udg_RE[GetConvertedPlayerId(GetTriggerPlayer())])
-    call AddSpecialEffectTargetUnitBJ("overhead",GetTriggerUnit(),"RejuvTarget.mdx")
-    set udg_RE[GetConvertedPlayerId(GetTriggerPlayer())]=GetLastCreatedEffectBJ()
-    call EnableTrigger(gg_trg_Rejuventation_Damage_Teal)
-    call EnableTrigger(gg_trg_Rejuventation_Stop_Teal)
-    else
     if(Trig_Derek_Starts_Func001Func016Func001Func001C())then
     set udg_BroadsideTarget=GetSpellTargetLoc()
     set udg_BroadsideCasterPoint=PolarProjectionBJ(udg_BroadsideTarget,600.00,225.00)
@@ -147,7 +133,6 @@ function Trig_Derek_Starts_Func001Func008Func001C takes nothing returns boolean
     call RemoveLocation(udg_BroadsideTarget)
     call RemoveLocation(udg_BroadsideCasterPoint)
     else
-    endif
     endif
     endif
     endif

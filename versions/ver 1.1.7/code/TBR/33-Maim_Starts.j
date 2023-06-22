@@ -22,30 +22,6 @@ function Trig_Maim_Starts_Func001Func007Func001Func001Func005Func001Func001C tak
     endif
     return true
     endfunction
-    function Trig_Maim_Starts_Func001Func007Func001Func006Func004Func004C takes nothing returns boolean
-    if(not(GetOwningPlayer(GetTriggerUnit())==Player(11)))then
-    return false
-    endif
-    return true
-    endfunction
-    function Trig_Maim_Starts_Func001Func007Func001Func006Func004C takes nothing returns boolean
-    if(not(GetOwningPlayer(GetTriggerUnit())==Player(10)))then
-    return false
-    endif
-    return true
-    endfunction
-    function Trig_Maim_Starts_Func001Func007Func001Func006C takes nothing returns boolean
-    if(not(GetOwningPlayer(GetTriggerUnit())==Player(9)))then
-    return false
-    endif
-    return true
-    endfunction
-    function Trig_Maim_Starts_Func001Func007Func001C takes nothing returns boolean
-    if(not(GetSpellAbilityId()=='AEsf'))then
-    return false
-    endif
-    return true
-    endfunction
     function Trig_Maim_Starts_Func001Func007C takes nothing returns boolean
     if(not(GetSpellAbilityId()=='A0B8'))then
     return false
@@ -79,27 +55,6 @@ function Trig_Maim_Starts_Func001Func007Func001Func001Func005Func001Func001C tak
     call UnitDamageTargetBJ(gg_unit_Obla_0496,GetSpellTargetUnit(),((GetUnitLifePercent(GetSpellTargetUnit())*(I2R(GetUnitAbilityLevelSwapped('A0B8',gg_unit_Obla_0496))+3.00))/ 2.00),ATTACK_TYPE_MELEE,DAMAGE_TYPE_UNIVERSAL)
     call UnitDamageTargetBJ(gg_unit_Obla_0496,GetSpellTargetUnit(),((GetUnitLifePercent(GetSpellTargetUnit())*(I2R(GetUnitAbilityLevelSwapped('A0B8',gg_unit_Obla_0496))+3.00))/ 2.00),ATTACK_TYPE_MELEE,DAMAGE_TYPE_NORMAL)
     else
-    if(Trig_Maim_Starts_Func001Func007Func001C())then
-    set udg_RejuvInt[GetConvertedPlayerId(GetTriggerPlayer())]=1
-    call DestroyEffect(udg_RE[GetConvertedPlayerId(GetTriggerPlayer())])
-    call AddSpecialEffectTargetUnitBJ("overhead",GetTriggerUnit(),"RejuvTarget.mdx")
-    set udg_RE[GetConvertedPlayerId(GetTriggerPlayer())]=GetLastCreatedEffectBJ()
-    if(Trig_Maim_Starts_Func001Func007Func001Func006C())then
-    call EnableTrigger(gg_trg_Rejuventation_Damage_Light_Blue)
-    call EnableTrigger(gg_trg_Rejuventation_Stop_Light_Blue)
-    else
-    if(Trig_Maim_Starts_Func001Func007Func001Func006Func004C())then
-    call EnableTrigger(gg_trg_Rejuventation_Damage_Dark_Green)
-    call EnableTrigger(gg_trg_Rejuventation_Stop_Dark_Green)
-    else
-    if(Trig_Maim_Starts_Func001Func007Func001Func006Func004Func004C())then
-    call EnableTrigger(gg_trg_Rejuventation_Damage_Brown)
-    call EnableTrigger(gg_trg_Rejuventation_Stop_Brown)
-    else
-    endif
-    endif
-    endif
-    else
     if(Trig_Maim_Starts_Func001Func007Func001Func001C())then
     set udg_MaimCounter=(udg_MaimCounter+3)
     call UnitAddAbilityBJ('Aspb',GetTriggerUnit())
@@ -127,7 +82,6 @@ function Trig_Maim_Starts_Func001Func007Func001Func001Func005Func001Func001C tak
     call UnitRemoveAbilityBJ('A096',gg_unit_Obla_0496)
     call UnitRemoveAbilityBJ('A094',gg_unit_Obla_0496)
     else
-    endif
     endif
     endif
     endif

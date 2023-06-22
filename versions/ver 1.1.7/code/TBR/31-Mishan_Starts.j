@@ -22,12 +22,6 @@ function Trig_Mishan_Starts_Func001Func005Func003C takes nothing returns boolean
     endif
     return true
     endfunction
-    function Trig_Mishan_Starts_Func001Func007Func001C takes nothing returns boolean
-    if(not(GetSpellAbilityId()=='AEsf'))then
-    return false
-    endif
-    return true
-    endfunction
     function Trig_Mishan_Starts_Func001Func007Func006001003001001 takes nothing returns boolean
     return(IsUnitType(GetFilterUnit(),UNIT_TYPE_GROUND)==true)
     endfunction
@@ -127,14 +121,6 @@ function Trig_Mishan_Starts_Func001Func005Func003C takes nothing returns boolean
     call SetTextTagFadepointBJ(GetLastCreatedTextTag(),1.00)
     call RemoveLocation(udg_TempPoint)
     else
-    if(Trig_Mishan_Starts_Func001Func007Func001C())then
-    set udg_RejuvInt[GetConvertedPlayerId(GetTriggerPlayer())]=1
-    call DestroyEffect(udg_RE[GetConvertedPlayerId(GetTriggerPlayer())])
-    call AddSpecialEffectTargetUnitBJ("overhead",GetTriggerUnit(),"RejuvTarget.mdx")
-    set udg_RE[GetConvertedPlayerId(GetTriggerPlayer())]=GetLastCreatedEffectBJ()
-    call EnableTrigger(gg_trg_Rejuventation_Damage_Teal)
-    call EnableTrigger(gg_trg_Rejuventation_Stop_Teal)
-    else
     if(Trig_Mishan_Starts_Func001Func007Func001Func001C())then
     set udg_DuelCounter=0.00
     set udg_DuelDamage=0.00
@@ -149,7 +135,6 @@ function Trig_Mishan_Starts_Func001Func005Func003C takes nothing returns boolean
     call DisableTrigger(gg_trg_Duel_Finish)
     call SetUnitOwner(gg_unit_o008_0490,Player(PLAYER_NEUTRAL_AGGRESSIVE),false)
     else
-    endif
     endif
     endif
     endif

@@ -262,8 +262,6 @@ trigger gg_trg_Tichondrius_Starts= null
 trigger gg_trg_Rend_Starts= null
 trigger gg_trg_Fenris_Starts= null
 trigger gg_trg_Maim_Starts= null
-trigger gg_trg_Kiljaeden_Starts= null
-trigger gg_trg_Orgrim_Starts= null
 trigger gg_trg_Horde_Hero_Selection= null
 trigger gg_trg_Hero_orc_limit= null
 trigger gg_trg_Hero_orc_cancel= null
@@ -672,7 +670,6 @@ endglobals
 //! import jass "./TBR/33-Maim_Starts.j"
 //! import jass "./TBR/33-Nether_Portal_Teleport.j"
 //! import jass "./TBR/34-Daelin_Learns.j"
-//! import jass "./TBR/34-Kiljaeden_Starts.j"
 //! import jass "./TBR/34-Lordaeron_Upper_Tower_Fire.j"
 //! import jass "./TBR/34-Map_Edge.j"
 //! import jass "./TBR/34-Self_Mutilate_Drop.j"
@@ -680,7 +677,6 @@ endglobals
 //! import jass "./TBR/35-Gilneas_Final_Gate_Open.j"
 //! import jass "./TBR/35-Life_Rip_Move.j"
 //! import jass "./TBR/35-Lordaeron_Lower_Tower_Fire.j"
-//! import jass "./TBR/35-Orgrim_Starts.j"
 //! import jass "./TBR/35-Team_Killing_Alliance.j"
 //! import jass "./TBR/36-Gilneas_Final_Gate_Life.j"
 //! import jass "./TBR/36-Lordaeron_Fountain_Destroyed.j"

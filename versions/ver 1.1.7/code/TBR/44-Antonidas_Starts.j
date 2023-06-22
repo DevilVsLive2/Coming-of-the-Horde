@@ -28,12 +28,6 @@ function Trig_Antonidas_Starts_Func001Func001Func001Func005001003001001 takes no
     endif
     return true
     endfunction
-    function Trig_Antonidas_Starts_Func001Func001C takes nothing returns boolean
-    if(not(GetSpellAbilityId()=='AEsf'))then
-    return false
-    endif
-    return true
-    endfunction
     function Trig_Antonidas_Starts_Func001Func005002003001001 takes nothing returns boolean
     return(GetUnitTypeId(GetFilterUnit())=='hwat')
     endfunction
@@ -110,14 +104,6 @@ function Trig_Antonidas_Starts_Func001Func001Func001Func005001003001001 takes no
     call RemoveLocation(udg_WaveTarget)
     call RemoveLocation(udg_TempLoc)
     else
-    if(Trig_Antonidas_Starts_Func001Func001C())then
-    set udg_RejuvInt[GetConvertedPlayerId(GetTriggerPlayer())]=1
-    call DestroyEffect(udg_RE[GetConvertedPlayerId(GetTriggerPlayer())])
-    call AddSpecialEffectTargetUnitBJ("overhead",GetTriggerUnit(),"RejuvTarget.mdx")
-    set udg_RE[GetConvertedPlayerId(GetTriggerPlayer())]=GetLastCreatedEffectBJ()
-    call EnableTrigger(gg_trg_Rejuventation_Damage_Purple)
-    call EnableTrigger(gg_trg_Rejuventation_Stop_Purple)
-    else
     if(Trig_Antonidas_Starts_Func001Func001Func001C())then
     set udg_TempPoint=GetUnitLoc(GetTriggerUnit())
     call SetUnitPositionLoc(gg_unit_o015_0212,udg_TempPoint)
@@ -127,7 +113,6 @@ function Trig_Antonidas_Starts_Func001Func001Func001Func005001003001001 takes no
     call RemoveLocation(udg_TempPoint)
     call RemoveLocation(udg_TempPoint2)
     else
-    endif
     endif
     endif
     endfunction

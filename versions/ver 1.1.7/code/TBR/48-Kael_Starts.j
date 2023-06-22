@@ -92,12 +92,6 @@ function Trig_Kael_Starts_Func001Func001Func001Func001Func004002003001 takes not
     endif
     return true
     endfunction
-    function Trig_Kael_Starts_Func001Func001Func001C takes nothing returns boolean
-    if(not(GetSpellAbilityId()=='AEsf'))then
-    return false
-    endif
-    return true
-    endfunction
     function Trig_Kael_Starts_Func001Func001C takes nothing returns boolean
     if(not(GetSpellAbilityId()=='A07N'))then
     return false
@@ -217,14 +211,6 @@ function Trig_Kael_Starts_Func001Func001Func001Func001Func004002003001 takes not
     call PolledWait(5.00)
     call DisableTrigger(gg_trg_Pyre_Damage)
     else
-    if(Trig_Kael_Starts_Func001Func001Func001C())then
-    set udg_RejuvInt[GetConvertedPlayerId(GetTriggerPlayer())]=1
-    call DestroyEffect(udg_RE[GetConvertedPlayerId(GetTriggerPlayer())])
-    call AddSpecialEffectTargetUnitBJ("overhead",GetTriggerUnit(),"RejuvTarget.mdx")
-    set udg_RE[GetConvertedPlayerId(GetTriggerPlayer())]=GetLastCreatedEffectBJ()
-    call EnableTrigger(gg_trg_Rejuventation_Damage_Purple)
-    call EnableTrigger(gg_trg_Rejuventation_Stop_Purple)
-    else
     if(Trig_Kael_Starts_Func001Func001Func001Func001C())then
     set udg_TargetLoc=GetUnitLoc(GetTriggerUnit())
     set udg_NovaMana=GetUnitStateSwap(UNIT_STATE_MAX_MANA,GetTriggerUnit())
@@ -262,7 +248,6 @@ function Trig_Kael_Starts_Func001Func001Func001Func001Func004002003001 takes not
     call GroupClear(udg_FireNovaGroup)
     call RemoveLocation(udg_TargetLoc)
     else
-    endif
     endif
     endif
     endif

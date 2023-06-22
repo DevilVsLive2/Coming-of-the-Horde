@@ -52,12 +52,6 @@ function Trig_Aegwynn_Starts_Func001Func010001003001 takes nothing returns boole
     function Trig_Aegwynn_Starts_Func001Func012Func012Func047002 takes nothing returns nothing
     call UnitRemoveAbilityBJ('A02G',GetEnumUnit())
     endfunction
-    function Trig_Aegwynn_Starts_Func001Func012Func012Func050Func001C takes nothing returns boolean
-    if(not(GetSpellAbilityId()=='AEsf'))then
-    return false
-    endif
-    return true
-    endfunction
     function Trig_Aegwynn_Starts_Func001Func012Func012Func050Func003Func010001003001 takes nothing returns boolean
     return(IsUnitEnemy(GetFilterUnit(),Player(3))==true)
     endfunction
@@ -315,15 +309,6 @@ function Trig_Aegwynn_Starts_Func001Func010001003001 takes nothing returns boole
     endif
     endif
     else
-    if(Trig_Aegwynn_Starts_Func001Func012Func012Func050Func001C())then
-    set udg_RejuvInt[GetConvertedPlayerId(GetTriggerPlayer())]=1
-    call DestroyEffect(udg_RE[GetConvertedPlayerId(GetTriggerPlayer())])
-    call AddSpecialEffectTargetUnitBJ("overhead",GetTriggerUnit(),"RejuvTarget.mdx")
-    set udg_RE[GetConvertedPlayerId(GetTriggerPlayer())]=GetLastCreatedEffectBJ()
-    call EnableTrigger(gg_trg_Rejuventation_Damage_Purple)
-    call EnableTrigger(gg_trg_Rejuventation_Stop_Purple)
-    else
-    endif
     endif
     endif
     endif

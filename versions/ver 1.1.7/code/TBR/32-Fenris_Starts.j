@@ -4,30 +4,6 @@ function Trig_Fenris_Starts_Func001Func013Func001Func001C takes nothing returns 
     endif
     return true
     endfunction
-    function Trig_Fenris_Starts_Func001Func013Func001Func006Func004Func004C takes nothing returns boolean
-    if(not(GetOwningPlayer(GetTriggerUnit())==Player(11)))then
-    return false
-    endif
-    return true
-    endfunction
-    function Trig_Fenris_Starts_Func001Func013Func001Func006Func004C takes nothing returns boolean
-    if(not(GetOwningPlayer(GetTriggerUnit())==Player(10)))then
-    return false
-    endif
-    return true
-    endfunction
-    function Trig_Fenris_Starts_Func001Func013Func001Func006C takes nothing returns boolean
-    if(not(GetOwningPlayer(GetTriggerUnit())==Player(9)))then
-    return false
-    endif
-    return true
-    endfunction
-    function Trig_Fenris_Starts_Func001Func013Func001C takes nothing returns boolean
-    if(not(GetSpellAbilityId()=='AEsf'))then
-    return false
-    endif
-    return true
-    endfunction
     function Trig_Fenris_Starts_Func001Func013C takes nothing returns boolean
     if(not(GetSpellAbilityId()=='A0AZ'))then
     return false
@@ -61,27 +37,6 @@ function Trig_Fenris_Starts_Func001Func013Func001Func001C takes nothing returns 
     call SetUnitAbilityLevelSwapped('A09B',gg_unit_otbk_0389,GetUnitAbilityLevelSwapped('A0AZ',gg_unit_Ofar_0481))
     call IssueImmediateOrder(gg_unit_otbk_0389,"battleroar")
     else
-    if(Trig_Fenris_Starts_Func001Func013Func001C())then
-    set udg_RejuvInt[GetConvertedPlayerId(GetTriggerPlayer())]=1
-    call DestroyEffect(udg_RE[GetConvertedPlayerId(GetTriggerPlayer())])
-    call AddSpecialEffectTargetUnitBJ("overhead",GetTriggerUnit(),"RejuvTarget.mdx")
-    set udg_RE[GetConvertedPlayerId(GetTriggerPlayer())]=GetLastCreatedEffectBJ()
-    if(Trig_Fenris_Starts_Func001Func013Func001Func006C())then
-    call EnableTrigger(gg_trg_Rejuventation_Damage_Light_Blue)
-    call EnableTrigger(gg_trg_Rejuventation_Stop_Light_Blue)
-    else
-    if(Trig_Fenris_Starts_Func001Func013Func001Func006Func004C())then
-    call EnableTrigger(gg_trg_Rejuventation_Damage_Dark_Green)
-    call EnableTrigger(gg_trg_Rejuventation_Stop_Dark_Green)
-    else
-    if(Trig_Fenris_Starts_Func001Func013Func001Func006Func004Func004C())then
-    call EnableTrigger(gg_trg_Rejuventation_Damage_Brown)
-    call EnableTrigger(gg_trg_Rejuventation_Stop_Brown)
-    else
-    endif
-    endif
-    endif
-    else
     if(Trig_Fenris_Starts_Func001Func013Func001Func001C())then
     set udg_TempPoint2=GetUnitLoc(gg_unit_Ofar_0481)
     call CreateNUnitsAtLocFacingLocBJ(1,'osw2',GetOwningPlayer(gg_unit_Ofar_0481),udg_TempPoint2,GetUnitLoc(GetSpellTargetUnit()))
@@ -94,7 +49,6 @@ function Trig_Fenris_Starts_Func001Func013Func001Func001C takes nothing returns 
     call PolledWait(3.00)
     call DisableTrigger(gg_trg_Last_Rider_Death)
     else
-    endif
     endif
     endif
     endif

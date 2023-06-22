@@ -53,30 +53,6 @@ function Trig_Rend_Starts_Func001Func003001003001001001 takes nothing returns bo
     endif
     return true
     endfunction
-    function Trig_Rend_Starts_Func001Func007Func001Func006Func004Func004C takes nothing returns boolean
-    if(not(GetOwningPlayer(GetTriggerUnit())==Player(11)))then
-    return false
-    endif
-    return true
-    endfunction
-    function Trig_Rend_Starts_Func001Func007Func001Func006Func004C takes nothing returns boolean
-    if(not(GetOwningPlayer(GetTriggerUnit())==Player(10)))then
-    return false
-    endif
-    return true
-    endfunction
-    function Trig_Rend_Starts_Func001Func007Func001Func006C takes nothing returns boolean
-    if(not(GetOwningPlayer(GetTriggerUnit())==Player(9)))then
-    return false
-    endif
-    return true
-    endfunction
-    function Trig_Rend_Starts_Func001Func007Func001C takes nothing returns boolean
-    if(not(GetSpellAbilityId()=='AEsf'))then
-    return false
-    endif
-    return true
-    endfunction
     function Trig_Rend_Starts_Func001Func007C takes nothing returns boolean
     if(not(GetSpellAbilityId()=='A063'))then
     return false
@@ -108,34 +84,12 @@ function Trig_Rend_Starts_Func001Func003001003001001001 takes nothing returns bo
     call DisableTrigger(gg_trg_Undying_Strength)
     call SetUnitVertexColorBJ(gg_unit_Nbst_0519,100.00,100.00,100.00,0)
     else
-    if(Trig_Rend_Starts_Func001Func007Func001C())then
-    set udg_RejuvInt[GetConvertedPlayerId(GetTriggerPlayer())]=1
-    call DestroyEffect(udg_RE[GetConvertedPlayerId(GetTriggerPlayer())])
-    call AddSpecialEffectTargetUnitBJ("overhead",GetTriggerUnit(),"RejuvTarget.mdx")
-    set udg_RE[GetConvertedPlayerId(GetTriggerPlayer())]=GetLastCreatedEffectBJ()
-    if(Trig_Rend_Starts_Func001Func007Func001Func006C())then
-    call EnableTrigger(gg_trg_Rejuventation_Damage_Light_Blue)
-    call EnableTrigger(gg_trg_Rejuventation_Stop_Light_Blue)
-    else
-    if(Trig_Rend_Starts_Func001Func007Func001Func006Func004C())then
-    call EnableTrigger(gg_trg_Rejuventation_Damage_Dark_Green)
-    call EnableTrigger(gg_trg_Rejuventation_Stop_Dark_Green)
-    else
-    if(Trig_Rend_Starts_Func001Func007Func001Func006Func004Func004C())then
-    call EnableTrigger(gg_trg_Rejuventation_Damage_Brown)
-    call EnableTrigger(gg_trg_Rejuventation_Stop_Brown)
-    else
-    endif
-    endif
-    endif
-    else
     if(Trig_Rend_Starts_Func001Func007Func001Func001C())then
     set udg_InnerRageTarget=GetSpellTargetUnit()
     call EnableTrigger(gg_trg_Inner_Rage)
     call PolledWait(15.00)
     call DisableTrigger(gg_trg_Inner_Rage)
     else
-    endif
     endif
     endif
     endif

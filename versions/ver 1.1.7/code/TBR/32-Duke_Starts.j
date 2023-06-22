@@ -1,9 +1,4 @@
-function Trig_Duke_Starts_Func001Func001C takes nothing returns boolean
-    if(not(GetSpellAbilityId()=='AEsf'))then
-    return false
-    endif
-    return true
-    endfunction
+
     function Trig_Duke_Starts_Func001Func023002003001001 takes nothing returns boolean
     return(IsUnitType(GetFilterUnit(),UNIT_TYPE_GROUND)==true)
     endfunction
@@ -91,15 +86,6 @@ function Trig_Duke_Starts_Func001Func001C takes nothing returns boolean
     call RemoveLocation(udg_ScattershotTarget)
     call GroupClear(udg_Temp_UnitGroup)
     else
-    if(Trig_Duke_Starts_Func001Func001C())then
-    set udg_RejuvInt[GetConvertedPlayerId(GetTriggerPlayer())]=1
-    call DestroyEffect(udg_RE[GetConvertedPlayerId(GetTriggerPlayer())])
-    call AddSpecialEffectTargetUnitBJ("overhead",GetTriggerUnit(),"RejuvTarget.mdx")
-    set udg_RE[GetConvertedPlayerId(GetTriggerPlayer())]=GetLastCreatedEffectBJ()
-    call EnableTrigger(gg_trg_Rejuventation_Damage_Teal)
-    call EnableTrigger(gg_trg_Rejuventation_Stop_Teal)
-    else
-    endif
     endif
     endfunction
     function InitTrig_Duke_Starts takes nothing returns nothing

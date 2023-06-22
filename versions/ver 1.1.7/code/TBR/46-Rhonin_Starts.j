@@ -39,12 +39,6 @@ function Trig_Rhonin_Starts_Func001Func010002003001 takes nothing returns boolea
     endif
     return true
     endfunction
-    function Trig_Rhonin_Starts_Func001Func016Func001C takes nothing returns boolean
-    if(not(GetSpellAbilityId()=='AEsf'))then
-    return false
-    endif
-    return true
-    endfunction
     function Trig_Rhonin_Starts_Func001Func016C takes nothing returns boolean
     if(not(GetSpellAbilityId()=='AIdb'))then
     return false
@@ -84,14 +78,6 @@ function Trig_Rhonin_Starts_Func001Func010002003001 takes nothing returns boolea
     call PauseTimerBJ(true,udg_ManaShieldTimer)
     call TimerStart(udg_ManaShieldTimer,20, false, function Trig_Mana_Shield_Ends_Actions)
     else
-    if(Trig_Rhonin_Starts_Func001Func016Func001C())then
-    set udg_RejuvInt[GetConvertedPlayerId(GetTriggerPlayer())]=1
-    call DestroyEffect(udg_RE[GetConvertedPlayerId(GetTriggerPlayer())])
-    call AddSpecialEffectTargetUnitBJ("overhead",GetTriggerUnit(),"RejuvTarget.mdx")
-    set udg_RE[GetConvertedPlayerId(GetTriggerPlayer())]=GetLastCreatedEffectBJ()
-    call EnableTrigger(gg_trg_Rejuventation_Damage_Purple)
-    call EnableTrigger(gg_trg_Rejuventation_Stop_Purple)
-    else
     if(Trig_Rhonin_Starts_Func001Func016Func001Func001C())then
     set udg_TempPoint=GetUnitLoc(GetSpellTargetUnit())
     set udg_Temp_UnitGroup=GetUnitsInRangeOfLocMatching(175.00,udg_TempPoint,Condition(function Trig_Rhonin_Starts_Func001Func016Func001Func001Func002002003))
@@ -100,7 +86,6 @@ function Trig_Rhonin_Starts_Func001Func010002003001 takes nothing returns boolea
     call RemoveLocation(udg_TempPoint)
     call PlaySoundOnUnitBJ(gg_snd_AncestralGuardianHit1,100,GetSpellTargetUnit())
     else
-    endif
     endif
     endif
     endif
