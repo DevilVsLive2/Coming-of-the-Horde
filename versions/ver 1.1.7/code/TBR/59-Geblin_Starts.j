@@ -52,21 +52,7 @@ function Trig_Geblin_Starts_Func001Func001Func001Func002C takes nothing returns 
     endif
     return true
     endfunction
-    function Trig_Geblin_Starts_Func001C takes nothing returns boolean
-    if(not(GetSpellAbilityId()=='AEsf'))then
-    return false
-    endif
-    return true
-    endfunction
     function Trig_Geblin_Starts_Actions takes nothing returns nothing
-    if(Trig_Geblin_Starts_Func001C())then
-    set udg_RejuvInt[GetConvertedPlayerId(GetTriggerPlayer())]=1
-    call DestroyEffect(udg_RE[GetConvertedPlayerId(GetTriggerPlayer())])
-    call AddSpecialEffectTargetUnitBJ("overhead",GetTriggerUnit(),"RejuvTarget.mdx")
-    set udg_RE[GetConvertedPlayerId(GetTriggerPlayer())]=GetLastCreatedEffectBJ()
-    call EnableTrigger(gg_trg_Rejuventation_Damage_Orange)
-    call EnableTrigger(gg_trg_Rejuventation_Stop_Orange)
-    else
     if(Trig_Geblin_Starts_Func001Func001C())then
     if(Trig_Geblin_Starts_Func001Func001Func001C())then
     call UnitAddAbilityBJ('A0CL',GetSpellTargetUnit())
@@ -92,7 +78,6 @@ function Trig_Geblin_Starts_Func001Func001Func001Func002C takes nothing returns 
     endif
     endif
     else
-    endif
     endif
     endfunction
     function InitTrig_Geblin_Starts takes nothing returns nothing

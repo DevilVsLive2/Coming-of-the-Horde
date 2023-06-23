@@ -3,13 +3,7 @@ function Trig_Turalyon_Starts_Func001Func001Func001Func001C takes nothing return
     return false
     endif
     return true
-    endfunction
-    function Trig_Turalyon_Starts_Func001Func001Func001C takes nothing returns boolean
-    if(not(GetSpellAbilityId()=='AEsf'))then
-    return false
-    endif
-    return true
-    endfunction
+endfunction
     function Trig_Turalyon_Starts_Func001Func001Func005Func001Func001Func001C takes nothing returns boolean
     if(not(GetUnitAbilityLevelSwapped('A02Y',GetTriggerUnit())==4))then
     return false
@@ -89,14 +83,6 @@ function Trig_Turalyon_Starts_Func001Func001Func001Func001C takes nothing return
     //call DisableTrigger(gg_trg_Righteous_Fury_Finish_4)
     //call DisableTrigger(gg_trg_Righteous_Fury_Attack)
     else
-    if(Trig_Turalyon_Starts_Func001Func001Func001C())then
-    set udg_RejuvInt[GetConvertedPlayerId(GetTriggerPlayer())]=1
-    call DestroyEffect(udg_RE[GetConvertedPlayerId(GetTriggerPlayer())])
-    call AddSpecialEffectTargetUnitBJ("overhead",GetTriggerUnit(),"RejuvTarget.mdx")
-    set udg_RE[GetConvertedPlayerId(GetTriggerPlayer())]=GetLastCreatedEffectBJ()
-    call EnableTrigger(gg_trg_Rejuventation_Damage_Grey)
-    call EnableTrigger(gg_trg_Rejuventation_Stop_Grey)
-    else
     if(Trig_Turalyon_Starts_Func001Func001Func001Func001C())then
     call SetUnitLifeBJ(GetSpellTargetUnit(),(GetUnitStateSwap(UNIT_STATE_LIFE,GetSpellTargetUnit())+((I2R(GetUnitAbilityLevelSwapped('A04G',GetTriggerUnit()))*200.00)+100.00)))
     call UnitAddAbilityBJ('A08M',GetTriggerUnit())
@@ -114,7 +100,6 @@ function Trig_Turalyon_Starts_Func001Func001Func001Func001C takes nothing return
     call UnitRemoveAbilityBJ('A08O',GetTriggerUnit())
     call SetUnitVertexColorBJ(GetTriggerUnit(),100,100.00,100.00,0)
     else
-    endif
     endif
     endif
     endif

@@ -66,12 +66,6 @@ function Trig_Muradin_Starts_Func001Func001Func001Func001C takes nothing returns
     endif
     return true
     endfunction
-    function Trig_Muradin_Starts_Func001Func001C takes nothing returns boolean
-    if(not(GetSpellAbilityId()=='AEsf'))then
-    return false
-    endif
-    return true
-    endfunction
     function Trig_Muradin_Starts_Func001Func002C takes nothing returns boolean
     if(not(udg_OnTheHouse==1))then
     return false
@@ -97,14 +91,6 @@ function Trig_Muradin_Starts_Func001Func001Func001Func001C takes nothing returns
     call IssueTargetOrder(GetLastCreatedUnit(),"thunderbolt",GetSpellTargetUnit())
     call UnitApplyTimedLifeBJ(1.00,'BTLF',GetLastCreatedUnit())
     call RemoveLocation(udg_TempPoint)
-    else
-    if(Trig_Muradin_Starts_Func001Func001C())then
-    set udg_RejuvInt[GetConvertedPlayerId(GetTriggerPlayer())]=1
-    call DestroyEffect(udg_RE[GetConvertedPlayerId(GetTriggerPlayer())])
-    call AddSpecialEffectTargetUnitBJ("overhead",GetTriggerUnit(),"RejuvTarget.mdx")
-    set udg_RE[GetConvertedPlayerId(GetTriggerPlayer())]=GetLastCreatedEffectBJ()
-    call EnableTrigger(gg_trg_Rejuventation_Damage_Orange)
-    call EnableTrigger(gg_trg_Rejuventation_Stop_Orange)
     else
     if(Trig_Muradin_Starts_Func001Func001Func001C())then
     if(Trig_Muradin_Starts_Func001Func001Func001Func001C())then
@@ -155,7 +141,6 @@ function Trig_Muradin_Starts_Func001Func001Func001Func001C takes nothing returns
     call DestroyGroup(udg_ThunderGroup)
     call RemoveLocation(udg_ThunderClapPoint3)
     else
-    endif
     endif
     endif
     endfunction

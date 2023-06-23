@@ -45,7 +45,6 @@ function Trig_Yellow_Hero_Selection_Func006Func001Func001Func001Func001Func001C 
     call SetUnitOwner(gg_unit_Nklj_0461,Player(4),true)
     call SelectUnitForPlayerSingle(gg_unit_Nklj_0461,GetOwningPlayer(GetTrainedUnit()))
     call ShowUnitShow(gg_unit_Nklj_0461)
-    call TriggerRegisterUnitEvent(gg_trg_Kiljaeden_Starts,gg_unit_Nklj_0461,EVENT_UNIT_SPELL_EFFECT)
     call TriggerRegisterUnitEvent(gg_trg_Volcano,gg_unit_Nklj_0461,EVENT_UNIT_SPELL_CHANNEL)
     call TriggerRegisterUnitEvent(gg_trg_Volcano_Stop,gg_unit_Nklj_0461,EVENT_UNIT_SPELL_ENDCAST)
     call PolledWait(25.00)

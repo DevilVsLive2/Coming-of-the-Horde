@@ -87,10 +87,12 @@
 
       tempEffect[0] = LoadEffectHandle(abilityData, GetHandleId(GetTriggerUnit()), StringHash("RejuvEffectYellow"));
       if (tempEffect[0] != null) {
+        SaveBoolean(abilityData, GetHandleId(GetTriggerUnit()), StringHash("IsUnitRejuvEffect"), false);
         IssueImmediateOrder(GetTriggerUnit(), "stop");
       }
       tempEffect[0] = LoadEffectHandle(abilityData, GetHandleId(GetTriggerUnit()), StringHash("RejuvEffectGreen"));
       if (tempEffect[0] != null) {
+        SaveBoolean(abilityData, GetHandleId(GetTriggerUnit()), StringHash("IsUnitRejuvEffect"), false);
         DestroyEffect(tempEffect[0]);
         RemoveSavedHandle(abilityData, GetHandleId(GetTriggerUnit()), StringHash("RejuvEffectGreen"));
         tempTimer[0] = LoadTimerHandle(abilityData, GetHandleId(GetTriggerUnit()), StringHash("RejuvTimer"));

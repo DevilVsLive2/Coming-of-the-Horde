@@ -84,7 +84,6 @@ trigger gg_trg_Blistering_Blade_Attack= null
 trigger gg_trg_Fury_Level= null
 trigger gg_trg_Thunder_Shield= null
 trigger gg_trg_Thunder_Shield_Start= null
-trigger gg_trg_Skyree_Reset= null
 trigger gg_trg_Holy_Bulwark_Starts= null
 trigger gg_trg_Holy_Bulwark= null
 trigger gg_trg_Holy_Bulwark_Ends= null
@@ -581,7 +580,6 @@ endglobals
 //! import jass "./TBR/19-Garona_Starts.j"
 //! import jass "./TBR/19-Kick_Vote_Process.j"
 //! import jass "./TBR/19-Mara_Starts.j"
-//! import jass "./TBR/019-Skyree_Reset.j"
 //! import jass "./TBR/19-Steam_Contraption_Off.j"
 //! import jass "./TBR/19-Stromgarde_Refuge.j"
 //! import jass "./TBR/19-Stromgarde_West_Gate_Life.j"
@@ -761,7 +759,6 @@ endglobals
 //! import jass "./TBR/056-Mana_Shield.j"
 //! import jass "./TBR/56-Muradin_Starts.j"
 //! import jass "./TBR/56-The_Darkener_Damage_Reduce.j"
-//! import jass "./TBR/57-Magni_Starts.j"
 //! import jass "./TBR/58-Brann_Starts.j"
 //! import jass "./TBR/058-Inferno_Level.j"
 //! import jass "./TBR/58-Undying_Strength.j"

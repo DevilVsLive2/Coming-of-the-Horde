@@ -12,12 +12,6 @@ function Trig_Sylvanas_Starts_Func001Func001Func009C takes nothing returns boole
     endif
     return true
     endfunction
-    function Trig_Sylvanas_Starts_Func001Func001Func011Func001C takes nothing returns boolean
-    if(not(GetSpellAbilityId()=='AEsf'))then
-    return false
-    endif
-    return true
-    endfunction
     function Trig_Sylvanas_Starts_Func001Func001Func011C takes nothing returns boolean
     if(not(GetSpellAbilityId()=='A013'))then
     return false
@@ -84,15 +78,6 @@ function Trig_Sylvanas_Starts_Func001Func001Func009C takes nothing returns boole
     call PolledWait(((I2R(GetUnitAbilityLevelSwapped('A013',gg_unit_Hamg_0499))*0.55)+0.30))
     call UnitRemoveAbilityBJ('A006',gg_unit_Hamg_0499)
     else
-    if(Trig_Sylvanas_Starts_Func001Func001Func011Func001C())then
-    set udg_RejuvInt[GetConvertedPlayerId(GetTriggerPlayer())]=1
-    call DestroyEffect(udg_RE[GetConvertedPlayerId(GetTriggerPlayer())])
-    call AddSpecialEffectTargetUnitBJ("overhead",GetTriggerUnit(),"RejuvTarget.mdx")
-    set udg_RE[GetConvertedPlayerId(GetTriggerPlayer())]=GetLastCreatedEffectBJ()
-    call EnableTrigger(gg_trg_Rejuventation_Damage_Green)
-    call EnableTrigger(gg_trg_Rejuventation_Stop_Green)
-    else
-    endif
     endif
     endif
     endif

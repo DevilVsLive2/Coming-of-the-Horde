@@ -297,7 +297,6 @@ function Trig_Altar_Replace_Brown_Func008Func001Func001Func001Func001Func001Func
     call SetUnitOwner(gg_unit_Ogrh_0532,Player(11),true)
     call ShowUnitShow(gg_unit_Ogrh_0532)
     call SelectUnitForPlayerSingle(gg_unit_Ogrh_0532,Player(11))
-    call TriggerRegisterUnitEvent(gg_trg_Orgrim_Starts,gg_unit_Ogrh_0532,EVENT_UNIT_SPELL_EFFECT)
     else
     if(Trig_Altar_Replace_Brown_Func010Func001Func001C())then
     call SetUnitPositionLoc(gg_unit_Nbst_0519,udg_TempPoint)

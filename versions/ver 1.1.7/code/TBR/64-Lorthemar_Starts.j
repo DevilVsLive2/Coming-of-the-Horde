@@ -29,12 +29,6 @@ function Trig_Lorthemar_Starts_Func001Func010001003001001 takes nothing returns 
     call UnitDamageTargetBJ(gg_unit_H01Q_0521,GetEnumUnit(),((30.00*I2R(GetUnitAbilityLevelSwapped('A0D4',gg_unit_H01Q_0521)))+15.00),ATTACK_TYPE_PIERCE,DAMAGE_TYPE_UNIVERSAL)
     call UnitDamageTargetBJ(gg_unit_H01Q_0521,GetEnumUnit(),((30.00*I2R(GetUnitAbilityLevelSwapped('A0D4',gg_unit_H01Q_0521)))+15.00),ATTACK_TYPE_PIERCE,DAMAGE_TYPE_NORMAL)
     endfunction
-    function Trig_Lorthemar_Starts_Func001Func013Func001C takes nothing returns boolean
-    if(not(GetSpellAbilityId()=='AEsf'))then
-    return false
-    endif
-    return true
-    endfunction
     function Trig_Lorthemar_Starts_Func001Func013C takes nothing returns boolean
     if(not(GetSpellAbilityId()=='A06K'))then
     return false
@@ -68,15 +62,6 @@ function Trig_Lorthemar_Starts_Func001Func010001003001001 takes nothing returns 
     call PolledWait(25.00)
     call UnitRemoveAbilityBJ('A076',GetTriggerUnit())
     else
-    if(Trig_Lorthemar_Starts_Func001Func013Func001C())then
-    set udg_RejuvInt[GetConvertedPlayerId(GetTriggerPlayer())]=1
-    call DestroyEffect(udg_RE[GetConvertedPlayerId(GetTriggerPlayer())])
-    call AddSpecialEffectTargetUnitBJ("overhead",GetTriggerUnit(),"RejuvTarget.mdx")
-    set udg_RE[GetConvertedPlayerId(GetTriggerPlayer())]=GetLastCreatedEffectBJ()
-    call EnableTrigger(gg_trg_Rejuventation_Damage_Green)
-    call EnableTrigger(gg_trg_Rejuventation_Stop_Green)
-    else
-    endif
     endif
     endif
     endfunction

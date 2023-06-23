@@ -44,12 +44,6 @@ return false
 endif
 return true
 endfunction
-function Trig_Darius_Starts_Func001Func001C takes nothing returns boolean
-if(not(GetSpellAbilityId()=='AEsf'))then
-return false
-endif
-return true
-endfunction
 function Trig_Darius_Starts_Func001Func010C takes nothing returns boolean
 if(not(UnitHasBuffBJ(udg_StaggeringTarget,'B01E')==false))then
 return false
@@ -84,14 +78,6 @@ call PolledWait(0.85)
 call DisableTrigger(gg_trg_Staggering_Move)
 set udg_StaggeringTarget=null
 else
-if(Trig_Darius_Starts_Func001Func001C())then
-set udg_RejuvInt[GetConvertedPlayerId(GetTriggerPlayer())]=1
-call DestroyEffect(udg_RE[GetConvertedPlayerId(GetTriggerPlayer())])
-call AddSpecialEffectTargetUnitBJ("overhead",GetTriggerUnit(),"RejuvTarget.mdx")
-set udg_RE[GetConvertedPlayerId(GetTriggerPlayer())]=GetLastCreatedEffectBJ()
-call EnableTrigger(gg_trg_Rejuventation_Damage_Pink)
-call EnableTrigger(gg_trg_Rejuventation_Stop_Pink)
-else
 if(Trig_Darius_Starts_Func001Func001Func001C())then
 set udg_TempPoint=GetUnitLoc(gg_unit_Nalc_0495)
 set udg_BarrelPoint=GetSpellTargetLoc()
@@ -115,7 +101,6 @@ set bj_wantDestroyGroup=true
 call ForGroupBJ(GetUnitsInRectAll(GetPlayableMapRect()),function Trig_Darius_Starts_Func001Func001Func001Func020002)
 call RemoveLocation(udg_BarrelPoint)
 else
-endif
 endif
 endif
 endfunction

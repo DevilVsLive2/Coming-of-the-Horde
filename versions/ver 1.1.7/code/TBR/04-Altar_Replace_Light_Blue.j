@@ -337,7 +337,6 @@ function Trig_Altar_Replace_Light_Blue_Func008Func001Func001Func001Func001Func00
     call SetUnitOwner(gg_unit_Ogrh_0532,Player(9),true)
     call ShowUnitShow(gg_unit_Ogrh_0532)
     call SelectUnitForPlayerSingle(gg_unit_Ogrh_0532,Player(9))
-    call TriggerRegisterUnitEvent(gg_trg_Orgrim_Starts,gg_unit_Ogrh_0532,EVENT_UNIT_SPELL_EFFECT)
     
     
     

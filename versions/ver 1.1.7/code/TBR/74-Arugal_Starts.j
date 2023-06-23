@@ -32,12 +32,6 @@ function Trig_Arugal_Starts_Func001Func001Func001Func001Func010002003001 takes n
     endif
     return true
     endfunction
-    function Trig_Arugal_Starts_Func001Func001Func001C takes nothing returns boolean
-    if(not(GetSpellAbilityId()=='AEsf'))then
-    return false
-    endif
-    return true
-    endfunction
     function Trig_Arugal_Starts_Func001Func001Func009002003001001 takes nothing returns boolean
     return(IsUnitType(GetFilterUnit(),UNIT_TYPE_STRUCTURE)==false)
     endfunction
@@ -201,14 +195,6 @@ function Trig_Arugal_Starts_Func001Func001Func001Func001Func010002003001 takes n
     call PolledWait(1.00)
     call DestroyEffect(udg_SD)
     else
-    if(Trig_Arugal_Starts_Func001Func001Func001C())then
-    set udg_RejuvInt[GetConvertedPlayerId(GetTriggerPlayer())]=1
-    call DestroyEffect(udg_RE[GetConvertedPlayerId(GetTriggerPlayer())])
-    call AddSpecialEffectTargetUnitBJ("overhead",GetTriggerUnit(),"RejuvTarget.mdx")
-    set udg_RE[GetConvertedPlayerId(GetTriggerPlayer())]=GetLastCreatedEffectBJ()
-    call EnableTrigger(gg_trg_Rejuventation_Damage_Pink)
-    call EnableTrigger(gg_trg_Rejuventation_Stop_Pink)
-    else
     if(Trig_Arugal_Starts_Func001Func001Func001Func001C())then
     set udg_ReturnedPoint=GetSpellTargetLoc()
     call AddSpecialEffectLocBJ(udg_ReturnedPoint,"Abilities\\Spells\\Human\\FlameStrike\\FlameStrikeTarget.mdl")
@@ -239,7 +225,6 @@ function Trig_Arugal_Starts_Func001Func001Func001Func001Func010002003001 takes n
     call DestroyGroup(udg_TheReturned)
     call DestroyGroup(udg_ReturnCorpses)
     else
-    endif
     endif
     endif
     endif

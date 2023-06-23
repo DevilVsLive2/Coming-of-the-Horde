@@ -32,9 +32,6 @@ function Trig_Purple_Hero_Selection_Func001Func001Func001Func001C takes nothing 
     call ShowUnitShow(gg_unit_Hant_0475)
     call TriggerRegisterUnitEvent(gg_trg_Antonidas_Starts,gg_unit_Hant_0475,EVENT_UNIT_SPELL_EFFECT)
     call TriggerRegisterUnitEvent(gg_trg_Tranquility_Level,gg_unit_Hant_0475,EVENT_UNIT_HERO_SKILL)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Damage_Purple,gg_unit_Hant_0475,EVENT_UNIT_DAMAGED)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Heal_Purple,gg_unit_Hant_0475,EVENT_UNIT_SPELL_FINISH)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Stop_Purple,gg_unit_Hant_0475,EVENT_UNIT_SPELL_ENDCAST)
     call SetPlayerHandicapXPBJ(Player(3),92.00)
     else
     if(Trig_Purple_Hero_Selection_Func001Func001C())then
@@ -47,9 +44,6 @@ function Trig_Purple_Hero_Selection_Func001Func001Func001Func001C takes nothing 
     call TriggerRegisterUnitEvent(gg_trg_Kael_Starts,gg_unit_Hblm_0508,EVENT_UNIT_SPELL_EFFECT)
     call TriggerRegisterUnitEvent(gg_trg_Pyre_Reset,gg_unit_Hblm_0508,EVENT_UNIT_DEATH)
     call TriggerRegisterUnitEvent(gg_trg_Inferno_Level,gg_unit_Hblm_0508,EVENT_UNIT_HERO_SKILL)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Damage_Purple,gg_unit_Hblm_0508,EVENT_UNIT_DAMAGED)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Heal_Purple,gg_unit_Hblm_0508,EVENT_UNIT_SPELL_FINISH)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Stop_Purple,gg_unit_Hblm_0508,EVENT_UNIT_SPELL_ENDCAST)
     call SetPlayerHandicapXPBJ(Player(3),92.00)
     else
     if(Trig_Purple_Hero_Selection_Func001Func001Func001C())then
@@ -61,9 +55,6 @@ function Trig_Purple_Hero_Selection_Func001Func001Func001Func001C takes nothing 
     call ShowUnitShow(gg_unit_Hjai_0459)
     call TriggerRegisterUnitEvent(gg_trg_Rhonin_Starts,gg_unit_Hjai_0459,EVENT_UNIT_SPELL_EFFECT)
     call TriggerRegisterUnitEvent(gg_trg_Rhonin_Learns,gg_unit_Hjai_0459,EVENT_UNIT_HERO_SKILL)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Damage_Purple,gg_unit_Hjai_0459,EVENT_UNIT_DAMAGED)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Heal_Purple,gg_unit_Hjai_0459,EVENT_UNIT_SPELL_FINISH)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Stop_Purple,gg_unit_Hjai_0459,EVENT_UNIT_SPELL_ENDCAST)
     call SetPlayerHandicapXPBJ(Player(3),99.00)
     else
     if(Trig_Purple_Hero_Selection_Func001Func001Func001Func001C())then
@@ -75,9 +66,6 @@ function Trig_Purple_Hero_Selection_Func001Func001Func001Func001C takes nothing 
     call SetUnitOwner(gg_unit_Ewar_0489,Player(3),true)
     call ShowUnitShow(gg_unit_Ewar_0489)
     call TriggerRegisterUnitEvent(gg_trg_Aegwynn_Starts,gg_unit_Ewar_0489,EVENT_UNIT_SPELL_EFFECT)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Damage_Purple,gg_unit_Ewar_0489,EVENT_UNIT_DAMAGED)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Heal_Purple,gg_unit_Ewar_0489,EVENT_UNIT_SPELL_FINISH)
-    call TriggerRegisterUnitEvent(gg_trg_Rejuventation_Stop_Purple,gg_unit_Ewar_0489,EVENT_UNIT_SPELL_ENDCAST)
     call SetPlayerHandicapXPBJ(Player(3),92.00)
     else
     endif

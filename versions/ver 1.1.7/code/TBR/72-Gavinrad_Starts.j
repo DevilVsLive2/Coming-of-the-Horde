@@ -4,12 +4,6 @@ function Trig_Gavinrad_Starts_Func001Func001Func001C takes nothing returns boole
     endif
     return true
     endfunction
-    function Trig_Gavinrad_Starts_Func001Func001C takes nothing returns boolean
-    if(not(GetSpellAbilityId()=='AEsf'))then
-    return false
-    endif
-    return true
-    endfunction
     function Trig_Gavinrad_Starts_Func001C takes nothing returns boolean
     if(not(GetSpellAbilityId()=='ANfd'))then
     return false
@@ -28,14 +22,6 @@ function Trig_Gavinrad_Starts_Func001Func001Func001C takes nothing returns boole
     call UnitApplyTimedLifeBJ(1.00,'BTLF',GetLastCreatedUnit())
     call RemoveLocation(udg_TempPoint)
     else
-    if(Trig_Gavinrad_Starts_Func001Func001C())then
-    set udg_RejuvInt[GetConvertedPlayerId(GetTriggerPlayer())]=1
-    call DestroyEffect(udg_RE[GetConvertedPlayerId(GetTriggerPlayer())])
-    call AddSpecialEffectTargetUnitBJ("overhead",GetTriggerUnit(),"RejuvTarget.mdx")
-    set udg_RE[GetConvertedPlayerId(GetTriggerPlayer())]=GetLastCreatedEffectBJ()
-    call EnableTrigger(gg_trg_Rejuventation_Damage_Pink)
-    call EnableTrigger(gg_trg_Rejuventation_Stop_Pink)
-    else
     if(Trig_Gavinrad_Starts_Func001Func001Func001C())then
     set udg_HammerPoint=GetSpellTargetLoc()
     call CreateNUnitsAtLoc(1,'h00Z',Player(7),udg_HammerPoint,0.00)
@@ -51,7 +37,6 @@ function Trig_Gavinrad_Starts_Func001Func001Func001C takes nothing returns boole
     call IssueImmediateOrder(gg_unit_o00R_0334,"stomp")
     call RemoveLocation(udg_HammerPoint)
     else
-    endif
     endif
     endif
     endfunction

@@ -49,12 +49,6 @@ function Trig_Brann_Starts_Func001Func014002003001001 takes nothing returns bool
     endif
     call RemoveLocation(udg_TempLoc)
     endfunction
-    function Trig_Brann_Starts_Func001Func021Func001C takes nothing returns boolean
-    if(not(GetSpellAbilityId()=='AEsf'))then
-    return false
-    endif
-    return true
-    endfunction
     function Trig_Brann_Starts_Func001Func021C takes nothing returns boolean
     if(not(GetSpellAbilityId()=='A031'))then
     return false
@@ -129,15 +123,6 @@ function Trig_Brann_Starts_Func001Func014002003001001 takes nothing returns bool
     call PolledWait(1.00)
     call DestroyEffect(udg_BurningCocktailSE)
     else
-    if(Trig_Brann_Starts_Func001Func021Func001C())then
-    set udg_RejuvInt[GetConvertedPlayerId(GetTriggerPlayer())]=1
-    call DestroyEffect(udg_RE[GetConvertedPlayerId(GetTriggerPlayer())])
-    call AddSpecialEffectTargetUnitBJ("overhead",GetTriggerUnit(),"RejuvTarget.mdx")
-    set udg_RE[GetConvertedPlayerId(GetTriggerPlayer())]=GetLastCreatedEffectBJ()
-    call EnableTrigger(gg_trg_Rejuventation_Damage_Orange)
-    call EnableTrigger(gg_trg_Rejuventation_Stop_Orange)
-    else
-    endif
     endif
     endif
     endfunction

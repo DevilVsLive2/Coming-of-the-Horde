@@ -28,12 +28,6 @@ function Trig_Alleria_Starts_Func001Func001Func001Func001Func021C takes nothing 
     endif
     return true
     endfunction
-    function Trig_Alleria_Starts_Func001Func001Func001C takes nothing returns boolean
-    if(not(GetSpellAbilityId()=='AEsf'))then
-    return false
-    endif
-    return true
-    endfunction
     function Trig_Alleria_Starts_Func001Func001C takes nothing returns boolean
     if(not(GetSpellAbilityId()=='A022'))then
     return false
@@ -60,14 +54,6 @@ function Trig_Alleria_Starts_Func001Func001Func001Func001Func021C takes nothing 
     call PolledWait(6.00)
     call UnitRemoveAbilityBJ('A05S',gg_unit_Hvwd_0525)
     call DisableTrigger(gg_trg_Evade)
-    else
-    if(Trig_Alleria_Starts_Func001Func001Func001C())then
-    set udg_RejuvInt[GetConvertedPlayerId(GetTriggerPlayer())]=1
-    call DestroyEffect(udg_RE[GetConvertedPlayerId(GetTriggerPlayer())])
-    call AddSpecialEffectTargetUnitBJ("overhead",GetTriggerUnit(),"RejuvTarget.mdx")
-    set udg_RE[GetConvertedPlayerId(GetTriggerPlayer())]=GetLastCreatedEffectBJ()
-    call EnableTrigger(gg_trg_Rejuventation_Damage_Green)
-    call EnableTrigger(gg_trg_Rejuventation_Stop_Green)
     else
     if(Trig_Alleria_Starts_Func001Func001Func001Func001C())then
     set udg_ArrowStormInt=0
@@ -127,7 +113,6 @@ function Trig_Alleria_Starts_Func001Func001Func001Func001Func021C takes nothing 
     call RemoveLocation(udg_ArrowStormTarget[5])
     call RemoveLocation(udg_ArrowStormTarget[6])
     else
-    endif
     endif
     endif
     endif

@@ -1,9 +1,4 @@
-function Trig_Alonsus_Starts_Func001Func001Func001C takes nothing returns boolean
-    if(not(GetSpellAbilityId()=='AEsf'))then
-    return false
-    endif
-    return true
-    endfunction
+
     function Trig_Alonsus_Starts_Func001Func001Func006C takes nothing returns boolean
     if(not(((GetUnitStateSwap(UNIT_STATE_MAX_LIFE,GetSpellTargetUnit())-udg_PrayerHealth)*(1.00-((I2R(GetUnitAbilityLevelSwapped('AChv',gg_unit_H01S_0510))*0.15)-0.15)))<udg_AlonsusHealth))then
     return false
@@ -99,15 +94,6 @@ function Trig_Alonsus_Starts_Func001Func001Func001C takes nothing returns boolea
     call RemoveLocation(udg_TempPoint)
     call RemoveLocation(udg_TempPoint2)
     else
-    if(Trig_Alonsus_Starts_Func001Func001Func001C())then
-    set udg_RejuvInt[GetConvertedPlayerId(GetTriggerPlayer())]=1
-    call DestroyEffect(udg_RE[GetConvertedPlayerId(GetTriggerPlayer())])
-    call AddSpecialEffectTargetUnitBJ("overhead",GetTriggerUnit(),"RejuvTarget.mdx")
-    set udg_RE[GetConvertedPlayerId(GetTriggerPlayer())]=GetLastCreatedEffectBJ()
-    call EnableTrigger(gg_trg_Rejuventation_Damage_Grey)
-    call EnableTrigger(gg_trg_Rejuventation_Stop_Grey)
-    else
-    endif
     endif
     endif
     endfunction

@@ -329,7 +329,6 @@ function Trig_Altar_Replace_Dark_Green_Func008Func001Func001Func001Func001Func00
     call SetUnitOwner(gg_unit_Ogrh_0532,Player(10),true)
     call ShowUnitShow(gg_unit_Ogrh_0532)
     call SelectUnitForPlayerSingle(gg_unit_Ogrh_0532,Player(10))
-    call TriggerRegisterUnitEvent(gg_trg_Orgrim_Starts,gg_unit_Ogrh_0532,EVENT_UNIT_SPELL_EFFECT)
     
     
     
