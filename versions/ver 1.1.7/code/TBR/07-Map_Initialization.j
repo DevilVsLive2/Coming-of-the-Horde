@@ -1,7 +1,4 @@
 function Trig_Map_Initialization_Actions takes nothing returns nothing
-set UnitLimitHero[11] = CreateUnit(Player(11), 'ostr', -15500, -15500, 0)
-set UnitLimitHero[10] = CreateUnit(Player(10), 'ostr', -15500, -15500, 0)
-set UnitLimitHero[9] = CreateUnit(Player(9), 'ostr', -15500, -15500, 0)
 call SetPlayerColorBJ(Player(7),ConvertPlayerColor(12),true)
 call SetPlayerColorBJ(Player(PLAYER_NEUTRAL_PASSIVE),PLAYER_COLOR_LIGHT_BLUE,false)
 call SetUnitColor(gg_unit_Utic_0512,ConvertPlayerColor(12))

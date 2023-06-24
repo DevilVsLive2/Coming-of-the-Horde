@@ -1,6 +1,6 @@
 //! zinc
 
-  library UnitDamagingEventHandler requires CothUtilities {
+  library GlobalEvents requires CothUtilities {
 
     timer tempTimer[8000];
     trigger tempTrigger[8000];

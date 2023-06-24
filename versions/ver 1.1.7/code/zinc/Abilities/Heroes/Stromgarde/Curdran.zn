@@ -20,6 +20,7 @@ library CurdranAbils requires CothUtilities {
   function onInit(){
     trigger onCurdranCastSpell = CreateTrigger();
     trigger onCurdranLearnSpell = CreateTrigger();
+    trigger onCurdranRevive = CreateTrigger();
 
     TriggerRegisterAnyUnitEventBJ(onCurdranCastSpell, EVENT_PLAYER_UNIT_SPELL_EFFECT);
     TriggerAddCondition(onCurdranCastSpell, Filter(function () -> boolean {
@@ -115,11 +116,12 @@ library CurdranAbils requires CothUtilities {
           GetUnitTypeId(caster) == CurdranMorphSecond ||
           GetUnitTypeId(caster) == CurdranMorphThird
         ) {
-          modifierStrengthCurdran = 16 - GetUnitAbilityLevel(caster, castedSpellId) * 4;
-          SaveInteger(abilityData, GetHandleId(caster), skyRee, modifierStrengthCurdran);
-          ModifyHeroStat(bj_HEROSTAT_STR, caster, bj_MODIFYMETHOD_ADD, modifierStrengthCurdran);
+          ModifyHeroStat(bj_HEROSTAT_STR, caster, bj_MODIFYMETHOD_ADD, LoadInteger(abilityData, GetHandleId(caster), skyRee));
+          RemoveSavedInteger(abilityData, GetHandleId(caster), skyRee);
         } else {
-          ModifyHeroStat(bj_HEROSTAT_STR, caster, bj_MODIFYMETHOD_SUB, LoadInteger(abilityData, GetHandleId(caster), skyRee));
+          modifierStrengthCurdran = 16 - GetUnitAbilityLevel(caster, skyRee) * 4;
+          SaveInteger(abilityData, GetHandleId(caster), skyRee, modifierStrengthCurdran);
+          ModifyHeroStat(bj_HEROSTAT_STR, caster, bj_MODIFYMETHOD_SUB, modifierStrengthCurdran);
         }
 
         UnitMakeAbilityPermanent(caster, true, 'AEsf');
@@ -143,6 +145,14 @@ library CurdranAbils requires CothUtilities {
           TimerStart(stormShieldCDTimer, TimerGetRemaining(stormShieldCDTimer) - 6, false, null);
         }
       }
+    });
+    TriggerRegisterAnyUnitEventBJ(onCurdranRevive, EVENT_PLAYER_HERO_REVIVE_FINISH);
+    TriggerAddCondition(onCurdranRevive, Filter(function() -> boolean {
+      return (GetUnitTypeId(GetTriggerUnit()) == Curdran) || (GetUnitTypeId(GetTriggerUnit()) == CurdranMorphFirst) || (GetUnitTypeId(GetTriggerUnit()) == CurdranMorphSecond) || (GetUnitTypeId(GetTriggerUnit()) == CurdranMorphThird);
+    }));
+    TriggerAddAction(onCurdranRevive, function() {
+      ModifyHeroStat(bj_HEROSTAT_STR, GetTriggerUnit(), bj_MODIFYMETHOD_ADD, LoadInteger(abilityData, GetHandleId(GetTriggerUnit()), skyRee));
+      RemoveSavedInteger(abilityData, GetHandleId(GetTriggerUnit()), skyRee);
     });
   }
 }
