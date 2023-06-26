@@ -1,3 +1,4 @@
+
 //! zinc
 library CothUtilities {
   private constant string sLetters = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
@@ -17,6 +18,8 @@ library CothUtilities {
     constant integer ORDER_attack = 851983;
     constant integer ORDER_move = 851971;
 
+    constant integer spellBook = 'A0FR';
+
     //* Герои и их способности
     //Герои красного
     constant integer Curdran = 'Hmbr';
@@ -29,14 +32,18 @@ library CothUtilities {
     unit CurdranUnit;
     constant integer Galen = 'H01I';
     constant integer desperation = 'A06F';
-    constant integer desperationBuffAttackSpeed = 'A05K';
-    constant integer desperationBuffMovementSpeed = 'A0FX';
+    constant integer desperationMaxAttackSpeedBonusAbilityLevel = 17;
+    constant integer desperationAttackSpeedBonusAbility = 'ADBA';
+    constant integer desperationMaxMovementSpeedBonus = 5;
+    constant real desperationMovementSpeedBonusPerStack = 0.05;
+    constant real desperationDuration = 3.5;
     constant integer fury = 'A06Y';
     constant integer furyBuff = 'B023';
     constant integer blisteringBlade = 'A07I';
     constant integer disarm = 'A0DY';
     constant integer shieldStrike = 'AHtb';
     constant integer battleCry = 'A03G';
+    key galenKey;
     unit GalenUnit;
     constant integer Thoras = 'Huth';
     constant integer heroicStrike = 'ANab';
@@ -628,72 +635,58 @@ library CothUtilities {
     constant integer DEFENSE_TYPE_NONE   = 7;
 
     constant integer EveryHowAGIIncreaseArmor = 5;
+    constant real armorPerAgi = 0.2;
+
+    constant integer HERO_STAT_STR = bj_HEROSTAT_STR;
+    constant integer HERO_STAT_AGI = bj_HEROSTAT_AGI;
+    constant integer HERO_STAT_INT = bj_HEROSTAT_INT;
 
     hashtable abilityData = InitHashtable();
     
     //*Хэш-таблицы для способностей героев
     hashtable UnitAbilityData = InitHashtable();
     hashtable TimerData = InitHashtable();
+  }  
 
+  interface IUnitData {
+    static integer id;
+    static integer basicArmor;
+    static integer basicStr;
+    static integer basicAgi;
+    static integer basicInt;
+    static integer strEachLvl;
+    static integer agiEachLvl;
+    static integer intEachLvl;
+    static integer basicDamage;
+    static integer diceSides;
+    static integer diceNumbers;
+    static integer basicMovementSpeed;
+    static integer defenseType;
+    static integer mainStat;
+    unit gameUnit;
+    integer currentArmor;
+    integer currentWhiteStr;
+    integer currentGreenStr;
+    integer currentStr;
+    integer currentWhiteAgi;
+    integer currentGreenAgi;
+    integer currentAgi;
+    integer currentWhiteInt;
+    integer currentGreenInt;
+    integer currentInt;
+    integer currentMinDamage;
+    integer currentMaxDamage;
+    item currentItem[6];
+    integer currentWhiteMovementSpeed;
+    integer currentGreenMovementSpeed;
+    integer currentMovementSpeed;
 
-    trigger CurdranOnDamage = CreateTrigger(),
-    GalenOnDamage = CreateTrigger(),
-    ThorasOnDamage = CreateTrigger(),
-    DanathOnDamage = CreateTrigger(),
-    AnduinOnDamage = CreateTrigger(),
-    KhadgarOnDamage = CreateTrigger(),
-    LlaneOnDamage = CreateTrigger(),
-    MaraOnDamage = CreateTrigger(),
-    DaelinOnDamage = CreateTrigger(),
-    DukeOnDamage = CreateTrigger(),
-    DerekOnDamage = CreateTrigger(),
-    AntonidasOnDamage = CreateTrigger(),
-    RhoninOnDamage = CreateTrigger(),
-    KaelOnDamage = CreateTrigger(),
-    AegwynnOnDamage = CreateTrigger(),
-    MagniOnDamage = CreateTrigger(),
-    BrannOnDamage = CreateTrigger(),
-    GelbinOnDamage = CreateTrigger(),
-    MuradinOnDamage = CreateTrigger(),
-    AnasterianOnDamage = CreateTrigger(),
-    AlleriaOnDamage = CreateTrigger(),
-    LorThermarOnDamage = CreateTrigger(),
-    SylvanasOnDamage = CreateTrigger(),
-    GennOnDamage = CreateTrigger(),
-    ArugalOnDamage = CreateTrigger(),
-    GavinradOnDamage = CreateTrigger(),
-    DariusOnDamage = CreateTrigger(),
-    UtherOnDamage = CreateTrigger(),
-    TyralionOnDamage = CreateTrigger(),
-    TirionOnDamage = CreateTrigger(),
-    AlonSUSOnDamage = CreateTrigger(),
-    ArchimondeOnDamage = CreateTrigger(),
-    KillJaedenOnDamage = CreateTrigger(),
-    MannorothOnDamage = CreateTrigger(),
-    TichondriusOnDamage = CreateTrigger(),
-    MedivOnDamage = CreateTrigger(),
-    AzgalorOnDamage = CreateTrigger(),
-    GuldanOnDamage = CreateTrigger(),
-    NerzhulOnDamage = CreateTrigger(),
-    TeronOnDamage = CreateTrigger(),
-    ChoGallOnDamage = CreateTrigger(),
-    FenrisOnDamage = CreateTrigger(),
-    RatsoOnDamage = CreateTrigger(),
-    ZuluhedOnDamage = CreateTrigger(),
-    BlackhandOnDamage = CreateTrigger(),
-    OrgrimOnDamage = CreateTrigger(),
-    KargathOnDamage = CreateTrigger(),
-    DentargOnDamage = CreateTrigger(),
-    RendOnDamage = CreateTrigger(),
-    KillrogOnDamage = CreateTrigger(),
-    GromOnDamage = CreateTrigger(),
-    ZulJinOnDamage = CreateTrigger(),
-    GaronaOnDamage = CreateTrigger(),
-    MaimOnDamage = CreateTrigger(),
-    GriseldaOnDamage = CreateTrigger();
-
-    trigger MishanOnDamage = CreateTrigger();
-  }   
+    method getMainStatCount() -> integer;
+    method updateStats();
+    method getUnit() -> unit;
+    method setUnit(unit whichUnit);
+    
+  }
 
   public struct AbilityData {
 
@@ -983,15 +976,7 @@ library CothUtilities {
   }
 
   public function IsUnitMagicImmune (unit whichUnit)  -> boolean {
-    return
-    /*
-    ! (
-    !  UnitHasBuffBJ(whichUnit, 'B03N') ||
-    !  UnitHasBuffBJ(whichUnit, 'B01E') ||
-    !  UnitHasBuffBJ(whichUnit, 'Bams')
-    ! );
-    */
-    IsUnitType(whichUnit, UNIT_TYPE_MAGIC_IMMUNE);
+    return IsUnitType(whichUnit, UNIT_TYPE_MAGIC_IMMUNE);
   }
 
   function GetUnitAdditionalDamageFromItems (unit whichUnit)  -> integer {
@@ -1112,101 +1097,16 @@ library CothUtilities {
 
   }
 
-  function OnLoadMap ()  -> nothing {
-    SaveTriggerHandle(UnitInfoHashtable, Curdran, HERO_TRIG_ONDAMAGE, CurdranOnDamage);
-    SaveTriggerHandle(UnitInfoHashtable, CurdranMorphFirst, HERO_TRIG_ONDAMAGE, CurdranOnDamage);
-    SaveTriggerHandle(UnitInfoHashtable, CurdranMorphSecond, HERO_TRIG_ONDAMAGE, CurdranOnDamage);
-    SaveTriggerHandle(UnitInfoHashtable, CurdranMorphThird, HERO_TRIG_ONDAMAGE, CurdranOnDamage);
-    SaveTriggerHandle(UnitInfoHashtable, Galen, HERO_TRIG_ONDAMAGE, GalenOnDamage);
-    SaveTriggerHandle(UnitInfoHashtable, Thoras, HERO_TRIG_ONDAMAGE, ThorasOnDamage);
-    SaveTriggerHandle(UnitInfoHashtable, Danath, HERO_TRIG_ONDAMAGE, DanathOnDamage);
-
-    SaveTriggerHandle(UnitInfoHashtable, Anduin, HERO_TRIG_ONDAMAGE, AnduinOnDamage);
-    SaveTriggerHandle(UnitInfoHashtable, Khadgar, HERO_TRIG_ONDAMAGE, KhadgarOnDamage);
-    SaveTriggerHandle(UnitInfoHashtable, Llane, HERO_TRIG_ONDAMAGE, LlaneOnDamage);
-    SaveTriggerHandle(UnitInfoHashtable, Mara, HERO_TRIG_ONDAMAGE, MaraOnDamage);
-
-    SaveTriggerHandle(UnitInfoHashtable, Derek, HERO_TRIG_ONDAMAGE, DerekOnDamage);
-    SaveTriggerHandle(UnitInfoHashtable, Mishan, HERO_TRIG_ONDAMAGE, MishanOnDamage);
-    SaveTriggerHandle(UnitInfoHashtable, Daelin, HERO_TRIG_ONDAMAGE, DaelinOnDamage);
-    SaveTriggerHandle(UnitInfoHashtable, Duke, HERO_TRIG_ONDAMAGE, DukeOnDamage);
-
-    SaveTriggerHandle(UnitInfoHashtable, Rhonin, HERO_TRIG_ONDAMAGE, RhoninOnDamage);
-    SaveTriggerHandle(UnitInfoHashtable, Aegwynn, HERO_TRIG_ONDAMAGE, AegwynnOnDamage);
-    SaveTriggerHandle(UnitInfoHashtable, Kael, HERO_TRIG_ONDAMAGE, KaelOnDamage);
-    SaveTriggerHandle(UnitInfoHashtable, Antonidas, HERO_TRIG_ONDAMAGE, AntonidasOnDamage);
-
-    SaveTriggerHandle(UnitInfoHashtable, KillJaeden, HERO_TRIG_ONDAMAGE, KillJaedenOnDamage);
-    SaveTriggerHandle(UnitInfoHashtable, Mediv, HERO_TRIG_ONDAMAGE, MedivOnDamage);
-    SaveTriggerHandle(UnitInfoHashtable, SargerasFirst, HERO_TRIG_ONDAMAGE, MedivOnDamage);
-    SaveTriggerHandle(UnitInfoHashtable, SargerasSecond, HERO_TRIG_ONDAMAGE, MedivOnDamage);
-    SaveTriggerHandle(UnitInfoHashtable, SargerasThird, HERO_TRIG_ONDAMAGE, MedivOnDamage);
-    SaveTriggerHandle(UnitInfoHashtable, Mannoroth, HERO_TRIG_ONDAMAGE, MannorothOnDamage);
-    SaveTriggerHandle(UnitInfoHashtable, Azgalor, HERO_TRIG_ONDAMAGE, AzgalorOnDamage);
-    SaveTriggerHandle(UnitInfoHashtable, Archimonde, HERO_TRIG_ONDAMAGE, ArchimondeOnDamage);
-    SaveTriggerHandle(UnitInfoHashtable, Tichondrius, HERO_TRIG_ONDAMAGE, TichondriusOnDamage);
-
-    SaveTriggerHandle(UnitInfoHashtable, Muradin, HERO_TRIG_ONDAMAGE, MuradinOnDamage);
-    SaveTriggerHandle(UnitInfoHashtable, MuradinMorph, HERO_TRIG_ONDAMAGE, MuradinOnDamage);
-    SaveTriggerHandle(UnitInfoHashtable, Magni, HERO_TRIG_ONDAMAGE, MagniOnDamage);
-    SaveTriggerHandle(UnitInfoHashtable, Gelbin, HERO_TRIG_ONDAMAGE, GelbinOnDamage);
-    SaveTriggerHandle(UnitInfoHashtable, Brann, HERO_TRIG_ONDAMAGE, BrannOnDamage);
-
-    SaveTriggerHandle(UnitInfoHashtable, Sylvanas, HERO_TRIG_ONDAMAGE, SylvanasOnDamage);
-    SaveTriggerHandle(UnitInfoHashtable, Alleria, HERO_TRIG_ONDAMAGE, AlleriaOnDamage);
-    SaveTriggerHandle(UnitInfoHashtable, Anasterian, HERO_TRIG_ONDAMAGE, AnasterianOnDamage);
-    SaveTriggerHandle(UnitInfoHashtable, LorThermar, HERO_TRIG_ONDAMAGE, LorThermarOnDamage);
-
-    SaveTriggerHandle(UnitInfoHashtable, Genn, HERO_TRIG_ONDAMAGE, GennOnDamage);
-    SaveTriggerHandle(UnitInfoHashtable, Arugal, HERO_TRIG_ONDAMAGE, ArugalOnDamage);
-    SaveTriggerHandle(UnitInfoHashtable, Darius, HERO_TRIG_ONDAMAGE, DariusOnDamage);
-    SaveTriggerHandle(UnitInfoHashtable, Gavinrad, HERO_TRIG_ONDAMAGE, GavinradOnDamage);
-
-    SaveTriggerHandle(UnitInfoHashtable, Uther, HERO_TRIG_ONDAMAGE, UtherOnDamage);
-    SaveTriggerHandle(UnitInfoHashtable, Tyralion, HERO_TRIG_ONDAMAGE, TyralionOnDamage);
-    SaveTriggerHandle(UnitInfoHashtable, AlonSUS, HERO_TRIG_ONDAMAGE, AlonSUSOnDamage);
-    SaveTriggerHandle(UnitInfoHashtable, Tirion, HERO_TRIG_ONDAMAGE, TirionOnDamage);
-
-    SaveTriggerHandle(UnitInfoHashtable, Guldan, HERO_TRIG_ONDAMAGE, GuldanOnDamage);
-    SaveTriggerHandle(UnitInfoHashtable, Nerzhul, HERO_TRIG_ONDAMAGE, NerzhulOnDamage);
-    SaveTriggerHandle(UnitInfoHashtable, Teron, HERO_TRIG_ONDAMAGE, TeronOnDamage);
-    SaveTriggerHandle(UnitInfoHashtable, ChoGall, HERO_TRIG_ONDAMAGE, ChoGallOnDamage);
-    SaveTriggerHandle(UnitInfoHashtable, Fenris, HERO_TRIG_ONDAMAGE, FenrisOnDamage);
-    SaveTriggerHandle(UnitInfoHashtable, Zuluhed, HERO_TRIG_ONDAMAGE, ZuluhedOnDamage);
-    SaveTriggerHandle(UnitInfoHashtable, Ratso, HERO_TRIG_ONDAMAGE, RatsoOnDamage);
-    SaveTriggerHandle(UnitInfoHashtable, RatsoMorphFirst, HERO_TRIG_ONDAMAGE, RatsoOnDamage);
-    SaveTriggerHandle(UnitInfoHashtable, RatsoMorphSecond, HERO_TRIG_ONDAMAGE, RatsoOnDamage);
-    SaveTriggerHandle(UnitInfoHashtable, RatsoMorphThird, HERO_TRIG_ONDAMAGE, RatsoOnDamage);
-
-    SaveTriggerHandle(UnitInfoHashtable, Killrog, HERO_TRIG_ONDAMAGE, KillrogOnDamage);
-    SaveTriggerHandle(UnitInfoHashtable, ZulJin, HERO_TRIG_ONDAMAGE, ZulJinOnDamage);
-    SaveTriggerHandle(UnitInfoHashtable, Grom, HERO_TRIG_ONDAMAGE, GromOnDamage);
-    SaveTriggerHandle(UnitInfoHashtable, Garona, HERO_TRIG_ONDAMAGE, GaronaOnDamage);
-    SaveTriggerHandle(UnitInfoHashtable, GaronaMorphFirst, HERO_TRIG_ONDAMAGE, GaronaOnDamage);
-    SaveTriggerHandle(UnitInfoHashtable, GaronaMorphSecond, HERO_TRIG_ONDAMAGE, GaronaOnDamage);
-    SaveTriggerHandle(UnitInfoHashtable, GaronaMorphThird, HERO_TRIG_ONDAMAGE, GaronaOnDamage);
-    SaveTriggerHandle(UnitInfoHashtable, Maim, HERO_TRIG_ONDAMAGE, MaimOnDamage);
-    SaveTriggerHandle(UnitInfoHashtable, Griselda, HERO_TRIG_ONDAMAGE, GriseldaOnDamage);
-
-    SaveTriggerHandle(UnitInfoHashtable, Blackhand, HERO_TRIG_ONDAMAGE, BlackhandOnDamage);
-    SaveTriggerHandle(UnitInfoHashtable, Orgrim, HERO_TRIG_ONDAMAGE, OrgrimOnDamage);
-    SaveTriggerHandle(UnitInfoHashtable, Kargath, HERO_TRIG_ONDAMAGE, KargathOnDamage);
-    SaveTriggerHandle(UnitInfoHashtable, Dentarg, HERO_TRIG_ONDAMAGE, DentargOnDamage);
-    SaveTriggerHandle(UnitInfoHashtable, Rend, HERO_TRIG_ONDAMAGE, RendOnDamage);
-  }
-
   
   private function onInit ()  -> nothing {
     unit u = CreateUnit(Player(15), 'o008', 0, 0, 0);
     integer index;
-    timer t = CreateTimer();
     trigger CastAbil = CreateTrigger();
     TriggerRegisterAnyUnitEventBJ(CastAbil, EVENT_PLAYER_UNIT_SPELL_EFFECT);
     TriggerAddAction(CastAbil, function EventCastAbil);
     CastAbil = CreateTrigger();
     TriggerRegisterAnyUnitEventBJ(CastAbil, EVENT_PLAYER_UNIT_SPELL_ENDCAST);
     TriggerAddAction(CastAbil, function EventEndCast);
-    TimerStart(t, 0, false, function OnLoadMap);
     //Добавляем абилки ещё во время загрузки, что бы их проинициализировать и если мы будем их вновь добавлять - что бы не было пролага
     UnitAddAbility(u, 'A0GO');
     UnitAddAbility(u, 'A0GT');
@@ -2496,13 +2396,6 @@ library CothUtilities {
     GaronaUnit      = gg_unit_O00M_0518;
     MaimUnit        = gg_unit_Obla_0496;
     GriseldaUnit    = gg_unit_Ekee_0528;
-
-    //
-    for (0 <= index <= 11) {
-      SetPlayerAbilityAvailable(Player(index), desperationBuffMovementSpeed, false);
-      SetPlayerAbilityAvailable(Player(index), desperationBuffAttackSpeed, false);
-      SetPlayerAbilityAvailable(Player(index), 'A046', false);
-    }
   }
 
 }

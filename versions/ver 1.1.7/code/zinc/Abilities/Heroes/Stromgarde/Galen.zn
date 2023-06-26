@@ -68,14 +68,6 @@ library GalenAbils requires CothUtilities {
       integer learnedSpell = GetLearnedSkill();
       integer learnedSpellLevel = GetLearnedSkillLevel();
       unit galen = GetTriggerUnit();
-
-      if (learnedSpell == desperation) {
-        SetPlayerAbilityAvailable(GetTriggerPlayer(), desperationBuffMovementSpeed, true);
-        SetPlayerAbilityAvailable(GetTriggerPlayer(), desperationBuffAttackSpeed, true);
-        SetPlayerAbilityAvailable(GetTriggerPlayer(), 'A046', true);
-        UnitAddAbility(galen, 'A046');
-        SetPlayerAbilityAvailable(GetTriggerPlayer(), 'A046', false);
-      }
     });
   }
 }

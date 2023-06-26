@@ -9,54 +9,88 @@
 
     hashtable data = InitHashtable();
 
+    integer desperationLevel;
+    integer desperationAttackSpeedBonusAbilityLevel;
+    integer desperationBonusLevel;
+    timer desperationAttackSpeedBonusTimer;
+    timer desperationMovementSpeedBonusTimer;
+    key galenKey;
+    key isDataSavedKey;
+    integer desperationMovementSpeedBonusCount;
+    integer desperationMovementSpeedBonus;
+    unit galen;
+    
+
+
     function eventDamagedHandler()  -> boolean {
       unit damager = GetEventDamageSource();
+      integer bonusMs = 0;
 
       //Desperation handling
-      if (GetUnitAbilityLevel(damager, desperation) > 0 && IsUnitEnemy(GetTriggerUnit(), GetOwningPlayer(damager))) {
-        if (GetUnitAbilityLevel(damager, desperationBuffAttackSpeed) < 17) {
-          tempTimer[0] = CreateTimer();
-          SaveUnitHandle(data, GetHandleId(tempTimer[0]), StringHash("GalenUnit"), damager);
-          if (GetUnitAbilityLevel(damager, desperationBuffAttackSpeed) + GetUnitAbilityLevel(damager, desperation) > 17) {
-            SaveInteger(data, GetHandleId(tempTimer[0]), StringHash("AttackSpeedBuffLevel"), 17 - GetUnitAbilityLevel(damager, desperationBuffAttackSpeed));
-            SetUnitAbilityLevel(damager, desperationBuffAttackSpeed, 17);
-          } else {
-            SaveInteger(data, GetHandleId(tempTimer[0]), StringHash("AttackSpeedBuffLevel"), GetUnitAbilityLevel(damager, desperation));
-            SetUnitAbilityLevel(damager, desperationBuffAttackSpeed, GetUnitAbilityLevel(damager, desperationBuffAttackSpeed) + GetUnitAbilityLevel(damager, desperation));
+      desperationLevel = GetUnitAbilityLevel(damager, desperation);
+      if (desperationLevel > 0 && IsUnitEnemy(GetTriggerUnit(), GetOwningPlayer(damager))) {
+        galen = damager;
+        desperationAttackSpeedBonusAbilityLevel = GetUnitAbilityLevel(galen, desperationAttackSpeedBonusAbility);
+        if (desperationAttackSpeedBonusAbilityLevel < desperationMaxAttackSpeedBonusAbilityLevel) {
+          desperationBonusLevel = desperationLevel;
+          if (desperationAttackSpeedBonusAbilityLevel + desperationBonusLevel > desperationMaxAttackSpeedBonusAbilityLevel) {
+            desperationBonusLevel = desperationMaxAttackSpeedBonusAbilityLevel - desperationAttackSpeedBonusAbilityLevel;
           }
-          
-          TimerStart(tempTimer[0], 3.5, false, function(){
-            SetUnitAbilityLevel(LoadUnitHandle(data, GetHandleId(GetExpiredTimer()), StringHash("GalenUnit")), desperationBuffAttackSpeed, 
-            GetUnitAbilityLevel(LoadUnitHandle(data, GetHandleId(GetExpiredTimer()), StringHash("GalenUnit")), desperationBuffAttackSpeed) - 
-            LoadInteger(data, GetHandleId(GetExpiredTimer()), StringHash("AttackSpeedBuffLevel")));
-            UnitAddAbility(LoadUnitHandle(data, GetHandleId(GetExpiredTimer()), StringHash("GalenUnit")), 'B04W');
-            UnitAddAbility(LoadUnitHandle(data, GetHandleId(GetExpiredTimer()), StringHash("GalenUnit")), 'B04V');
-            FlushChildHashtable(data, GetHandleId(GetExpiredTimer()));
+          desperationAttackSpeedBonusTimer = CreateTimer();
+          SaveUnitHandle(abilityData, GetHandleId(desperationAttackSpeedBonusTimer), galenKey, galen);
+          SaveInteger(abilityData, GetHandleId(desperationAttackSpeedBonusTimer), 'dbns', desperationBonusLevel); //desperation bonus
+          SetUnitAbilityLevel(galen, desperationAttackSpeedBonusAbility, desperationAttackSpeedBonusAbilityLevel + desperationBonusLevel);
+          TimerStart(desperationAttackSpeedBonusTimer, desperationDuration, false, function(){
+            galen = LoadUnitHandle(abilityData, GetHandleId(GetExpiredTimer()), galenKey);
+            desperationBonusLevel = LoadInteger(abilityData, GetHandleId(GetExpiredTimer()), 'dbns');
+            FlushChildHashtable(abilityData, GetHandleId(GetExpiredTimer()));
+            SetUnitAbilityLevel(galen, desperationAttackSpeedBonusAbility, GetUnitAbilityLevel(galen, desperationAttackSpeedBonusAbility) - desperationBonusLevel);
             DestroyTimer(GetExpiredTimer());
           });
         }
-        if (GetUnitAbilityLevel(damager, desperationBuffMovementSpeed) < 5) {
-          tempTimer[0] = CreateTimer();
-          SaveUnitHandle(data, GetHandleId(tempTimer[0]), StringHash("GalenUnit"), damager);
-          if (GetUnitAbilityLevel(damager, desperationBuffMovementSpeed) + GetUnitAbilityLevel(damager, desperation) > 5) {
-            SaveInteger(data, GetHandleId(tempTimer[0]), StringHash("MovementSpeedBuffLevel"), 5 - GetUnitAbilityLevel(damager, desperationBuffMovementSpeed));
-            SetUnitAbilityLevel(damager, desperationBuffMovementSpeed, 5);
-          } else {
-            SaveInteger(data, GetHandleId(tempTimer[0]), StringHash("MovementSpeedBuffLevel"), GetUnitAbilityLevel(damager, desperation));
-            SetUnitAbilityLevel(damager, desperationBuffMovementSpeed, GetUnitAbilityLevel(damager, desperationBuffMovementSpeed) + GetUnitAbilityLevel(damager, desperation));
+        desperationMovementSpeedBonusCount = LoadInteger(abilityData, GetHandleId(galen), 'dmsb');
+        if (desperationMovementSpeedBonusCount < desperationMaxMovementSpeedBonus) {
+          desperationBonusLevel = desperationLevel;
+          if (desperationBonusLevel + desperationMovementSpeedBonusCount > desperationMaxMovementSpeedBonus) {
+            desperationBonusLevel = desperationMaxMovementSpeedBonus - desperationMovementSpeedBonusCount;
           }
-          TimerStart(tempTimer[0], 3.5, false, function(){
-            SetUnitAbilityLevel(LoadUnitHandle(data, GetHandleId(GetExpiredTimer()), StringHash("GalenUnit")), desperationBuffMovementSpeed, 
-            GetUnitAbilityLevel(LoadUnitHandle(data, GetHandleId(GetExpiredTimer()), StringHash("GalenUnit")), desperationBuffMovementSpeed) - 
-            LoadInteger(data, GetHandleId(GetExpiredTimer()), StringHash("MovementSpeedBuffLevel")));
-            UnitAddAbility(LoadUnitHandle(data, GetHandleId(GetExpiredTimer()), StringHash("GalenUnit")), 'B04W');
-            UnitAddAbility(LoadUnitHandle(data, GetHandleId(GetExpiredTimer()), StringHash("GalenUnit")), 'B04V');
-            FlushChildHashtable(data, GetHandleId(GetExpiredTimer()));
+          if (UnitHasItemOfTypeBJ(galen, Bow_Windrunner_Inventory)) {
+            bonusMs = 64;
+            if (UnitHasItemOfTypeBJ(galen, Starlights_Inventory)) bonusMs = 160;
+            else if (UnitHasItemOfTypeBJ(galen, Soul_Slippers_Inventory) || UnitHasItemOfTypeBJ(galen, Bronze_Greaves_Inventory)) bonusMs = 148;
+            else if (UnitHasItemOfTypeBJ(galen, Plated_Boots_Inventory)) bonusMs = 130;
+            else if (UnitHasItemOfTypeBJ(galen, Boots_of_Speed)) bonusMs = 124;
+          } else {
+            if (UnitHasItemOfTypeBJ(galen, Starlights_Inventory)) bonusMs = 80;
+            else if (UnitHasItemOfTypeBJ(galen, Soul_Slippers_Inventory) || UnitHasItemOfTypeBJ(galen, Bronze_Greaves_Inventory)) bonusMs = 70;
+            else if (UnitHasItemOfTypeBJ(galen, Plated_Boots_Inventory)) bonusMs = 55;
+            else if (UnitHasItemOfTypeBJ(galen, Boots_of_Speed)) bonusMs = 50;
+          }
+          SetUnitMoveSpeed(galen, GetUnitMoveSpeed(galen) - bonusMs + (320 * (desperationMovementSpeedBonusPerStack * desperationBonusLevel)));
+          desperationMovementSpeedBonusTimer = CreateTimer();
+          SaveReal(abilityData, GetHandleId(desperationMovementSpeedBonusTimer), 'dmsb', 320 * (desperationMovementSpeedBonusPerStack * desperationBonusLevel));
+          SaveUnitHandle(abilityData, GetHandleId(desperationMovementSpeedBonusTimer), galenKey, galen);
+          TimerStart(desperationMovementSpeedBonusTimer, desperationDuration, false, function(){
+            real additonalMS = LoadReal(abilityData, GetHandleId(GetExpiredTimer()), 'dmsb');
+            integer bonusMs = 0;
+            galen = LoadUnitHandle(abilityData, GetHandleId(GetExpiredTimer()), galenKey);
+            if (UnitHasItemOfTypeBJ(galen, Bow_Windrunner_Inventory)) {
+              bonusMs = 64;
+              if (UnitHasItemOfTypeBJ(galen, Starlights_Inventory)) bonusMs = 160;
+              else if (UnitHasItemOfTypeBJ(galen, Soul_Slippers_Inventory) || UnitHasItemOfTypeBJ(galen, Bronze_Greaves_Inventory)) bonusMs = 148;
+              else if (UnitHasItemOfTypeBJ(galen, Plated_Boots_Inventory)) bonusMs = 130;
+              else if (UnitHasItemOfTypeBJ(galen, Boots_of_Speed)) bonusMs = 124;
+            } else {
+              if (UnitHasItemOfTypeBJ(galen, Starlights_Inventory)) bonusMs = 80;
+              else if (UnitHasItemOfTypeBJ(galen, Soul_Slippers_Inventory) || UnitHasItemOfTypeBJ(galen, Bronze_Greaves_Inventory)) bonusMs = 70;
+              else if (UnitHasItemOfTypeBJ(galen, Plated_Boots_Inventory)) bonusMs = 55;
+              else if (UnitHasItemOfTypeBJ(galen, Boots_of_Speed)) bonusMs = 50;
+            }
+            SetUnitMoveSpeed(galen, GetUnitMoveSpeed(galen) - additonalMS - bonusMs);
+            FlushChildHashtable(abilityData, GetHandleId(GetExpiredTimer()));
             DestroyTimer(GetExpiredTimer());
           });
         }
-        UnitAddAbility(damager, 'B04W');
-        UnitAddAbility(damager, 'B04V');
       }
       //Fury handling
       if (GetUnitAbilityLevel(damager, furyBuff) > 0 && IsUnitEnemy(GetTriggerUnit(), GetOwningPlayer(damager))) {
@@ -121,7 +155,7 @@
       return false;
     }
 
-    function addEventDamaged()  -> nothing {
+    function addGlobalEvents()  -> nothing {
       unit toWhichUnit = GetTriggerUnit();
       trigger onUnitDamaged;
       if ( GetUnitAbilityLevel(toWhichUnit, 'Aloc') == 0 && GetUnitAbilityLevel(toWhichUnit, 'Avul') == 0 ) {
@@ -134,7 +168,7 @@
       onUnitDamaged = null;
     }
 
-    function removeEventDamaged()  -> nothing {
+    function removeGlobalEvents()  -> nothing {
       unit toWhichUnit = GetTriggerUnit();
       trigger onUnitDamaged = LoadTriggerHandle(onDamagedTriggers, GetHandleId(toWhichUnit), StringHash("EventUnitDamaged"));
       FlushChildHashtable(onDamagedTriggers, GetHandleId(onUnitDamaged));
@@ -144,22 +178,25 @@
       toWhichUnit = null;
     }
 
-    function init()  -> nothing {
+    function onInit()  -> nothing {
       trigger onUnitSpawn = CreateTrigger();
       trigger onUnitDeath = CreateTrigger();
       region map = CreateRegion();
       group allUnits = CreateGroup();
       unit tempUnit;
       trigger tempTrigger;
+      
       RegionAddRect(map, GetPlayableMapRect());
       TriggerRegisterEnterRegion(onUnitSpawn, map, null);
-      TriggerAddAction(onUnitSpawn, function addEventDamaged);
+      TriggerAddAction(onUnitSpawn, function addGlobalEvents);
       TriggerRegisterLeaveRegion(onUnitDeath, map, null);
-      TriggerAddAction(onUnitDeath, function removeEventDamaged);
+      TriggerAddAction(onUnitDeath, function removeGlobalEvents);
       GroupEnumUnitsInRect(allUnits, GetPlayableMapRect(), null);
       while (FirstOfGroup(allUnits) != null) {
         tempUnit = FirstOfGroup(allUnits);
         GroupRemoveUnit(allUnits, tempUnit);
+
+        
         if ( GetUnitAbilityLevel(tempUnit, 'Aloc') == 0 && GetUnitAbilityLevel(tempUnit, 'Avul') == 0 ) {
           tempTrigger = CreateTrigger();
           SaveTriggerHandle(onDamagedTriggers, GetHandleId(tempUnit), StringHash("EventUnitDamaged"), tempTrigger);
@@ -172,12 +209,6 @@
       tempUnit = null;
       map = null;
       tempTrigger = null;
-    }
-
-    function onInit()  -> nothing {
-      trigger initTrigger = CreateTrigger();
-      TriggerRegisterTimerEvent(initTrigger, 0.01, false);
-      TriggerAddAction(initTrigger, function init);
       
     }
   }

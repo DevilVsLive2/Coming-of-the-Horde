@@ -6,10 +6,10 @@ library libHelp requires CothUtilities, PlayerLeaves {
   quest SelectHero[11];
   questitem SelectHeroItem[11];
 
-  public function WaitWhileHeroBuyItem (unit Hero, integer ItemId)  -> nothing {
+  public function WaitWhileHeroBuyItem (unit whichHero, integer ItemId)  -> nothing {
 
     while (true) {
-      if (UnitHasItemOfTypeBJ(Hero, ItemId)) return;
+      if (UnitHasItemOfTypeBJ(whichHero, ItemId)) return;
       //Задержка перед проверкой
       TriggerSleepAction(0.01);
     }

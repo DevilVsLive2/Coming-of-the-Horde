@@ -641,18 +641,18 @@ library Sandbox requires CothUtilities, PlayerLeaves {
 
   function Refresh ()  -> nothing {
     group AllUnits = CreateGroup();
-    unit Unit;
+    unit tempUnit;
     GroupEnumUnitsInRect(AllUnits, GetWorldBounds(), null);
     while (FirstOfGroup(AllUnits) != null) {
-      Unit = FirstOfGroup(AllUnits);
-      UnitResetCooldown(Unit);
-      SetUnitState(Unit, UNIT_STATE_LIFE, GetUnitState(Unit, UNIT_STATE_MAX_LIFE));
-      SetUnitState(Unit, UNIT_STATE_MANA, GetUnitState(Unit, UNIT_STATE_MAX_MANA));
-      GroupRemoveUnit(AllUnits, Unit);
+      tempUnit = FirstOfGroup(AllUnits);
+      UnitResetCooldown(tempUnit);
+      SetUnitState(tempUnit, UNIT_STATE_LIFE, GetUnitState(tempUnit, UNIT_STATE_MAX_LIFE));
+      SetUnitState(tempUnit, UNIT_STATE_MANA, GetUnitState(tempUnit, UNIT_STATE_MAX_MANA));
+      GroupRemoveUnit(AllUnits, tempUnit);
     }
     DestroyGroup(AllUnits);
     AllUnits = null;
-    Unit = null;
+    tempUnit = null;
   }
 
   function ChangePlayerState ()  -> nothing {
