@@ -24,7 +24,6 @@
 
     function eventDamagedHandler()  -> boolean {
       unit damager = GetEventDamageSource();
-      integer bonusMs = 0;
 
       //Desperation handling
       desperationLevel = GetUnitAbilityLevel(damager, desperation);
@@ -54,39 +53,18 @@
           if (desperationBonusLevel + desperationMovementSpeedBonusCount > desperationMaxMovementSpeedBonus) {
             desperationBonusLevel = desperationMaxMovementSpeedBonus - desperationMovementSpeedBonusCount;
           }
-          if (UnitHasItemOfTypeBJ(galen, Bow_Windrunner_Inventory)) {
-            bonusMs = 64;
-            if (UnitHasItemOfTypeBJ(galen, Starlights_Inventory)) bonusMs = 160;
-            else if (UnitHasItemOfTypeBJ(galen, Soul_Slippers_Inventory) || UnitHasItemOfTypeBJ(galen, Bronze_Greaves_Inventory)) bonusMs = 148;
-            else if (UnitHasItemOfTypeBJ(galen, Plated_Boots_Inventory)) bonusMs = 130;
-            else if (UnitHasItemOfTypeBJ(galen, Boots_of_Speed)) bonusMs = 124;
-          } else {
-            if (UnitHasItemOfTypeBJ(galen, Starlights_Inventory)) bonusMs = 80;
-            else if (UnitHasItemOfTypeBJ(galen, Soul_Slippers_Inventory) || UnitHasItemOfTypeBJ(galen, Bronze_Greaves_Inventory)) bonusMs = 70;
-            else if (UnitHasItemOfTypeBJ(galen, Plated_Boots_Inventory)) bonusMs = 55;
-            else if (UnitHasItemOfTypeBJ(galen, Boots_of_Speed)) bonusMs = 50;
-          }
-          SetUnitMoveSpeed(galen, GetUnitMoveSpeed(galen) - bonusMs + (320 * (desperationMovementSpeedBonusPerStack * desperationBonusLevel)));
+          SetUnitMoveSpeed(galen, 320 + (320 * desperationMovementSpeedBonusCount * desperationMovementSpeedBonusPerStack) + (320 * (desperationMovementSpeedBonusPerStack * desperationBonusLevel)));
           desperationMovementSpeedBonusTimer = CreateTimer();
           SaveReal(abilityData, GetHandleId(desperationMovementSpeedBonusTimer), 'dmsb', 320 * (desperationMovementSpeedBonusPerStack * desperationBonusLevel));
           SaveUnitHandle(abilityData, GetHandleId(desperationMovementSpeedBonusTimer), galenKey, galen);
+          SaveInteger(abilityData, GetHandleId(galen), 'dmsb', desperationMovementSpeedBonusCount + desperationBonusLevel);
+          SaveInteger(abilityData, GetHandleId(desperationMovementSpeedBonusTimer), 'msbc', desperationBonusLevel);
           TimerStart(desperationMovementSpeedBonusTimer, desperationDuration, false, function(){
             real additonalMS = LoadReal(abilityData, GetHandleId(GetExpiredTimer()), 'dmsb');
             integer bonusMs = 0;
             galen = LoadUnitHandle(abilityData, GetHandleId(GetExpiredTimer()), galenKey);
-            if (UnitHasItemOfTypeBJ(galen, Bow_Windrunner_Inventory)) {
-              bonusMs = 64;
-              if (UnitHasItemOfTypeBJ(galen, Starlights_Inventory)) bonusMs = 160;
-              else if (UnitHasItemOfTypeBJ(galen, Soul_Slippers_Inventory) || UnitHasItemOfTypeBJ(galen, Bronze_Greaves_Inventory)) bonusMs = 148;
-              else if (UnitHasItemOfTypeBJ(galen, Plated_Boots_Inventory)) bonusMs = 130;
-              else if (UnitHasItemOfTypeBJ(galen, Boots_of_Speed)) bonusMs = 124;
-            } else {
-              if (UnitHasItemOfTypeBJ(galen, Starlights_Inventory)) bonusMs = 80;
-              else if (UnitHasItemOfTypeBJ(galen, Soul_Slippers_Inventory) || UnitHasItemOfTypeBJ(galen, Bronze_Greaves_Inventory)) bonusMs = 70;
-              else if (UnitHasItemOfTypeBJ(galen, Plated_Boots_Inventory)) bonusMs = 55;
-              else if (UnitHasItemOfTypeBJ(galen, Boots_of_Speed)) bonusMs = 50;
-            }
-            SetUnitMoveSpeed(galen, GetUnitMoveSpeed(galen) - additonalMS - bonusMs);
+            SetUnitMoveSpeed(galen, 320 + 320 * (desperationMovementSpeedBonusPerStack * (LoadInteger(abilityData, GetHandleId(galen), 'dmsb') - LoadInteger(abilityData, GetHandleId(GetExpiredTimer()), 'msbc'))) - 320 * (LoadInteger(abilityData, GetHandleId(GetExpiredTimer()), 'msbc') * desperationMovementSpeedBonusPerStack));
+            SaveInteger(abilityData, GetHandleId(galen), 'dmsb', LoadInteger(abilityData, GetHandleId(galen), 'dmsb') - LoadInteger(abilityData, GetHandleId(GetExpiredTimer()), 'msbc'));
             FlushChildHashtable(abilityData, GetHandleId(GetExpiredTimer()));
             DestroyTimer(GetExpiredTimer());
           });
