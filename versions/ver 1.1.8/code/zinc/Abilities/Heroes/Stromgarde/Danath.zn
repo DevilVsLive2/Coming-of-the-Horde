@@ -1,3 +1,4 @@
+//! zinc
 library DanathAbils requires CothUtilities {
   function onInit()  -> nothing {
     trigger onSpellCast = CreateTrigger();
@@ -5,7 +6,8 @@ library DanathAbils requires CothUtilities {
     TriggerRegisterAnyUnitEventBJ(onSpellCast, EVENT_PLAYER_UNIT_SPELL_EFFECT);
     TriggerAddAction(onSpellCast, function(){
       if (GetSpellAbilityId() == shieldStrike) {
-        UnitDamageTarget(GetTriggerUnit(), GetSpellTargetUnit(), 30 + 85 * GetUnitAbilityLevel(GetTriggerUnit(), shieldStrike), true, false, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL, WEAPON_TYPE_WHOKNOWS);
+        UnitDamageTarget(GetTriggerUnit(), GetSpellTargetUnit(), 15 + 42 * GetUnitAbilityLevel(GetTriggerUnit(), shieldStrike), true, false, ATTACK_TYPE_MELEE, DAMAGE_TYPE_UNIVERSAL, WEAPON_TYPE_WHOKNOWS);
+        UnitDamageTarget(GetTriggerUnit(), GetSpellTargetUnit(), 15 + 43 * GetUnitAbilityLevel(GetTriggerUnit(), shieldStrike), true, false, ATTACK_TYPE_MELEE, DAMAGE_TYPE_NORMAL, WEAPON_TYPE_WHOKNOWS);
       }
     });
     TriggerRegisterAnyUnitEventBJ(onSpellLearn, EVENT_PLAYER_HERO_SKILL);
@@ -22,3 +24,4 @@ library DanathAbils requires CothUtilities {
     });
   }
 }
+//! endzinc

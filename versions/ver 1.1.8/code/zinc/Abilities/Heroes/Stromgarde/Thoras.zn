@@ -64,9 +64,9 @@
         if (GetSpellAbilityId() == strengthOfGods) {
           UnitRemoveAbility(GetTriggerUnit(), 'A0C7');
           UnitAddAbility(GetTriggerUnit(), 'A0C7');
-          UnitRemoveAbility(GetTriggerUnit(), 'A0A8');
-          UnitAddAbility(GetTriggerUnit(), 'A0A8');
-          SetUnitAbilityLevel(GetTriggerUnit(), 'A0A8', GetUnitAbilityLevel(GetTriggerUnit(), strengthOfGods));
+          UnitRemoveAbility(GetTriggerUnit(), 'A08A');
+          UnitAddAbility(GetTriggerUnit(), 'A08A');
+          SetUnitAbilityLevel(GetTriggerUnit(), 'A08A', GetUnitAbilityLevel(GetTriggerUnit(), strengthOfGods));
           tempTimer[0] = LoadTimerHandle(abilityData, GetHandleId(GetTriggerUnit()), StringHash("StrengthOfGodsTimer"));
           FlushChildHashtable(abilityData, GetHandleId(tempTimer[0]));
           DestroyTimer(tempTimer[0]);
@@ -76,7 +76,7 @@
           TimerStart(tempTimer[0], 30, false, function(){
             tempUnit[0] = LoadUnitHandle(abilityData, GetHandleId(GetExpiredTimer()), StringHash("Thoras"));
             UnitRemoveAbility(tempUnit[0], 'A0C7');
-            UnitRemoveAbility(tempUnit[0], 'A0A8');
+            UnitRemoveAbility(tempUnit[0], 'A08A');
             FlushChildHashtable(abilityData, GetHandleId(GetExpiredTimer()));
             RemoveSavedHandle(abilityData, GetHandleId(tempUnit[0]), StringHash("StrengthOfGodsTimer"));
             DestroyTimer(GetExpiredTimer());

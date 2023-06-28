@@ -33,20 +33,19 @@
         SaveEffectHandle(abilityData, GetHandleId(GetTriggerUnit()), StringHash("RejuvEffectGreen"), tempEffect[0]);
         SetUnitState(GetTriggerUnit(), UNIT_STATE_LIFE, 
         GetUnitState(GetTriggerUnit(), UNIT_STATE_LIFE) + GetUnitState(GetTriggerUnit(), UNIT_STATE_MAX_LIFE) * .04);
-        tempInteger[0] = 1;
         tempTimer[0] = LoadTimerHandle(abilityData, GetHandleId(GetTriggerUnit()), StringHash("RejuvTimer"));
         FlushChildHashtable(abilityData, GetHandleId(tempTimer[0]));
         DestroyTimer(tempTimer[0]);
         tempTimer[0] = CreateTimer();
         SaveUnitHandle(abilityData, GetHandleId(tempTimer[0]), StringHash("Caster"), GetTriggerUnit());
-        SaveInteger(abilityData, GetHandleId(tempTimer[0]), StringHash("HealCount"), tempInteger[0]);
+        SaveReal(abilityData, GetHandleId(tempTimer[0]), StringHash("HealCount"), .01);
         SaveTimerHandle(abilityData, GetHandleId(GetTriggerUnit()), StringHash("RejuvTimer"), tempTimer[0]);
         TimerStart(tempTimer[0], 2, true, function(){
-          tempInteger[0] = LoadInteger(abilityData, GetHandleId(GetExpiredTimer()), StringHash("HealCount"));
-          tempInteger[0] += 1;
+          real heal = LoadReal(abilityData, GetHandleId(GetExpiredTimer()), StringHash("HealCount"));
+          heal += .01;
           tempUnit[0] = LoadUnitHandle(abilityData, GetHandleId(GetExpiredTimer()), StringHash("Caster"));
           SaveBoolean(abilityData, GetHandleId(tempUnit[0]), StringHash("IsUnitRejuvEffect"), false);
-          if (tempInteger[0] > 9) {
+          if (heal > .1) {
             tempEffect[0] = LoadEffectHandle(abilityData, GetHandleId(tempUnit[0]), StringHash("RejuvEffectGreen"));
             DestroyEffect(tempEffect[0]);
             RemoveSavedHandle(abilityData, GetHandleId(tempUnit[0]), StringHash("RejuvTimer"));
@@ -55,9 +54,9 @@
             DestroyTimer(GetExpiredTimer());
             return;
           }
-          SaveInteger(abilityData, GetHandleId(GetExpiredTimer()), StringHash("HealCount"), tempInteger[0]);
+          SaveReal(abilityData, GetHandleId(GetExpiredTimer()), StringHash("HealCount"), heal);
           SetUnitState(tempUnit[0], UNIT_STATE_LIFE,
-          GetUnitState(tempUnit[0], UNIT_STATE_LIFE) + GetUnitState(tempUnit[0], UNIT_STATE_MAX_LIFE) * (.04 + tempInteger[0] / 100));
+          GetUnitState(tempUnit[0], UNIT_STATE_LIFE) + GetUnitState(tempUnit[0], UNIT_STATE_MAX_LIFE) * (.04 + heal));
         });
       });
       TriggerRegisterAnyUnitEventBJ(onRejuvInterrupt, EVENT_PLAYER_UNIT_SPELL_ENDCAST);

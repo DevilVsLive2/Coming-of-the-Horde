@@ -114,7 +114,8 @@
       }
 
       if ((GetUnitAbilityLevel(GetTriggerUnit(), stormShield) > 0) &&
-        ( !IsUnitType(damager, UNIT_TYPE_MAGIC_IMMUNE) && !IsUnitType(damager, UNIT_TYPE_MECHANICAL) ) ) {
+        ( !IsUnitType(damager, UNIT_TYPE_MAGIC_IMMUNE) && !IsUnitType(damager, UNIT_TYPE_MECHANICAL) ) &&
+        IsUnitEnemy(damager, GetOwningPlayer(GetTriggerUnit())) && GetRandomInt(0, 100) >= 4 * GetUnitAbilityLevel(GetTriggerUnit(), stormShield) ) {
         tempTimer[0] = LoadTimerHandle(abilityData, GetHandleId(GetTriggerUnit()), StringHash("StormShieldCooldownTimer"));
         if (TimerGetRemaining(tempTimer[0]) <= 0.1) {
           TimerStart(tempTimer[0], 30 - GetUnitAbilityLevel(GetTriggerUnit(), stormShield) * 6, false, null);

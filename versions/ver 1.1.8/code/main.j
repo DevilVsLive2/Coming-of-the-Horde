@@ -150,8 +150,6 @@ trigger gg_trg_Navigation_Bonus= null
 trigger gg_trg_Bombardment_On= null
 trigger gg_trg_Smite= null
 trigger gg_trg_Alliance_Hero_Selection= null
-trigger gg_trg_Danath_Starts= null
-trigger gg_trg_Danath_abils= null
 trigger gg_trg_Curdran_abils= null
 trigger gg_trg_Blue_Hero_Selection= null
 trigger gg_trg_Blue_Hero_Begin= null
@@ -480,7 +478,6 @@ endglobals
 //! import jass "./TBR/06-Altar_Replace_Brown.j"
 //! import jass "./TBR/06-Azeroth_North_Gate.j"
 //! import jass "./TBR/06-Azeroth_Tower_Fire_Upper.j"
-//! import jass "./TBR/06-Danath_Starts.j"
 //! import jass "./TBR/06-Dragon_Aspect_Damage.j"
 //! import jass "./TBR/06-Horde_Altar_Select.j"
 //! import jass "./TBR/06-Item_Orb_On.j"
@@ -867,3 +864,4 @@ endglobals
 //! import "./zinc/Abilities/Heroes/Stromgarde/thoras.zn"
 //! import "./zinc/global-events.zn"
 //! import "./zinc/Abilities/Heroes/rejuventation.zn"
+//! import "./zinc/Abilities/Heroes/Stromgarde/Danath.zn"
