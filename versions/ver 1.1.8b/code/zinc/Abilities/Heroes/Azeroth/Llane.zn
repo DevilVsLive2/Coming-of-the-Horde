@@ -1,0 +1,55 @@
+//! zinc
+  library LlaneAbils requires CothUtilities {
+    group targets;
+    unit target;
+    unit spellTarget;
+    unit caster;
+
+    function isUnitOrc(unit whichUnit) -> boolean {
+      return !IsUnitType(whichUnit, UNIT_TYPE_UNDEAD);
+    }
+
+    function onInit() {
+      trigger onSpellEffect = CreateTrigger();
+      TriggerRegisterAnyUnitEventBJ(onSpellEffect, EVENT_PLAYER_UNIT_SPELL_EFFECT);
+      TriggerAddCondition(onSpellEffect, Filter(function() -> boolean {
+        return GetUnitTypeId(GetTriggerUnit()) == Llane;
+      }));
+      TriggerAddAction(onSpellEffect, function(){
+        integer castedSpellLvl;
+        spellTarget = GetSpellTargetUnit();
+        caster = GetTriggerUnit();
+        castedSpellLvl = GetUnitAbilityLevel(caster, GetSpellAbilityId());
+        if (GetSpellAbilityId() == orkKillerId) {
+          if (!IsUnitMagicImmune(spellTarget)) {
+            if (isUnitOrc(spellTarget)) UnitDamageTarget(caster, spellTarget, orkKillerDamageOnLevel[castedSpellLvl] + orkKillerBonusDamageOnOrks, true, false, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_UNIVERSAL, WEAPON_TYPE_WHOKNOWS);
+            else UnitDamageTarget(caster, spellTarget, orkKillerDamageOnLevel[castedSpellLvl], true, false, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_UNIVERSAL, WEAPON_TYPE_WHOKNOWS);
+            
+            targets = CreateGroup();
+            GroupEnumUnitsInRange(targets, GetUnitX(spellTarget), GetUnitY(spellTarget), 300, null);
+            do {
+              target = FirstOfGroup(targets);
+              GroupRemoveUnit(targets, target);
+              if
+              (
+                IsUnitInRange(target, spellTarget, orkKillerAOE) &&
+                !IsUnitMagicImmune(target) &&
+                IsUnitEnemy(target, GetTriggerPlayer()) &&
+                IsUnitType(target, UNIT_TYPE_GROUND) &&
+                !IsUnitType(target, UNIT_TYPE_MECHANICAL)
+              )
+              {
+                if (isUnitOrc(target)) UnitDamageTarget(caster, target, orkKillerDamageOnLevel[castedSpellLvl] / 2 + orkKillerBonusDamageOnOrks / 2, true, false, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_UNIVERSAL, WEAPON_TYPE_WHOKNOWS);
+                else UnitDamageTarget(caster, target, orkKillerDamageOnLevel[castedSpellLvl] / 2, true, false, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_UNIVERSAL, WEAPON_TYPE_WHOKNOWS);
+              }
+            } while (target != null);
+
+            DestroyGroup(targets);
+          } else {
+            IssueImmediateOrder(GetTriggerUnit(), "stop");
+          }
+        }
+      });
+    }
+  }
+//! endzinc

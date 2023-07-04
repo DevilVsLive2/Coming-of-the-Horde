@@ -865,3 +865,4 @@ endglobals
 //! import "./zinc/global-events.zn"
 //! import "./zinc/Abilities/Heroes/rejuventation.zn"
 //! import "./zinc/Abilities/Heroes/Stromgarde/Danath.zn"
+//! import "./zinc/Abilities/Heroes/Azeroth/Llane.zn"

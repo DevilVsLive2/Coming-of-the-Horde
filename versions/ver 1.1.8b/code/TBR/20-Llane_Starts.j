@@ -1,9 +1,4 @@
-function Trig_Llane_Starts_Func001Func004C takes nothing returns boolean
-    if(not(IsUnitType(GetSpellTargetUnit(),UNIT_TYPE_UNDEAD)==true))then
-    return false
-    endif
-    return true
-    endfunction
+
     function Trig_Llane_Starts_Func001Func005Func001Func001Func007Func001Func001C takes nothing returns boolean
     if(not(GetUnitAbilityLevelSwapped('A05N',GetTriggerUnit())==3))then
     return false
@@ -34,27 +29,8 @@ function Trig_Llane_Starts_Func001Func004C takes nothing returns boolean
     endif
     return true
     endfunction
-    function Trig_Llane_Starts_Func001C takes nothing returns boolean
-    if(not(GetSpellAbilityId()=='A048'))then
-    return false
-    endif
-    if(not(UnitHasBuffBJ(GetSpellTargetUnit(),'B01E')==false))then
-    return false
-    endif
-    if(not(UnitHasBuffBJ(GetSpellTargetUnit(),'B03N')==false))then
-    return false
-    endif
-    return true
-    endfunction
     function Trig_Llane_Starts_Actions takes nothing returns nothing
     local unit TempUnit
-    if(Trig_Llane_Starts_Func001C())then
-    if(Trig_Llane_Starts_Func001Func004C())then
-    call UnitDamageTargetBJ(GetSpellAbilityUnit(),GetSpellTargetUnit(),((I2R(GetUnitAbilityLevelSwapped('A048',GetSpellAbilityUnit()))*75.00)+200.00),ATTACK_TYPE_MELEE,DAMAGE_TYPE_UNIVERSAL)
-    else
-    call UnitDamageTargetBJ(GetSpellAbilityUnit(),GetSpellTargetUnit(),(I2R(GetUnitAbilityLevelSwapped('A048',GetSpellAbilityUnit()))*75.00),ATTACK_TYPE_MELEE,DAMAGE_TYPE_UNIVERSAL)
-    endif
-    else
     if(Trig_Llane_Starts_Func001Func005C())then
     call SetUnitVertexColorBJ(gg_unit_Hpb1_0517,100.00,100.00,40.00,0.00)
     call UnitAddAbilityBJ('A05S',gg_unit_Hpb1_0517)
@@ -98,7 +74,7 @@ function Trig_Llane_Starts_Func001Func004C takes nothing returns boolean
     else
     endif
     endif
-    endif
+    set TempUnit = null
     endfunction
     function InitTrig_Llane_Starts takes nothing returns nothing
     set gg_trg_Llane_Starts=CreateTrigger()

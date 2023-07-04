@@ -59,6 +59,10 @@ library CothUtilities {
     constant integer Khadgar = 'Hgam';
     unit KhadgarUnit;
     constant integer Llane = 'Hpb1';
+    constant integer orkKillerId = 'A048';
+    integer orkKillerDamageOnLevel[4];
+    constant integer orkKillerBonusDamageOnOrks = 200;
+    constant integer orkKillerAOE = 180;
     unit LlaneUnit;
     constant integer Mara = 'Edem';
     unit MaraUnit;
@@ -74,6 +78,7 @@ library CothUtilities {
     constant integer Antonidas = 'Hant';
     unit AntonidasUnit;
     constant integer Rhonin = 'Hjai';
+    constant integer manaSwordId = 'A0CJ';
     unit RhoninUnit;
     constant integer Kael = 'Hblm';
     unit KaelUnit;
@@ -89,6 +94,7 @@ library CothUtilities {
     unit GelbinUnit;
     constant integer Muradin = 'Ucrl';
     constant integer MuradinMorph = 'Uear';
+    constant integer avatarBuffId = 'Beat';
     unit MuradinUnit;
     //Герои зелёного
     constant integer Anasterian = 'Hkal';
@@ -648,46 +654,6 @@ library CothUtilities {
     hashtable TimerData = InitHashtable();
   }  
 
-  interface IUnitData {
-    static integer id;
-    static integer basicArmor;
-    static integer basicStr;
-    static integer basicAgi;
-    static integer basicInt;
-    static integer strEachLvl;
-    static integer agiEachLvl;
-    static integer intEachLvl;
-    static integer basicDamage;
-    static integer diceSides;
-    static integer diceNumbers;
-    static integer basicMovementSpeed;
-    static integer defenseType;
-    static integer mainStat;
-    unit gameUnit;
-    integer currentArmor;
-    integer currentWhiteStr;
-    integer currentGreenStr;
-    integer currentStr;
-    integer currentWhiteAgi;
-    integer currentGreenAgi;
-    integer currentAgi;
-    integer currentWhiteInt;
-    integer currentGreenInt;
-    integer currentInt;
-    integer currentMinDamage;
-    integer currentMaxDamage;
-    item currentItem[6];
-    integer currentWhiteMovementSpeed;
-    integer currentGreenMovementSpeed;
-    integer currentMovementSpeed;
-
-    method getMainStatCount() -> integer;
-    method updateStats();
-    method getUnit() -> unit;
-    method setUnit(unit whichUnit);
-    
-  }
-
   public struct AbilityData {
 
     unit Caster;
@@ -788,31 +754,6 @@ library CothUtilities {
 
   public function IsHeroRange (unit whichHero)  -> boolean {
     return IsUnitType(whichHero, UNIT_TYPE_RANGED_ATTACKER); 
-    /*
-    !(
-    ! HeroID == Khadgar    ||
-    !  HeroID == Derek      ||
-    !  HeroID == Antonidas  ||
-    !  HeroID == Aegwynn    ||
-    !  HeroID == Kael       ||
-    !  HeroID == Brann      ||
-    !  HeroID == Gelbin     ||
-    !  HeroID == Anasterian ||
-    !  HeroID == Alleria    ||
-    !  HeroID == Sylvanas   ||
-    !  HeroID == Arugal     ||
-    !  HeroID == AlonSUS    ||
-    !  HeroID == ZulJin     ||
-    !  HeroID == Guldan     ||
-    !  HeroID == Nerzhul    ||
-    !  HeroID == Teron      ||
-    !  HeroID == Fenris     ||
-    !  HeroID == Zuluhed    ||
-    !  HeroID == Mediv      ||
-    !  HeroID == Archimonde ||
-    !  HeroID == KillJaeden 
-    !);
-    */
   }
 
   public function ClearTextMessagesForPlayer (player whichPlayer)  -> nothing {
@@ -1102,6 +1043,11 @@ library CothUtilities {
     unit u = CreateUnit(Player(15), 'o008', 0, 0, 0);
     integer index;
     trigger CastAbil = CreateTrigger();
+    orkKillerDamageOnLevel[0] = 75;
+    orkKillerDamageOnLevel[1] = 150;
+    orkKillerDamageOnLevel[2] = 225;
+    orkKillerDamageOnLevel[3] = 300;
+
     TriggerRegisterAnyUnitEventBJ(CastAbil, EVENT_PLAYER_UNIT_SPELL_EFFECT);
     TriggerAddAction(CastAbil, function EventCastAbil);
     CastAbil = CreateTrigger();
