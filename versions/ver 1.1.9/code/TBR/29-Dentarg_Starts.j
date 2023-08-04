@@ -56,7 +56,6 @@ function Trig_Dentarg_Starts_Func001Func003001 takes nothing returns boolean
     if(Trig_Dentarg_Starts_Func001Func003001())then
     set udg_SkullCount=(udg_SkullCount-1)
     else
-    call DoNothing()
     endif
     set udg_TempPoint=GetUnitLoc(GetTriggerUnit())
     call SetUnitPositionLoc(gg_unit_o00H_0443,udg_TempPoint)
