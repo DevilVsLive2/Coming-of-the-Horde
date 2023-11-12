@@ -12,7 +12,7 @@ Open "Customize Tile Pathability" and change the following tiles: / Открыт
 To save - click OK and restart the world editor. / Что бы изменения вступили в силу, необходимо нажать OK и перезапустить редактор.
 
 
-A russion-language project has [discord server](https://discord.gg/nym7e5BTnE) as well as [english project](https://discord.gg/UA3pmjMhsu). First author of this map - TheBronzeKnee(BronzeKnee#8990). Translated with help of these people: Retagyp(Ретагип#7539), PervlyAdept(Adept#8807) and Player1_01(Dork#0948). Author of this version: DevilVsLive(Mimbres#5348). / У русскоязычного проекта имеется [дискорд сервер](https://discord.gg/nym7e5BTnE), так же как и у [англоязычного проекта](https://discord.gg/UA3pmjMhsu). Изначальный автор карты: TheBronzeKnee(BronzeKnee#8990). Переведено при поддержке Retagyp(Ретагип#7539), PervlyAdept(Adept#8807) и Player1_01(Dork#0948). Автор данной версии: Девил(Mimbres#5348).
+A Russian-language project has [discord server](https://discord.gg/nym7e5BTnE) as well as [English project](https://discord.gg/UA3pmjMhsu). First author of this map - TheBronzeKnee(BronzeKnee#8990). Translated with help of these people: Retagyp(Ретагип#7539), PervlyAdept(Adept#8807) and Player1_01(Dork#0948). Author of this version: DevilVsLive(Mimbres#5348). / У русскоязычного проекта имеется [дискорд сервер](https://discord.gg/nym7e5BTnE), так же как и у [англоязычного проекта](https://discord.gg/UA3pmjMhsu). Изначальный автор карты: TheBronzeKnee(BronzeKnee#8990). Переведено при поддержке Retagyp(Ретагип#7539), PervlyAdept(Adept#8807) и Player1_01(Dork#0948). Автор данной версии: Девил(Mimbres#5348).
 
 
 TheBronzeKnee want to thank the following people: / Благодарности оставленные изначальным автором карты:
